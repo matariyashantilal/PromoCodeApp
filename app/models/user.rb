@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   ## validations       
-  validates :password, :length => {:in => 6..128},:if => :password_required?
+  validates :password, :length => {:in => 8..128},:if => :password_required?
   validates :password, :presence => true, :if => :password_required?
 
   validates_confirmation_of :password
-  validates :email, :first_name,:last_name, :presence => true
+  validates :email, :presence => true
  
   enum role: [:business ,:admin, :customer]
    ## Custom Attributes ##

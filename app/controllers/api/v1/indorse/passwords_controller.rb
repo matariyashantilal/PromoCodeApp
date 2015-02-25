@@ -5,7 +5,7 @@ swagger_controller :passwords, "Password"
     if params[:email].present?
       @user = User.find_by_email(params[:email])
       if @user.present?
-        #@user.send_reset_password_instructions
+        @user.send_reset_password_instructions
          render_json({:result=>{:messages =>"ok",:rstatus=>1, :errorcode =>""},:data=>{:messages =>"You will receive an email with instructions about how to reset your password in a few minutes."}}.to_json)    
       else
         render_json({:result=>{:messages => "No user found with email #{params[:email]}",:rstatus=>0, :errorcode => 404}}.to_json)

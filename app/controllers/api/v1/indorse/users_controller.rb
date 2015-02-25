@@ -1,14 +1,25 @@
 class Api::V1::Indorse::UsersController < Api::V1::BaseController
   before_filter :authentication_user_with_authentication_token, :only => [:edit_profile]
   
-  swagger_controller :users, "User[signup]"
+  swagger_controller :users, "User[signup/signin]"
   def sign_up
-     @user = User.find_or_create_by(user_create_params)
-    unless @user.save
-      render_json({:result=>{:messages => @user.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
+    @user = User.find_by(email: params[:user][:email])
+    if !(@user.present?)
+      logger.warn("===========#{@user.inspect}")
+      @user = User.create(user_create_params)
+      unless @user.save
+        render_json({:result=>{:messages => @user.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
+      else
+        @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
+      end
     else
-      @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
-    end
+      @user = User.authenticate_user_with_auth(params[:user][:email],params[:user][:password])  
+      if @user.present?
+        @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
+      else
+       render_json({:result=>{:messages => User.invalid_credentials,:rstatus=>0, :errorcode => 404}}.to_json)
+      end
+    end   
   end
   
  swagger_api :sign_up do
