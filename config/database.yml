@@ -4,14 +4,14 @@ development:
   database: InDorse_development
   pool: 5
   username: postgres
-  password: shanti
+  password: nikhil
 test:
   adapter: postgresql
   encoding: unicode
   database: InDorse_test
   pool: 5
   username: postgres
-  password: shanti
+  password: nikhil
   host: localhost
 
 production:
@@ -20,5 +20,5 @@ production:
   database: InDorse_production
   pool: 5
   username: postgres
-  password: shanti
+  password: nikhil
   host: localhost
