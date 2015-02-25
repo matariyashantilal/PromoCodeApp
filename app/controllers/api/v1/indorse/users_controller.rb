@@ -3,8 +3,7 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
   
   swagger_controller :users, "User[signup]"
   def sign_up
-    @user = User.new(user_create_params)
-    
+     @user = User.find_or_create_by(user_create_params)
     unless @user.save
       render_json({:result=>{:messages => @user.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
     else
@@ -16,15 +15,9 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
     summary "Creates a new User"
     param :form, "user[email]", :string, :required, "Email"
     param :form, "user[password]", :string, :required, "password"
-    param :form, "user[password_confirmation]", :string, :required, "password confirmation"
-    param :form, "user[first_name]", :string, :required, "First name"
-    param :form, "user[last_name]", :string, :required, "Last name"
-    param :form, "user[role]", :integer, :required, "Role"
-    param :form, "user[provider]", :string, :optional, "Provider"
-    param :form, "user[ftoken]", :string, :optional, "ftoken"
- 
     response :unauthorized
     response :not_acceptable
+    response :not_found
   end
 
   # def edit_profile
@@ -91,7 +84,7 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
   private
 
   def user_create_params
-    params.require(:user).permit(:email,:password,:password_confirmation,:first_name,:last_name,:role,:provider,:ftoken)
+    params.require(:user).permit(:email,:password)
   end
 
   # def user_edit_params
