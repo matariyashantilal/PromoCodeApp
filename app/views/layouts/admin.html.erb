@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>InDorse</title>
+	  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	  <div class="site-holder">
+			<%= render header%>
+			<div class="box-holder">
+				<%= render 'siderbar' %>
+				<div class="content  animated fadeInBig">
+						<%=render 'breadcrumb' %>
+						<div class="main-content">
+      					<%= yield %>
+						</div>
+				</div>
+			</div>	
+		</div>
+	</body>
+</html>
