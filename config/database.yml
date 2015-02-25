@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: InDorse_development
+  pool: 5
+  username: postgres
+  password: shanti
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: InDorse_test
+  pool: 5
+  username: postgres
+  password: shanti
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: InDorse_production
+  pool: 5
+  username: postgres
+  password: shanti
+  host: localhost

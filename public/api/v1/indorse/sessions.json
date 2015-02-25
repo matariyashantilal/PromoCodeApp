@@ -1,0 +1,87 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "sessions",
+  "apis": [
+    {
+      "path": "api/indorse/login",
+      "operations": [
+        {
+          "summary": "Usefull for login",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "email",
+              "type": "string",
+              "description": "Email",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "password",
+              "type": "string",
+              "description": "Password",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::V1::Indorse::Sessions#create"
+        }
+      ]
+    },
+    {
+      "path": "api/indorse/logout/{authentication_token}",
+      "operations": [
+        {
+          "summary": "logout",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "authentication_token",
+              "type": "string",
+              "description": "Auth Token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::V1::Indorse::Sessions#destroy"
+        }
+      ]
+    }
+  ]
+}
