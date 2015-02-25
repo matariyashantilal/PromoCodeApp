@@ -26,10 +26,7 @@ static IAPObject * _sharedHelper;
 
 - (id)init {
     
-    NSSet *productIdentifiers = [NSSet setWithObjects:
-                                 k_Inapp_SecureMedia,
-                                 k_Inapp_UnlimitedChat,
-                                 nil];
+    NSSet *productIdentifiers = [NSSet setWithObjects:nil];
 
     
     if ((self = [super initWithProductIdentifiers:productIdentifiers]))

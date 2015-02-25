@@ -34,13 +34,10 @@
 /**
  **     Key used to post a notification, when user did logout
  **/
-static NSString *const k_NSNotificationCenter_UserDidLogout                 = @"User Did Logout";
-static NSString *const k_PN_Angel_Received                                  = @"AngelReceived";
+
+static NSString *const k_update_userLocation                                = @"updateUserLocation";
 
 
-// Constants for Speed Values
-#define k_Min_Speed  40
-#define k_Max_Speed  208
 
 #define k_RT_Key_FilePath                                   @"filePath"
 
@@ -48,7 +45,14 @@ static NSString *const k_PN_Angel_Received                                  = @"
 
 #define DOCUMENTS_DIRECTORY [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES) objectAtIndex:0]
 
-#define VIDEO_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Videos"]
+
+
+
+#define k_Password_Length           @"Password length cannot be less than 8 characters"
+#define k_Password_Blank            @"Please enter password"
+#define k_Username_Blank            @"Please enter Username"
+#define k_Email_NotValid            @"Please enter valid email address"
+
 
 #define DEBUG_MODE
 #ifdef DEBUG_MODE
@@ -62,9 +66,7 @@ static NSString *const k_NSNotificationCenter_UserDidLogin                  = @"
 static NSString *const k_UserDefault_UserId                                 = @"UserID";
 static NSString *const k_User_AuthToken                                     = @"authtoken";
 
-static NSString *const k_User_Location = @"location";
 
-static NSString *const k_admin_disease_list                                 = @"diseaseList";
 
 
 #define k_Internet_Title            @"Internet Connection"
@@ -72,17 +74,6 @@ static NSString *const k_admin_disease_list                                 = @"
 #define kUserDef_CurrentDeviceToken @"CurrentDeviceToken"
 #define k_Internet_Now_Available    @"InternetNowAvailable"
 
-
-#define k_InAppPurchase_Success @"successPurchase"
-#define k_InAppPurchase_Failed @"failedPurchase"
-#define k_Refresh_UpgradeView @"refreshUpgrade"
-
-
-#define k_Collection_ImageIcon_Name @"icon_no_image.png"
-#define k_Thing_ImageIcon_Name @"noimg_large.png"
-
-#define k_Inapp_UnlimitedChat @"net.complitech.chat"
-#define k_Inapp_SecureMedia @"net.complitech.media"
 
 //For Color
 #define RGB(r, g, b) [UIColor colorWithRed:r/225.0f green:g/225.0f blue:b/225.0f alpha:1]

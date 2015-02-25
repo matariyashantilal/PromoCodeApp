@@ -15,9 +15,6 @@
 @implementation AppDelegate
 
 
-
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self customizeNavBar];
@@ -53,6 +50,33 @@
 #pragma mark --
 #pragma mark -- User defined methods
 
+- (void)setNewLabelText:(NSString *)strLabelText andNewDescriptionText:(NSString *)strDescriptionText
+{
+    appDelegate().progressHUD.removeFromSuperViewOnHide = YES;
+    appDelegate().progressHUD.labelText         = strLabelText;
+    appDelegate().progressHUD.labelFont = [Util getRegularFontWithSize:14.0];
+    appDelegate().progressHUD.detailsLabelText  = strDescriptionText;
+    [appDelegate().progressHUD setNeedsDisplay];
+}
+
+- (void)initProgressHUD
+{
+    self.progressHUD = [[MBProgressHUD alloc] initWithWindow:self.window];
+    self.progressHUD.mode = MBProgressHUDModeIndeterminate;
+    self.progressHUD.removeFromSuperViewOnHide = YES;
+}
+
+#pragma mark - Reachability
+
+- (BOOL)isInternetReachable
+{
+    Reachability *reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    if ( [reach isReachable] )
+    {
+        return YES;
+    }
+    return NO;
+}
 #pragma mark -
 #pragma mark - Customize Navigation Bar
 
@@ -67,4 +91,88 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
+
+#pragma mark -
+#pragma mark - AoToHome
+
+- (void)gotoMainHome
+{
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //setup top view controller
+    self.navigationController = [storyboard instantiateViewControllerWithIdentifier:@"NavHome"];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    //set window root view controller
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+}
+- (void)updateUserLocation
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    if([CLLocationManager locationServicesEnabled] == NO){
+        NSLog(@"service Disable");
+    }
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    [[Util okAlert:@"Message" message:@"Please enable location service from settings."] show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLLocation *currentLocation = newLocation;
+    
+    //CLLocation *newLocation = locations[[locations count] -1];
+    //CLLocation *currentLocation = newLocation;
+    
+    self.strLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+    self.strLongitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    
+    [self.locationManager stopUpdatingHeading];
+    self.locationManager.delegate = nil;
+    [self.locationManager stopUpdatingLocation];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:k_update_userLocation object:self userInfo:nil];
+    
+}
+
+
+- (void)gotoLogin
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //setup top view controller
+    self.navigationController = [storyboard instantiateViewControllerWithIdentifier:@"NavLogin"];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    //set window root view controller
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+}
+
+
+#pragma mark - Convenience Constructors
+
+AppDelegate *appDelegate(void)
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 @end
+
+
+

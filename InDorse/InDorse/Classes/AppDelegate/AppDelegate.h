@@ -31,7 +31,7 @@
 @property (nonatomic, retain) NSString *strLongitude;
 
 - (BOOL)isInternetReachable;
-- (void)gotoHome;
+- (void)gotoMainHome;
 - (void)gotoLogin;
 - (void)updateUserLocation;
 

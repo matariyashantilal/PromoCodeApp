@@ -10,14 +10,14 @@
 //>---------------------------------------------------------------------------------------------------
 //http://hope.demo.complitech.net/api/hope/login
 //http://hope.demo.complitech.net/api_help/index
-#define K_API_MAIN_URL                                          @"http://hope.demo.complitech.net/api/hope"
+#define K_API_MAIN_URL                                          @"http://192.168.1.15:3000"
 //#define K_API_MAIN_URL                                          @"http://192.168.1.22:4000/api"
 //#define K_API_MAIN_URL                                          @"http://192.168.1.27:4000/api"
 
 
 //#define K_API_MAIN_HOST_NAME                                    @"192.168.1.22:4000/"
 //#define K_API_MAIN_HOST_NAME                                    @"192.168.1.27:4000/"
-#define K_API_MAIN_HOST_NAME                                    @"hope.demo.complitech.net"
+#define K_API_MAIN_HOST_NAME                                    @"192.168.1.15:3000"
 
 #define kHTTP_GET_Method                             @"GET"
 #define kHTTP_POST_Method                            @"POST"
@@ -33,7 +33,7 @@
 
 #define k_API_User_add_activity                      @"api/hope/add_activity"
 #define k_API_User_Search                            @"api/hope/search_users"
-#define k_API_User_Login                             @"api/hope/login"
+#define k_API_User_Login_SignUp                             @"api/indorse/sign_up"
 #define k_API_User_Logout                            @"api/hope/logout"
 #define k_API_User_Signup                            @"api/hope/sign_up"
 #define k_API_User_ForgetPassword                    @"api/hope/forgot_password"

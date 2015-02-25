@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDLoginSignUpVC : UIViewController
+@interface IDLoginSignUpVC : UIViewController <VPXAPI_UserManagerDelegate,UIScrollViewDelegate>
 
 @end

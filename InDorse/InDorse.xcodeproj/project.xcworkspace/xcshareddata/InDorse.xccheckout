@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>91E9C42A-9283-4789-AA40-7B68C40E1AD9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>InDorse</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B6DB76A1617B0C6D8CCA88BF4AC57BA171584BBB</key>
+		<string>https://bitbucket.org/Designlico/indorsenew/branch/iOS</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>InDorse/InDorse.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B6DB76A1617B0C6D8CCA88BF4AC57BA171584BBB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/Designlico/indorsenew/branch/iOS</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B6DB76A1617B0C6D8CCA88BF4AC57BA171584BBB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B6DB76A1617B0C6D8CCA88BF4AC57BA171584BBB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Code_BB</string>
+		</dict>
+	</array>
+</dict>
+</plist>

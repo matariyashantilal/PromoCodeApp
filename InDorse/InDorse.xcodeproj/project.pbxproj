@@ -135,6 +135,9 @@
 		C91F77F11A9CAC290006373E /* toggle on.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F77DB1A9CAC290006373E /* toggle on.png */; };
 		C91F77F21A9CAC290006373E /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F77DC1A9CAC290006373E /* Twitter.png */; };
 		C91F77F51A9CB5A10006373E /* IDLoginSignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C91F77F41A9CB5A10006373E /* IDLoginSignUpVC.m */; };
+		C9F511731A9DAE1F009FFF1F /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F511711A9DAE1F009FFF1F /* lock.png */; };
+		C9F511741A9DAE1F009FFF1F /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F511721A9DAE1F009FFF1F /* mail.png */; };
+		C9F5117A1A9DF34E009FFF1F /* IDHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F511791A9DF34E009FFF1F /* IDHomeVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -376,6 +379,10 @@
 		C91F77DC1A9CAC290006373E /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
 		C91F77F31A9CB5A10006373E /* IDLoginSignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLoginSignUpVC.h; sourceTree = "<group>"; };
 		C91F77F41A9CB5A10006373E /* IDLoginSignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLoginSignUpVC.m; sourceTree = "<group>"; };
+		C9F511711A9DAE1F009FFF1F /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		C9F511721A9DAE1F009FFF1F /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		C9F511781A9DF34E009FFF1F /* IDHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDHomeVC.h; sourceTree = "<group>"; };
+		C9F511791A9DF34E009FFF1F /* IDHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDHomeVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +483,7 @@
 		46689BA61A9B3A95000F9503 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9F511771A9DF31A009FFF1F /* HomeVC */,
 				46689BAE1A9B3C53000F9503 /* SignUpVC */,
 				46689BA71A9B3A95000F9503 /* AppDelegate */,
 			);
@@ -562,6 +570,8 @@
 		46689BB41A9B3CED000F9503 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C9F511711A9DAE1F009FFF1F /* lock.png */,
+				C9F511721A9DAE1F009FFF1F /* mail.png */,
 				C91F77C71A9CAC290006373E /* Arrow_Left.png */,
 				C91F77C81A9CAC290006373E /* Arrow_Right.png */,
 				C91F77C91A9CAC290006373E /* Award_marker.png */,
@@ -1014,6 +1024,15 @@
 			path = "instagram-ios-sdk";
 			sourceTree = "<group>";
 		};
+		C9F511771A9DF31A009FFF1F /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				C9F511781A9DF34E009FFF1F /* IDHomeVC.h */,
+				C9F511791A9DF34E009FFF1F /* IDHomeVC.m */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1096,6 +1115,7 @@
 			files = (
 				C91F77E51A9CAC290006373E /* Logo.png in Resources */,
 				C91F77E31A9CAC290006373E /* FB_icon.png in Resources */,
+				C9F511741A9DAE1F009FFF1F /* mail.png in Resources */,
 				C91F77ED1A9CAC290006373E /* Tag_clicked_pink.png in Resources */,
 				C91F77EB1A9CAC290006373E /* Settings.png in Resources */,
 				C91F77E81A9CAC290006373E /* Punch_filled.png in Resources */,
@@ -1108,6 +1128,7 @@
 				C91F77DE1A9CAC290006373E /* Arrow_Right.png in Resources */,
 				C91F77E01A9CAC290006373E /* Big_Arrow_Left.png in Resources */,
 				C91F77E61A9CAC290006373E /* Notification_Blue.png in Resources */,
+				C9F511731A9DAE1F009FFF1F /* lock.png in Resources */,
 				C91F77EF1A9CAC290006373E /* Tag.png in Resources */,
 				C91F77DD1A9CAC290006373E /* Arrow_Left.png in Resources */,
 				C91F77EE1A9CAC290006373E /* Tag_Pink.png in Resources */,
@@ -1156,6 +1177,7 @@
 				46689CF81A9B4459000F9503 /* UITextField+custom_textboxfont.m in Sources */,
 				46689CF11A9B4459000F9503 /* VPXAPI_NetworkEngine.m in Sources */,
 				46689CEF1A9B4459000F9503 /* VPXAPI_ErrorModel.m in Sources */,
+				C9F5117A1A9DF34E009FFF1F /* IDHomeVC.m in Sources */,
 				46689CBA1A9B3F0E000F9503 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				46689CB41A9B3F0E000F9503 /* UIImage+GIF.m in Sources */,
 				46689C881A9B3F0E000F9503 /* NSManagedObject+MagicalFinders.m in Sources */,

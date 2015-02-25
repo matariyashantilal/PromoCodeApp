@@ -98,7 +98,7 @@
 - (void)doLogin:(NSDictionary*)dictParams
 {
     VPXAPI_NetworkEngine *networkEngine = [VPXAPI_NetworkEngine sharedInstance];
-    MKNetworkOperation *operation = [networkEngine operationWithPath:k_API_User_Login
+    MKNetworkOperation *operation = [networkEngine operationWithPath:k_API_User_Login_SignUp
                                                               params:dictParams
                                                           httpMethod:kHTTP_POST_Method];
     
