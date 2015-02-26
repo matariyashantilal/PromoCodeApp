@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'users#index'
   end
 
+  namespace :business do
+    root 'users#index'
+  end
+
   devise_for :users
 
   namespace :api, :defaults => {:format => 'json'} do

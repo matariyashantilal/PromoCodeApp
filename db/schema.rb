@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150225052843) do
     t.inet     "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "role"
+    t.integer  "role",                   default: 2
     t.string   "provider"
     t.string   "ftoken"
     t.datetime "created_at"
