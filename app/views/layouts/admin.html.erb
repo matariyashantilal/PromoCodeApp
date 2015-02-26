@@ -2,17 +2,17 @@
 <html>
 	<head>
 	  <title>InDorse</title>
-	  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
 	  <div class="site-holder">
-			<%= render header%>
+			<%= render 'layouts/admin/header' %>
 			<div class="box-holder">
-				<%= render 'siderbar' %>
+				<%= render 'layouts/admin/sidebar' %>
 				<div class="content  animated fadeInBig">
-						<%=render 'breadcrumb' %>
+						<%#=render 'layouts/admin/breadcrumb' %>
 						<div class="main-content">
       					<%= yield %>
 						</div>

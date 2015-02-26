@@ -24,4 +24,4 @@
 //= require preloader-delighted
 //= require jquery.easy-pie-chart
 //= require core.js
-//= require_tree .
+// require_tree .
