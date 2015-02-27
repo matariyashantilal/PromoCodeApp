@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>InDorse</title>
+	  <%= stylesheet_link_tag  'login', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'login', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	  <div class="login-page">
+	    <div class="header-section">
+	      <a href="#"><%= image_tag "logo_small.png",:size => "100x100" %></a>
+	      <ul class="menu">
+	        <li><a href="index.html">Home</a></li>
+	        <li><a href="register.html">Sign up</a></li>
+	      </ul>
+	    </div><!--end of header -section-->
+
+			<%= yield %>
+		  </div>
+		</div>
+		<script type="text/javascript">
+		  $(document).ready(function(){
+		  $('.polaris-input').iCheck({
+		        checkboxClass: 'icheckbox_polaris',
+			    radioClass: 'iradio_polaris',
+		        increaseArea: '20%' // optional
+		      });
+			});
+		</script>
+	</body>
+</html>
