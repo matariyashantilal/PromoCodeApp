@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
+  root 'dashboard#show'
+
   namespace :admin do
-  root 'users#index'
+    root 'users#index'
   end
 
   namespace :business do
     root 'users#index'
   end
 
-  devise_for :users
+  #devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   namespace :api, :defaults => {:format => 'json'} do
     scope :module => :v1 do

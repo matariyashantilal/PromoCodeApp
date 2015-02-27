@@ -3342,7 +3342,8 @@ ANIMATIONS
 }
 .login-page .form-section {
   min-height: 870px;
-  background: url("../images/login-background.jpg");
+  background: #999393 !important;
+  background: url("/public/images/login-background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
