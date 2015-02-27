@@ -1,0 +1,2 @@
+module Business::UsersHelper
+end
