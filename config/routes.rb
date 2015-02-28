@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  resources :offers
-
-  resources :iibeacons
-
-  resources :stores
-
-  resources :businesses
+ 
 
   root 'dashboard#show'
 
   namespace :admin do
+  
     root 'users#index'
+    resources :offers
+
+    resources :iibeacons
+
+    resources :stores
+
+    resources :businesses
   end
 
   namespace :business do
