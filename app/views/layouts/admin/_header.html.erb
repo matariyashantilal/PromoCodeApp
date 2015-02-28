@@ -20,9 +20,9 @@
         </form>
       </li>
       <li>
-        <a href="lock.html" class="logout">
+        <%= link_to destroy_user_session_path, :method => 'delete', :class => "logout" do %> 
           <i class="fa fa-power-off"></i>
-        </a>
+        <% end %>
       </li>
     </ul>
   </div>
