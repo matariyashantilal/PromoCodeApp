@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   ## validations       
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   attr_accessor :check_device_type_validation,:password_not_required
   ##associations
    has_many :authentication_tokens, :dependent => :destroy
-   
+   has_many :offer_details,:dependent=> :destroy
   ## Class Methods ##
   class << self
     def authenticate_user_with_auth(email, password)
@@ -31,6 +32,17 @@ class User < ActiveRecord::Base
     def success_message
       {:message=> "ok", :errorcode => "",:rstatus=>1}
     end
+  end
+  def admin?
+    self.type == "Admin"
+  end
+  
+  def business?
+    self.type == "Business"
+  end
+
+  def customer?
+    self.type == "Customer"
   end
 
   ## Instance Method ##

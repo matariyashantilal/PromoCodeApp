@@ -20,9 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.inet     :last_sign_in_ip
       t.string   :first_name
       t.string   :last_name
-      t.integer  :role ,default: 2
-      t.string   :provider
-      t.string   :ftoken
+      t.string   :type ,default: 'customer'
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
