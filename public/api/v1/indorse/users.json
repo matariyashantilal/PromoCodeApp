@@ -23,48 +23,6 @@
               "type": "string",
               "description": "password",
               "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "user[password_confirmation]",
-              "type": "string",
-              "description": "password confirmation",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "user[first_name]",
-              "type": "string",
-              "description": "First name",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "user[last_name]",
-              "type": "string",
-              "description": "Last name",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "user[role]",
-              "type": "integer",
-              "description": "Role",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "user[provider]",
-              "type": "string",
-              "description": "Provider",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "user[ftoken]",
-              "type": "string",
-              "description": "ftoken",
-              "required": false
             }
           ],
           "responseMessages": [
@@ -72,6 +30,11 @@
               "code": 401,
               "responseModel": null,
               "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
             },
             {
               "code": 406,

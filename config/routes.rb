@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root 'users#index'
     resources :offers
 
-    resources :iibeacons
+    resources :ibeacons
 
     resources :stores
 

@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150228113222) do
     t.datetime "updated_at"
   end
 
-  create_table "iibeacons", force: true do |t|
+  create_table "ibeacons", force: true do |t|
     t.string   "udid"
     t.string   "major"
     t.string   "minor"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150228113222) do
     t.integer  "stores_id"
   end
 
-  add_index "iibeacons", ["stores_id"], name: "index_iibeacons_on_stores_id", using: :btree
+  add_index "ibeacons", ["stores_id"], name: "index_ibeacons_on_stores_id", using: :btree
 
   create_table "offer_details", force: true do |t|
     t.integer  "users_id"

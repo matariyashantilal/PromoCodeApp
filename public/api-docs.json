@@ -5,11 +5,15 @@
   "apis": [
     {
       "path": "api/v1/indorse/sessions.{format}",
-      "description": "Login"
+      "description": "Logout"
+    },
+    {
+      "path": "api/v1/indorse/passwords.{format}",
+      "description": "Password"
     },
     {
       "path": "api/v1/indorse/users.{format}",
-      "description": "User[signup]"
+      "description": "User[signup/signin]"
     }
   ]
 }
