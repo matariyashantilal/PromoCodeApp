@@ -1,0 +1,29 @@
+<h1>Listing ibeacons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Udid</th>
+      <th>Major</th>
+      <th>Minor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ibeacons.each do |ibeacon| %>
+      <tr>
+        <td><%= ibeacon.udid %></td>
+        <td><%= ibeacon.major %></td>
+        <td><%= ibeacon.minor %></td>
+        <td><%= link_to 'Show', admin_ibeacon_path(ibeacon) %></td>
+        <td><%= link_to 'Edit', edit_admin_ibeacon_path(ibeacon) %></td>
+        <td><%= link_to 'Destroy', admin_ibeacon_path(ibeacon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New ibeacon', new_admin_ibeacon_path %>

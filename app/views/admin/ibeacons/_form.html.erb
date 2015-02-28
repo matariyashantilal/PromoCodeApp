@@ -1,0 +1,29 @@
+<%=form_for([:admin,@ibeacon]) do |f| %>
+  <% if @ibeacon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ibeacon.errors.count, "error") %> prohibited this ibeacon from being saved:</h2>
+
+      <ul>
+      <% @ibeacon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :udid %><br>
+    <%= f.text_field :udid %>
+  </div>
+  <div class="field">
+    <%= f.label :major %><br>
+    <%= f.text_field :major %>
+  </div>
+  <div class="field">
+    <%= f.label :minor %><br>
+    <%= f.text_field :minor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

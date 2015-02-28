@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Udid:</strong>
+  <%= @ibeacon.udid %>
+</p>
+
+<p>
+  <strong>Major:</strong>
+  <%= @ibeacon.major %>
+</p>
+
+<p>
+  <strong>Minor:</strong>
+  <%= @ibeacon.minor %>
+</p>
+
+<%= link_to 'Edit', edit_admin_ibeacon_path(@ibeacon) %> |
+<%= link_to 'Back', admin_ibeacons_path %>
