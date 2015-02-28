@@ -1,0 +1,45 @@
+<%= form_for(@offer) do |f| %>
+  <% if @offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+      <% @offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :offer_name %><br>
+    <%= f.text_field :offer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :task_to_perform %><br>
+    <%= f.text_field :task_to_perform %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_for %><br>
+    <%= f.text_field :offer_for %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_type %><br>
+    <%= f.text_field :offer_type %>
+  </div>
+  <div class="field">
+    <%= f.label :punch_count %><br>
+    <%= f.number_field :punch_count %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_valid_upto %><br>
+    <%= f.datetime_select :offer_valid_upto %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_expire_on %><br>
+    <%= f.datetime_select :offer_expire_on %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

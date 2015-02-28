@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Offer name:</strong>
+  <%= @offer.offer_name %>
+</p>
+
+<p>
+  <strong>Task to perform:</strong>
+  <%= @offer.task_to_perform %>
+</p>
+
+<p>
+  <strong>Offer for:</strong>
+  <%= @offer.offer_for %>
+</p>
+
+<p>
+  <strong>Offer type:</strong>
+  <%= @offer.offer_type %>
+</p>
+
+<p>
+  <strong>Punch count:</strong>
+  <%= @offer.punch_count %>
+</p>
+
+<p>
+  <strong>Offer valid upto:</strong>
+  <%= @offer.offer_valid_upto %>
+</p>
+
+<p>
+  <strong>Offer expire on:</strong>
+  <%= @offer.offer_expire_on %>
+</p>
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>
