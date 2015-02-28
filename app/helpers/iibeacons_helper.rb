@@ -1,0 +1,2 @@
+module IibeaconsHelper
+end

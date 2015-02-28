@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer_name: MyString
+  task_to_perform: MyString
+  offer_for: MyString
+  offer_type: MyString
+  punch_count: 1
+  offer_valid_upto: 2015-02-28 15:45:17
+  offer_expire_on: 2015-02-28 15:45:17
+
+two:
+  offer_name: MyString
+  task_to_perform: MyString
+  offer_for: MyString
+  offer_type: MyString
+  punch_count: 1
+  offer_valid_upto: 2015-02-28 15:45:17
+  offer_expire_on: 2015-02-28 15:45:17
