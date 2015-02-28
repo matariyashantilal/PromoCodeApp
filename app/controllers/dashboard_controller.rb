@@ -1,9 +1,9 @@
 class DashboardController < ApplicationController
   def show
   	if user_signed_in?
-	  	if current_user.role == "admin"
+	  	if current_user.admin?
 	  		redirect_to admin_root_path
-	  	else
+	  	elsif current_user.business? 
 	  		redirect_to business_root_path
 	  	end
   	else
