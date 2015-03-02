@@ -1,5 +1,5 @@
 class AddIndexToIbeacons < ActiveRecord::Migration
   def change
-    add_reference :ibeacons, :stores, index: true
+    add_reference :ibeacons, :store, index: true
   end
 end

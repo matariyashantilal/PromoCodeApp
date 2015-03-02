@@ -1,5 +1,5 @@
 class AddIndexToStores < ActiveRecord::Migration
   def change
-    add_reference :stores, :businesses, index: true
+    add_reference :stores, :business, index: true
   end
 end
