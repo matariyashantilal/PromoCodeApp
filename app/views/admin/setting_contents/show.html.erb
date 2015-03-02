@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Terms condition:</strong>
+  <%= @setting_content.terms_condition %>
+</p>
+
+<p>
+  <strong>About us:</strong>
+  <%= @setting_content.about_us %>
+</p>
+
+<%= link_to 'Edit', edit_admin_setting_content_path(@setting_content) %> |
+<%= link_to 'Back', admin_setting_contents_path %>
