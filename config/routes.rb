@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     root 'users#index'
   end
 
+  get 'terms' => 'dashboard#show_terms'
+  get 'about' => 'dashboard#show_about_us'
+  
+
   #devise_for :users
   devise_for :users, controllers: {
     sessions: 'users/sessions',

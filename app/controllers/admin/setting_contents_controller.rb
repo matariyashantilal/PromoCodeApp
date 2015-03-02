@@ -20,6 +20,7 @@ class Admin::SettingContentsController < Admin::BaseController
   end
 
   def edit
+    @setting_contents = SettingContent.first
   end
 
   def create

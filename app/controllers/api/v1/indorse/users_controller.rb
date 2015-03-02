@@ -53,19 +53,19 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
 
 
   def setting_contents
-    r = params[:content_id]
-    puts("-=-=-=-=-=-=-=-=-=-=-=-=")
-    puts("======#{r}")
-    puts("-=-=-=-=-=-=-=-=-=-=-=-=")
     if params[:content_id] == '0'
-      @result = SettingContent.first.terms_condition
+      @result = "terms"
+      #@result = SettingContent.first.terms_condition
+      #@result = "https://termsfeed.com/blog/sample-terms-and-conditions-template/"
     elsif  params[:content_id] == '1'
-      @result = SettingContent.first.about_us
+      @result = "about"
+      #@result = SettingContent.first.about_us
+      #@result = "http://complitech.net/contact/"
     else
       render_json({:result=>{:messages =>"Sorry no data found",:rstatus=>0, :errorcode =>404}}.to_json)
       return
     end
-    render_json({:result=>{:messages =>"ok",:rstatus=>1, :errorcode =>""},:data=>{ :url => @result }}.to_json)
+    render_json({:result=>{:messages =>"ok",:rstatus=>1},:data=>{ :url => @result }}.to_json)
   end
 
   swagger_api :setting_contents do

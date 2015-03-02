@@ -21,7 +21,6 @@
                       <li class=''>
                         <a href='dashboard' data-original-title='Dashboard'>
                              <i class='fa fa-home'></i>
-
                             <span class='hidden-minibar'>Businesses</span>
                         </a>
                       </li>
@@ -49,6 +48,13 @@
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Add New Offer</span>
                         </a>
+                    </li>
+                    <li class=' '>
+                       <!--  <a href='portlets' data-original-title='Portlets'> -->
+                        <%= link_to '/admin/setting_contents/1/edit', :method => "get" do %>
+                            <i class='fa fa-indent'></i>
+                            <span class='hidden-minibar'>Settings</span>
+                        <% end %>
                     </li>
                     <li class=' '>
                         <a href='portlets' data-original-title='Portlets'>

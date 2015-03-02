@@ -18,10 +18,24 @@
 //= require bootstrap.min
 //= require bootstrap 
 //= require bootstrap-switch
+
+//= require wysihtml5-0.3.0
+//= require wysihtml5-0.4.0pre.min
+//= require bootstrap-wysihtml5.js
+
+
+
+//= require summernote.min
+//= require summernote
+
 //= require jquery.accordion
 //= require bootstrap-typeahead
 //= require jpreLoader.min
 //= require preloader-delighted
 //= require jquery.easy-pie-chart
-//= require core.js
+//= require core
+
+// require demo
+// require jquery.ml-keyboard
+// require theme-options
 // require_tree .
