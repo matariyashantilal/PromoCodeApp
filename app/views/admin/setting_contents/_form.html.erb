@@ -1,0 +1,25 @@
+<%= form_for([:admin,@setting_content]) do |f| %>
+  <% if @setting_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting_content.errors.count, "error") %> prohibited this setting_content from being saved:</h2>
+
+      <ul>
+      <% @setting_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :terms_condition %><br>
+    <%= f.text_area :terms_condition %>
+  </div>
+  <div class="field">
+    <%= f.label :about_us %><br>
+    <%= f.text_area :about_us %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

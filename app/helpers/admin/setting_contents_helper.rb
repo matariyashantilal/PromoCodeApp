@@ -1,0 +1,2 @@
+module Admin::SettingContentsHelper
+end
