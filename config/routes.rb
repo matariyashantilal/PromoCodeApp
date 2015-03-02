@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         post  'forgot_password' => 'passwords#create', :as => :forgot_password
         post  'change_password' => 'passwords#change_password', :as => :change_password
         post 'sign_up' => "users#sign_up",:as => :signup
+        post 'update_notification' => "users#update_notification",:as => :update_notification
       end
     end
   end

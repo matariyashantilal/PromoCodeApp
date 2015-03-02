@@ -48,9 +48,10 @@ swagger_controller :passwords, "Password"
     response :not_acceptable
     response :not_found
   end
+  
   private
+
   def changes_password_params
    params.require(:user).permit(:current_password,:password,:password_confirmation)
   end
-
 end
