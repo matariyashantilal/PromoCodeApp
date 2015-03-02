@@ -18,7 +18,7 @@
 //= require bootstrap.min
 //= require bootstrap 
 //= require bootstrap-switch
-
+//= require jquery_nested_form
 //= require wysihtml5-0.3.0
 //= require wysihtml5-0.4.0pre.min
 //= require bootstrap-wysihtml5.js

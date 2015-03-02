@@ -24,9 +24,9 @@
         <td><%= offer.punch_count %></td>
         <td><%= offer.offer_valid_upto %></td>
         <td><%= offer.offer_expire_on %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_offer_path(offer) %></td>
+        <td><%= link_to 'Edit', edit_admin_offer_path(offer) %></td>
+        <td><%= link_to 'Destroy', admin_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Offer', new_offer_path %>
+<%= link_to 'New Offer', new_admin_offer_path %>

@@ -18,9 +18,9 @@
         <td><%= business.address %></td>
         <td><%= business.contact_person %></td>
         <td><%= business.contact_number %></td>
-        <td><%= link_to 'Show', business %></td>
-        <td><%= link_to 'Edit', edit_business_path(business) %></td>
-        <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',admin_business_path(business)%></td>
+        <td><%= link_to 'Edit', edit_admin_business_path(business) %></td>
+        <td><%= link_to 'Destroy', admin_business_path(business), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Business', new_business_path %>
+<%= link_to 'New Business', new_admin_business_path %>

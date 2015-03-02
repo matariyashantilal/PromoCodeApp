@@ -1,8 +1,6 @@
 class Admin::IbeaconsController < Admin::BaseController
   before_action :set_ibeacon, only: [:show, :edit, :update, :destroy]
 
-
-
   def index
     @ibeacons = Ibeacon.all
     

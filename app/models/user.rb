@@ -9,14 +9,15 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :if => :password_required?
 
   validates_confirmation_of :password
-  validates :email, :presence => true
  
-  enum role: [:business ,:admin, :customer]
+ 
+ 
    ## Custom Attributes ##
   attr_accessor :check_device_type_validation,:password_not_required
   ##associations
    has_many :authentication_tokens, :dependent => :destroy
-   has_many :offer_details,:dependent=> :destroy
+   #
+
   ## Class Methods ##
   class << self
     def authenticate_user_with_auth(email, password)

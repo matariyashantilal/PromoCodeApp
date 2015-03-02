@@ -29,6 +29,7 @@ gem 'swagger-docs'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'ckeditor'
+gem "nested_form"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
