@@ -32,6 +32,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem "nested_form"
 gem 'geocoder'
+gem 'unicorn'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
