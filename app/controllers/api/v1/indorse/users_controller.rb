@@ -66,7 +66,7 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
       render_json({:result=>{:messages =>"Sorry no data found",:rstatus=>0, :errorcode =>404}}.to_json)
       return
     end
-    render_json({:result=>{:messages =>"ok",:rstatus=>1},:data=>{ :url => host+@result }}.to_json)
+    render_json({:result=>{:messages =>"ok",:rstatus=>1,:errorcode =>""},:data=>{ :url => host+@result }}.to_json)
   end
 
   swagger_api :setting_contents do

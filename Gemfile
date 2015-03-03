@@ -30,6 +30,7 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'ckeditor'
 gem "nested_form"
+gem 'geocoder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

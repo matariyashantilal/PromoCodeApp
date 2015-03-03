@@ -4,7 +4,7 @@ class CreateStores < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.float :latitude
-      t.float :longitute
+      t.float :longitude
       t.string :contact_person
       t.integer :contact_number
 
