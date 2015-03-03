@@ -18,6 +18,6 @@
  *= require animate
  *= require font-awesome
  * require summernote-bs2
- *= require summernote-bs3
- *= require summernote
+ * require summernote-bs3
+ * require summernote
  */

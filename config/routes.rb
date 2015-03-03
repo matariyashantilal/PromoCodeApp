@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get 'terms' => 'dashboard#show_terms'
   get 'about' => 'dashboard#show_about_us'
-  mount Ckeditor::Engine => '/ckeditor'
+  # mount Ckeditor::Engine => '/ckeditor'
   
 
   #devise_for :users
