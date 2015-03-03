@@ -22,7 +22,7 @@ class Admin::StoresController <Admin::BaseController
   def create
     @store = Store.new(store_params)
     if @store.save
-      redirect_to admin_store_path(@store), :notice => "Store Submitted Successfully."
+      redirect_to admin_store_path(@store), :notice => "Store created successfully."
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Admin::StoresController <Admin::BaseController
   def update
    
     if @store.update(store_params)
-        redirect_to admin_store_path(@store), :notice => "store Submitted Updated."
+        redirect_to admin_store_path(@store), :notice => "Store updated successfully."
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Admin::StoresController <Admin::BaseController
 
   def destroy
     @store.destroy
-    redirect_to admin_stores_path, notice: 'Store was successfully destroyed.'
+    redirect_to admin_stores_path, notice: 'Store destroyed successfully.'
   end
 
   private
@@ -48,6 +48,6 @@ class Admin::StoresController <Admin::BaseController
     end
 
     def store_params
-      params.require(:store).permit(:name, :address, :latitude, :longitute, :contact_person, :contact_number)
+      params.require(:store).permit(:name, :address, :latitude, :longitute, :contact_person, :contact_number, :business_id)
     end
 end
