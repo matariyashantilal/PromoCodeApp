@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true  %>
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -19,14 +21,14 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+<!--  <div class="field">
+    <%#= f.label :latitude %><br>
+    <%#= f.text_field :latitude %>
   </div>
   <div class="field">
-    <%= f.label :longitute %><br>
-    <%= f.text_field :longitude %>
-  </div>
+    <%#= f.label :longitude %><br>
+    <%#= f.text_field :longitude %>
+  </div>  -->
   <div class="field">
     <%= f.label :contact_person %><br>
     <%= f.text_field :contact_person %>

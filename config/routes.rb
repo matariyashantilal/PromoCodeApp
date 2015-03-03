@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
   
-    root 'users#index'
+    root 'businesses#index'
     resources :offers
 
     resources :ibeacons

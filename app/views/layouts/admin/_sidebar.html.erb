@@ -21,7 +21,7 @@
                       <li class=''>
                       
                       <!--  <a href='dashboard' data-original-title='Dashboard'> -->
-                        <%= link_to '/admin/businesses', :method => "get" do %>
+                      <%= link_to '/admin/businesses', :method => "get" do %>
                              <i class='fa fa-home'></i>
                             <span class='hidden-minibar'>Businesses</span>
                         <% end %>
@@ -35,22 +35,25 @@
                     </li>
 -->
                     <li class=' '>
-                        <a href='portlets' data-original-title='Portlets'>
+                        <!-- <a href='portlets' data-original-title='Portlets'> -->
+                        <%= link_to '/admin/stores', :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Stores</span>
-                        </a>
+                        <% end %>
                     </li>
                     <li class=' '>
-                        <a href='portlets' data-original-title='Portlets'>
+                     <!--   <a href='portlets' data-original-title='Portlets'>  -->
+                        <%= link_to '/admin/offers', :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Offers</span>
-                        </a>
+                        <% end %>
                     </li>
                      <li class=' '>
-                        <a href='/admin/ibeacons' data-original-title='Portlets'>
+                     <!--   <a href='/admin/ibeacons' data-original-title='Portlets'>  -->
+                        <%= link_to '/admin/ibeacons', :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Ibeacons</span>
-                        </a>
+                        <% end %>
                     </li>
                     
                     <li class=' '>
