@@ -53,20 +53,23 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
 
 
   def setting_contents
-    host = Rails.application.secrets.host
+    #host = Rails.application.secrets.host
     if params[:content_id] == '0'
-      @result = SettingContent.first.terms_condition.html_safe
+      @result = '/terms'
+      #@result = SettingContent.first.terms_condition.html_safe
       #@result = SettingContent.first.terms_condition
       #@result = "https://termsfeed.com/blog/sample-terms-and-conditions-template/"
     elsif  params[:content_id] == '1'
-      @result = SettingContent.first.about_us.html_safe
+      @result = '/about'
+      #@result = SettingContent.first.about_us.html_safe
       #@result = SettingContent.first.about_us
       #@result = "http://complitech.net/contact/"
     else
       render_json({:result=>{:messages =>"Sorry no data found",:rstatus=>0, :errorcode =>404}}.to_json)
       return
     end
-    render_json({:result=>{:messages =>"ok",:rstatus=>1,:errorcode =>""},:data=>{ :url => @result }}.to_json)
+    render_json({:result=>{:messages =>"ok",:rstatus=>1,:errorcode =>""},:data=>{ :url => request.protocol + request.host_with_port + @result }}.to_json)
+    #render_json({:result=>{:messages =>"ok",:rstatus=>1,:errorcode =>""},:data=>{ :url => @result }}.to_json)
   end
 
   swagger_api :setting_contents do
