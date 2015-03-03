@@ -8,7 +8,7 @@ class Api::V1::Indorse::SessionsController < Api::V1::BaseController
     @token = AuthenticationToken.current_authentication_token_for_user(@current_user.id,params[:authentication_token]).first
     if @token.present?
       @token.destroy
-      render_json({:message => "Logout Successfully!"}.to_json)
+       render_json({:result=>{:messages =>"ok",:rstatus=>1, :errorcode =>""},:data=>{:messages =>"Logout Successfully!"}}.to_json)
     else
       render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)
     end
@@ -25,8 +25,8 @@ class Api::V1::Indorse::SessionsController < Api::V1::BaseController
    def destroy_12
     @token = AuthenticationToken.current_authentication_token_for_user(@current_user.id,params[:authentication_token]).first
     if @token.present?
-      @token.destroy
-      render_json({:message => "Logout Successfully!"}.to_json)
+       @token.destroy
+       render_json({:result=>{:messages =>"ok",:rstatus=>1, :errorcode =>""},:data=>{:messages =>"Logout Successfully!"}}.to_json)
     else
       render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)
     end
