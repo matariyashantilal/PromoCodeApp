@@ -3,15 +3,15 @@ development:
   encoding: unicode
   database: InDorse_development
   pool: 5
-  username: postgres
-  password: shanti
+  username: deep
+  password: 123deep
 test:
   adapter: postgresql
   encoding: unicode
   database: InDorse_test
   pool: 5
-  username: postgres
-  password: shanti
+  username: deep
+  password: 123deep
   host: localhost
 
 production:
@@ -19,6 +19,6 @@ production:
   encoding: unicode
   database: InDorse_production
   pool: 5
-  username: postgres
-  password: shanti
+  username: deep
+  password: 123deep
   host: localhost
