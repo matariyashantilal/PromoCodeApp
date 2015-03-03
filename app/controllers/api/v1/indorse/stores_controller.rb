@@ -6,7 +6,12 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
   def near_by_store_list
     latitude  = params[:latitude].to_f
     longitude = params[:longitude].to_f
-    stores    = Store.near([latitude, longitude], 100).includes(:offers).includes(:ibeaons)
+    @stores    = Store.near([latitude, longitude], 100).includes(:offers).includes(:ibeacons)
+    if @stores.present?
+
+    else
+      render_json({:errors => "No Store found"}.to_json)
+    end
   end
   
   swagger_api :near_by_store_list do

@@ -3,7 +3,10 @@ class Store < ActiveRecord::Base
 	has_many   :offers,dependent: :destroy
 	has_many   :offer_details,through: :offers,dependent: :destroy
 	has_many   :ibeacons,dependent: :destroy
+
 	
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?	
+
+
 end
