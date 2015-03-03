@@ -14,4 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-public/apidocs/
+config/database.yml
+db/schema.rb
+public/api-docs.json
+public/api/v1/indorse/
