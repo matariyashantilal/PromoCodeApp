@@ -1,20 +1,19 @@
 class Admin::OffersController < Admin::BaseController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  
 
   def index
     @offers = Offer.all
-    respond_with(@offers)
+   
   end
 
   def show
-    respond_with(@offer)
+   
   end
 
   def new
     @offer = Offer.new
-    respond_with(@offer)
   end
 
   def edit
@@ -22,18 +21,25 @@ class Admin::OffersController < Admin::BaseController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.save
-    respond_with(@offer)
+   if @offer.save
+      redirect_to admin_offer_path(@offer), :notice => "offer Submitted Successfully."
+    else
+      render :new
+    end
   end
 
   def update
-    @offer.update(offer_params)
-    respond_with(@offer)
+    if  @offer.update(offer_params)
+        redirect_to admin_offer_path(@offer), :notice => "offer Submitted Updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
     @offer.destroy
-    respond_with(@offer)
+    redirect_to admin_offers_path, notice: 'offer was successfully destroyed.' 
+   
   end
 
   private

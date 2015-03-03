@@ -1,20 +1,20 @@
 class Admin::BusinessesController < Admin::BaseController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+
 
   def index
     @businesses = Business.all
-    respond_with(@businesses)
+  
   end
 
   def show
-    respond_with(@business)
+   
   end
 
   def new
     @business = Business.new
-    respond_with(@business)
+   
   end
 
   def edit
@@ -22,18 +22,24 @@ class Admin::BusinessesController < Admin::BaseController
 
   def create
     @business = Business.new(business_params)
-    @business.save
-    respond_with(@business)
+    if @business.save
+      redirect_to admin_business_path(@business), :notice => "business Submitted Successfully."
+    else
+      render :new
+    end
   end
 
   def update
-    @business.update(business_params)
-    respond_with(@business)
+     if  @business.update(business_params)
+        redirect_to admin_business_path(@ibeacon), :notice => "Business Submitted Updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
     @business.destroy
-    respond_with(@business)
+    redirect_to admin_businesses_path, notice: 'Business was successfully destroyed.'   
   end
 
   private
@@ -42,6 +48,6 @@ class Admin::BusinessesController < Admin::BaseController
     end
 
     def business_params
-      params.require(:business).permit(:business_name, :address, :contact_person, :contact_number)
+      params.require(:business).permit(:business_name, :address, :contact_person, :contact_number,:first_name,:last_name,:email,:password,stores_attributes: [:id, :name,:address, :latitude, :longitute, :contact_person, :contact_number, :_destroy])
     end
 end

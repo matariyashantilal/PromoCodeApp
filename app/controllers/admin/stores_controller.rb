@@ -1,20 +1,19 @@
 class Admin::StoresController <Admin::BaseController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
 
   def index
     @stores = Store.all
-    respond_with(@stores)
+   
   end
 
   def show
-    respond_with(@store)
+
   end
 
   def new
     @store = Store.new
-    respond_with(@store)
+  
   end
 
   def edit
@@ -22,18 +21,25 @@ class Admin::StoresController <Admin::BaseController
 
   def create
     @store = Store.new(store_params)
-    @store.save
-    respond_with(@store)
+    if @store.save
+      redirect_to admin_store_path(@store), :notice => "Store Submitted Successfully."
+    else
+      render :new
+    end
   end
 
   def update
-    @store.update(store_params)
-    respond_with(@store)
+   
+    if @store.update(store_params)
+        redirect_to admin_store_path(@store), :notice => "store Submitted Updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
     @store.destroy
-    respond_with(@store)
+    redirect_to admin_stores_path, notice: 'Store was successfully destroyed.'
   end
 
   private

@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  users_id: 
-  offers_id: 
+  user_id: 
+  offer_id: 
+  is_claimed: false
 
 two:
-  users_id: 
-  offers_id: 
+  user_id: 
+  offer_id: 
+  is_claimed: false

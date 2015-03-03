@@ -30,6 +30,7 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'ckeditor'
 gem 'paperclip'
+gem "nested_form"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

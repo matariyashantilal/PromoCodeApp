@@ -41,7 +41,7 @@ Rails.application.routes.draw do
         post  'change_password' => 'passwords#change_password', :as => :change_password
         post 'sign_up' => "users#sign_up",:as => :signup
         post 'update_notification' => "users#update_notification",:as => :update_notification
-        get  'setting_content' => 'users#setting_contents', :as  => :setting_content
+        get  'setting_content/:content_id' => 'users#setting_contents', :as  => :setting_content
       end
     end
   end
