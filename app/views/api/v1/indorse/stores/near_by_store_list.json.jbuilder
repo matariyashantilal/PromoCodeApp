@@ -21,6 +21,14 @@ json.stores do
 					json.punch_count offer.punch_count
 		    end
   		end
+      json.ibeacons do
+        json.array! store.ibeacons.each do |ibeacon|
+          json.id ibeacon.id
+          json.udid ibeacon.udid
+          json.major ibeacon.major
+          json.minor ibeacon.minor
+        end
+      end
     end
   end
 end

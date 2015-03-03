@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         post 'update_notification' => "users#update_notification",:as => :update_notification
         get  'setting_content/:content_id' => 'users#setting_contents', :as  => :setting_content
         post 'near_by_store_list' => "stores#near_by_store_list",:as => :near_by_store_list
+        post 'complete_task' => "offers#complete_task",:as => :complete_task
       end
     end
   end
