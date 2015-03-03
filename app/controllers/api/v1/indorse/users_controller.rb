@@ -71,7 +71,6 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
   swagger_api :setting_contents do
     summary "Send terms_condition and about_us data"
     param :path, :content_id, :string, :required, "content_id"
-    #param :form, :content_id, :string, :required, "content_id"
     response :unauthorized
     response :not_acceptable
     response :not_found
