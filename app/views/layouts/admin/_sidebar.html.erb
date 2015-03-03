@@ -20,36 +20,39 @@
                     <ul class="nav  nav-list" style="text-align: left;">
                       <li class=''>
                       
-                        <a href='dashboard' data-original-title='Dashboard'>
+                      <!--  <a href='dashboard' data-original-title='Dashboard'> -->
+                        <%= link_to '/admin/businesses', :method => "get" do %>
                              <i class='fa fa-home'></i>
                             <span class='hidden-minibar'>Businesses</span>
-                        </a>
+                        <% end %>
                       </li>
-                      
+<!--                      
                     <li class=' '>
                         <a href='portlets' data-original-title='Portlets'>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Add New Business</span>
                         </a>
                     </li>
+-->
                     <li class=' '>
                         <a href='portlets' data-original-title='Portlets'>
                             <i class='fa fa-indent'></i>
-                            <span class='hidden-minibar'>Add New Store</span>
+                            <span class='hidden-minibar'>Stores</span>
+                        </a>
+                    </li>
+                    <li class=' '>
+                        <a href='portlets' data-original-title='Portlets'>
+                            <i class='fa fa-indent'></i>
+                            <span class='hidden-minibar'>Offers</span>
                         </a>
                     </li>
                      <li class=' '>
                         <a href='/admin/ibeacons' data-original-title='Portlets'>
                             <i class='fa fa-indent'></i>
-                            <span class='hidden-minibar'>Add New Ibeacon</span>
+                            <span class='hidden-minibar'>Ibeacons</span>
                         </a>
                     </li>
-                    <li class=' '>
-                        <a href='portlets' data-original-title='Portlets'>
-                            <i class='fa fa-indent'></i>
-                            <span class='hidden-minibar'>Add New Offer</span>
-                        </a>
-                    </li>
+                    
                     <li class=' '>
                        <!--  <a href='portlets' data-original-title='Portlets'> -->
                         <%= link_to '/admin/setting_contents/1/edit', :method => "get" do %>
