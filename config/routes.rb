@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         post 'sign_up' => "users#sign_up",:as => :signup
         post 'update_notification' => "users#update_notification",:as => :update_notification
         get  'setting_content/:content_id' => 'users#setting_contents', :as  => :setting_content
+        post 'store_list' => "stores#store_list",:as => :store_list
       end
     end
   end
