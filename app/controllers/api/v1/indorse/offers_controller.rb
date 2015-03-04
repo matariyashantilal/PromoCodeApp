@@ -45,6 +45,7 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
                       @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
                       @offer_details.save
                  end  
+                 
             else 
                 render_json({:errors => "No offers found"}.to_json)
             end 
