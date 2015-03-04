@@ -1,4 +1,4 @@
-<%= form_for([:admin,@store]) do |f| %>
+<%= nested_form_for([:admin,@store]) do |f| %>
   <% if @store.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
@@ -37,6 +37,73 @@
     <%= f.label :contact_number %><br>
     <%= f.number_field :contact_number %>
   </div>
+
+
+
+
+  <%= f.fields_for :offers do |offer_form| %>
+    <div style="border:1px">
+
+      <div class="field">
+        <%= offer_form.label :offer_name %><br>
+        <%= offer_form.text_field :offer_name %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :task_to_perform %><br>
+        <%= offer_form.text_field :task_to_perform %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :offer_for %><br>
+        <%= offer_form.text_field :offer_for %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :offer_type %><br>
+        <%= offer_form.text_field :offer_type %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :punch_count %><br>
+        <%= offer_form.number_field :punch_count %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :offer_valid_upto %><br>
+        <%= offer_form.datetime_select :offer_valid_upto %>
+      </div>
+      <div class="field">
+        <%= offer_form.label :offer_expire_on %><br>
+        <%= offer_form.datetime_select :offer_expire_on %>
+      </div>
+    </div>
+    <%= offer_form.link_to_remove "Remove this offer" %>
+  <% end %>
+  <p><%= f.link_to_add "Add an offer", :offers %></p>
+
+
+
+
+  <%= f.fields_for :ibeacons do |ibeacon_form| %>
+    <div style="border:1px">
+      <div class="field">
+        <%= ibeacon_form.label :udid %><br>
+        <%= ibeacon_form.text_field :udid %>
+      </div>
+      <div class="field">
+        <%= ibeacon_form.label :major %><br>
+        <%= ibeacon_form.text_field :major %>
+      </div>
+      <div class="field">
+        <%= ibeacon_form.label :minor %><br>
+        <%= ibeacon_form.text_field :minor %>
+      </div>
+  </div>
+    <%= ibeacon_form.link_to_remove "Remove this iBeacon" %>
+  <% end %>
+  <p><%= f.link_to_add "Add an iBeacon", :ibeacons %></p>
+
+
+
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
