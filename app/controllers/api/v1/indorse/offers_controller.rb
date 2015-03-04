@@ -10,7 +10,7 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
         @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: @offer.id)
         puts("============#{@offer_details.inspect}======")
         if !@offer_details.save
-          render_json({:result=>{:messages =>@offer_details.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
+          render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
         end
     else
         render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)

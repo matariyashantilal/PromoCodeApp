@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration
     create_table :offers do |t|
       t.string :offer_name
       t.string :task_to_perform
-      t.string :offer_for
+      t.integer :offer_for
       t.string :offer_type
       t.integer :punch_count
       t.datetime :offer_valid_upto
