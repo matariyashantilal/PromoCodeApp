@@ -3,16 +3,16 @@
 <div class="left-sidebar">
     <div class="sidebar-holder">
         <!-- User   -->
-        <div class="user-menu">
-            <%= image_tag 'User.png' ,:class => "avatar" %>
+        <div class="user-menu" style="text-align: left !important;">
+            <%#= image_tag 'User.png' ,:class => "avatar" %>
             
             <div class="user-info">
                 <div class="welcome">Welcome,</div>
-                <div class="username">Anusha</div>
+                <div class="username">Admin</div>
             </div>
-            <div class="user-status">
+        <!--    <div class="user-status">
                 <i class="fa fa-circle "></i>
-            </div>
+            </div>  -->
         </div>
         <!-- /.User   -->
 
@@ -52,7 +52,7 @@
                      <!--   <a href='/admin/ibeacons' data-original-title='Portlets'>  -->
                         <%= link_to '/admin/ibeacons', :method => "get" do %>
                             <i class='fa fa-indent'></i>
-                            <span class='hidden-minibar'>Ibeacons</span>
+                            <span class='hidden-minibar'>iBeacons</span>
                         <% end %>
                     </li>
                     
@@ -60,7 +60,7 @@
                        <!--  <a href='portlets' data-original-title='Portlets'> -->
                         <%= link_to '/admin/setting_contents/1/edit', :method => "get" do %>
                             <i class='fa fa-indent'></i>
-                            <span class='hidden-minibar'>Settings</span>
+                            <span class='hidden-minibar'>Contents</span>
                         <% end %>
                     </li>
                     <li class=' '>
