@@ -4,13 +4,17 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
   swagger_controller :offers, "Offer[complete_task/add_visits]"
 
   def complete_task
-    @offer=Offer.find(params[:offer_id])
+    @offer=Offer.get_non_expired_offers.find(params[:offer_id])
     puts("======#{@offer.inspect}=====")
-    if @current_user.present? && @offer.present?
-        @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: @offer.id)
-        puts("============#{@offer_details.inspect}======")
-        if !@offer_details.save
-          render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
+    if @current_user.present? 
+        if @offer.present?
+            @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: @offer.id)
+            puts("============#{@offer_details.inspect}======")
+            if !@offer_details.save
+              render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
+            end
+        else
+           render_json({:errors => "No offers found"}.to_json)
         end
     else
         render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)
