@@ -1,45 +1,86 @@
-<%= form_for([:admin,@offer]) do |f| %>
-  <% if @offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Offers
+       <span class="panel-options">
+            <%#= link_to '<i class="fa fa-long-arrow-left"></i>'.html_safe, admin_offers_path, :class => "label label-info" %>
 
-      <ul>
-      <% @offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <%= link_to 'Back'.html_safe, admin_offers_path, :class => "label label-info" %>
+
+          </span>
+       <!-- <span class="panel-options">
+        <%= link_to 'Back', admin_offers_path %>
+      </span> -->
+      </h3>
     </div>
-  <% end %>
+    <div class="panel-body">
+      <div class="col-md-2"></div>
 
-  <div class="field">
-    <%= f.label :offer_name %><br>
-    <%= f.text_field :offer_name %>
+      <%= form_for([:admin,@offer], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+        <% if @offer.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+            <ul>
+              <% @offer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_name %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :offer_name, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :task_to_perform, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_for %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :offer_for, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_type %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :offer_type, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
+          <div class="col-sm-9">
+            <%= f.number_field :punch_count, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
+          <div class="col-sm-9">
+            <%= f.number_field :punch_count, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_valid_upto %></label>
+          <div class="col-sm-9">
+            <%= f.datetime_select :offer_valid_upto, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_expire_on %></label>
+          <div class="col-sm-9">
+            <%= f.datetime_select :offer_expire_on, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :task_to_perform %><br>
-    <%= f.text_field :task_to_perform %>
-  </div>
-  <div class="field">
-    <%= f.label :offer_for %><br>
-    <%= f.text_field :offer_for %>
-  </div>
-  <div class="field">
-    <%= f.label :offer_type %><br>
-    <%= f.text_field :offer_type %>
-  </div>
-  <div class="field">
-    <%= f.label :punch_count %><br>
-    <%= f.number_field :punch_count %>
-  </div>
-  <div class="field">
-    <%= f.label :offer_valid_upto %><br>
-    <%= f.datetime_select :offer_valid_upto %>
-  </div>
-  <div class="field">
-    <%= f.label :offer_expire_on %><br>
-    <%= f.datetime_select :offer_expire_on %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

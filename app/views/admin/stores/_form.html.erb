@@ -2,9 +2,9 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">
-       <i class="fa fa-arrows-h"></i>   New Business
+       <i class="fa fa-arrows-h"></i>   New Store
        <span class="panel-options">
-        <%= link_to 'Back', admin_stores_path %>
+        <%= link_to 'Back', admin_stores_path, :class => "label label-info" %>
       </span>
     </h3>
   </div>
@@ -26,7 +26,7 @@
       <div class="form-group">
         <div class="col-sm-3 control-label"></div>
         <div class="col-sm-9">
-          <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true  %>
+          <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true, class: "form-control input-sm"  %>
         </div>
       </div>
 
