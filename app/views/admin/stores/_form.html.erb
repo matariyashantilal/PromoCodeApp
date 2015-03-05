@@ -1,26 +1,49 @@
-<%= nested_form_for([:admin,@store]) do |f| %>
-  <% if @store.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
-
-      <ul>
-      <% @store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Business
+       <span class="panel-options">
+        <%= link_to 'Back', admin_stores_path %>
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    
+    <%= nested_form_for([:admin,@store], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+      <% if @store.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
+        <ul>
+          <% @store.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true  %>
+      <div class="form-group">
+        <div class="col-sm-3 control-label"></div>
+        <div class="col-sm-9">
+          <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true  %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :name %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :address %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :address, :class => "form-control" %>
+        </div>
+      </div>
+      
 <!--  <div class="field">
     <%#= f.label :latitude %><br>
     <%#= f.text_field :latitude %>
@@ -29,82 +52,126 @@
     <%#= f.label :longitude %><br>
     <%#= f.text_field :longitude %>
   </div>  -->
-  <div class="field">
-    <%= f.label :contact_person %><br>
-    <%= f.text_field :contact_person %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_number %><br>
-    <%= f.number_field :contact_number %>
-  </div>
+      
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_person %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :contact_person, :class => "form-control" %>
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_number %></label>
+        <div class="col-sm-9">
+          <%= f.number_field :contact_number, :class => "form-control" %>
+        </div>
+      </div>
 
+      <%= f.fields_for :offers do |offer_form| %>
+        <div style="border:1px">
+          <div class="panel panel-default">
+            <div class="panel-heading">Offer Details</div>
+              <div class="panel-body">  
+                
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :offer_name %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.text_field :offer_name, :class => "form-control" %>
+                  </div>
+                </div>
 
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :task_to_perform %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.text_field :task_to_perform, :class => "form-control" %>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :offer_for %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.text_field :offer_for, :class => "form-control" %>
+                  </div>
+                </div>
 
-  <%= f.fields_for :offers do |offer_form| %>
-    <div style="border:1px">
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :offer_type %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.text_field :offer_type, :class => "form-control" %>
+                  </div>
+                </div>
 
-      <div class="field">
-        <%= offer_form.label :offer_name %><br>
-        <%= offer_form.text_field :offer_name %>
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :punch_count %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.number_field :punch_count, :class => "form-control" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :offer_valid_upto %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.datetime_select :offer_valid_upto, :class => "form-control" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= offer_form.label :offer_expire_on %></label>
+                  <div class="col-sm-9">
+                    <%= offer_form.datetime_select :offer_expire_on, :class => "form-control" %>
+                  </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                  <%= offer_form.link_to_remove "Remove this offer", :class => "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <p><%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary" %></p>
+
+      <%= f.fields_for :ibeacons do |ibeacon_form| %>
+        <div style="border:1px">
+          <div class="panel panel-default">
+            <div class="panel-heading">iBeacon Details</div>
+              <div class="panel-body">  
+          
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= ibeacon_form.label :udid %></label>
+                  <div class="col-sm-9">
+                    <%= ibeacon_form.text_field :udid, :class => "form-control" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= ibeacon_form.label :major %></label>
+                  <div class="col-sm-9">
+                    <%= ibeacon_form.text_field :major, :class => "form-control" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label  class="col-sm-3 control-label"><%= ibeacon_form.label :minor %></label>
+                  <div class="col-sm-9">
+                    <%= ibeacon_form.text_field :minor, :class => "form-control" %>
+                  </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                  <%= ibeacon_form.link_to_remove "Remove this iBeacon", :class => "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="field">
-        <%= offer_form.label :task_to_perform %><br>
-        <%= offer_form.text_field :task_to_perform %>
+      <% end %>
+      <p><%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary" %></p>
+      <div class="actions">
+        <%= f.submit class: "btn btn-success" %>
       </div>
-      <div class="field">
-        <%= offer_form.label :offer_for %><br>
-        <%= offer_form.text_field :offer_for %>
-      </div>
-      <div class="field">
-        <%= offer_form.label :offer_type %><br>
-        <%= offer_form.text_field :offer_type %>
-      </div>
-      <div class="field">
-        <%= offer_form.label :punch_count %><br>
-        <%= offer_form.number_field :punch_count %>
-      </div>
-      <div class="field">
-        <%= offer_form.label :offer_valid_upto %><br>
-        <%= offer_form.datetime_select :offer_valid_upto %>
-      </div>
-      <div class="field">
-        <%= offer_form.label :offer_expire_on %><br>
-        <%= offer_form.datetime_select :offer_expire_on %>
-      </div>
+    <% end %>
     </div>
-    <%= offer_form.link_to_remove "Remove this offer" %>
-  <% end %>
-  <p><%= f.link_to_add "Add an offer", :offers %></p>
-
-
-
-
-  <%= f.fields_for :ibeacons do |ibeacon_form| %>
-    <div style="border:1px">
-      <div class="field">
-        <%= ibeacon_form.label :udid %><br>
-        <%= ibeacon_form.text_field :udid %>
-      </div>
-      <div class="field">
-        <%= ibeacon_form.label :major %><br>
-        <%= ibeacon_form.text_field :major %>
-      </div>
-      <div class="field">
-        <%= ibeacon_form.label :minor %><br>
-        <%= ibeacon_form.text_field :minor %>
-      </div>
   </div>
-    <%= ibeacon_form.link_to_remove "Remove this iBeacon" %>
-  <% end %>
-  <p><%= f.link_to_add "Add an iBeacon", :ibeacons %></p>
-
-
-
-
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
