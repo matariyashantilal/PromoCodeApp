@@ -5,7 +5,7 @@
        <i class="fa fa-arrows-h"></i>   New Offers
        <span class="panel-options">
             <%#= link_to '<i class="fa fa-long-arrow-left"></i>'.html_safe, admin_offers_path, :class => "label label-info" %>
-
+            <%= link_to 'Show', admin_offer_path(@offer), :class => "label label-info" if !@offer.new_record? %>
             <%= link_to 'Back'.html_safe, admin_offers_path, :class => "label label-info" %>
 
           </span>

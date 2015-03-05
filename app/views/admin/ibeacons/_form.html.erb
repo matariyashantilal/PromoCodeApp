@@ -4,6 +4,7 @@
       <h3 class="panel-title">
        <i class="fa fa-arrows-h"></i>   New iBeacon
        <span class="panel-options">
+        <%= link_to 'Show', admin_ibeacons_path(@ibeacon), :class => "label label-info" if !@ibeacon.new_record? %>
         <%= link_to 'Back', admin_ibeacons_path, :class => "label label-info" %>
       </span>
     </h3>

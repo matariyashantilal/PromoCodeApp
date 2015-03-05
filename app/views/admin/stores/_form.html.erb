@@ -4,6 +4,7 @@
       <h3 class="panel-title">
        <i class="fa fa-arrows-h"></i>   New Store
        <span class="panel-options">
+       <%= link_to 'Show', admin_store_path(@store), :class => "label label-info" if !@store.new_record? %>
         <%= link_to 'Back', admin_stores_path, :class => "label label-info" %>
       </span>
     </h3>
