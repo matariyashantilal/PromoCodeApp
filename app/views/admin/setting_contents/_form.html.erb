@@ -1,15 +1,27 @@
-<%= form_for([:admin,@setting_content]) do |f| %>
-  <% if @setting_content.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@setting_content.errors.count, "error") %> prohibited this setting_content from being saved:</h2>
-
-      <ul>
-      <% @setting_content.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Business
+       <span class="panel-options">
+        
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    
+      <%= form_for([:admin,@setting_content], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+        <% if @setting_content.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@setting_content.errors.count, "error") %> prohibited this setting_content from being saved:</h2>
+            <ul>
+              <% @setting_content.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
 <!--
 <div class="panel">
@@ -100,17 +112,24 @@
 
 <%#= f.cktext_area :terms_condition, :class => "ckeditor" , :ckeditor => {:language => 'uk'} %>
 
-  <div class="field">
-    <%= f.label :terms_condition %><br>
-    <%= f.text_area :terms_condition %>
-  </div>
-  <div class="field">
-    <%= f.label :about_us %><br>
-    <%= f.text_area :about_us %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :terms_condition %></label>
+        <div class="col-sm-9">
+          <%= f.text_area :terms_condition, :class => "form-control" %>
+        </div>
+      </div>
 
-
-<% end %>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :about_us %></label>
+        <div class="col-sm-9">
+          <%= f.text_area :about_us, :class => "form-control" %>
+        </div>
+      </div>
+  
+      <div class="actions">
+        <%= f.submit class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -35,9 +35,9 @@
                 <td><%= ibeacon.udid %></td>
                 <td><%= ibeacon.major %></td>
                 <td><%= ibeacon.minor %></td>
-                <td><%= link_to "",admin_ibeacon_path(business), class: "fa fa-eye" %></td>
-                <td><%= link_to '', edit_admin_ibeacon_path(business), class: "fa fa-pencil" %></td>
-                <td><%= link_to '', admin_ibeacon_path(business), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "",admin_ibeacon_path(ibeacon), class: "fa fa-eye" %></td>
+                <td><%= link_to '', edit_admin_ibeacon_path(ibeacon), class: "fa fa-pencil" %></td>
+                <td><%= link_to '', admin_ibeacon_path(ibeacon), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
             </tbody>
