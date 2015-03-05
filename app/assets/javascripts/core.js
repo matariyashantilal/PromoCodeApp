@@ -303,7 +303,7 @@ $('.nav-input-search').typeahead({
      function loadPage(url, container) {
       urlExt = url + '.html';
         //console.log(container)
-        $.ajax({
+        /*$.ajax({
         	type: "GET",
         	url: urlExt,
         	dataType: 'html',
@@ -330,7 +330,7 @@ $('.nav-input-search').typeahead({
                     3000);
               },
               async: false
-            });
+            });*/
      }
 
 function randNum() {
