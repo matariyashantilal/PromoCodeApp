@@ -45,3 +45,7 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+## deployment
+gem 'mina'
+gem 'mina-puma', :require => false
+gem 'puma'
