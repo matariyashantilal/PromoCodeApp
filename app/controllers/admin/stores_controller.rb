@@ -48,7 +48,7 @@ class Admin::StoresController <Admin::BaseController
     end
 
     def store_params
-      params.require(:store).permit(:name, :address, :latitude, :longitute, :contact_person, :contact_number, :business_id, offers_attributes: [:id, :offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on, :task_url, :_destroy], ibeacons_attributes: [:id, :udid, :major, :minor, :_destroy])
+      params.require(:store).permit(:name, :address, :latitude, :longitude, :contact_person, :contact_number, :business_id, offers_attributes: [:id, :offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on, :task_url, :_destroy], ibeacons_attributes: [:id, :udid, :major, :minor, :_destroy])
     end
 
 end

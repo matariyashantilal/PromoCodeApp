@@ -19,6 +19,8 @@ class AuthenticationToken < ActiveRecord::Base
     end
 
     def find_user_from_authentication_token(token)
+      puts('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
+      puts(token)
       u = where(auth_token:token).includes(:user)
       (u.present? && u.first.user.present?)? u.first.user : nil
     end

@@ -48,6 +48,6 @@ class Admin::BusinessesController < Admin::BaseController
     end
 
     def business_params
-      params.require(:business).permit(:business_name, :address, :contact_person, :contact_number,:first_name,:last_name,:email,:password,stores_attributes: [:id, :name,:address, :latitude, :longitute, :contact_person, :contact_number, :_destroy])
+      params.require(:business).permit(:business_name, :address, :contact_person, :contact_number,:first_name,:last_name,:email,:password,stores_attributes: [:id, :name,:address, :latitude, :longitude, :contact_person, :contact_number, :_destroy])
     end
 end
