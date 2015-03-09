@@ -139,7 +139,7 @@ selected: @page.status), {} %>
             </div>
           </div>
         <% end %>
-      <p><%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary" %></p>
+      <%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary", :style => "float: left;" %>
 
       <%= f.fields_for :ibeacons do |ibeacon_form| %>
         <div style="border:1px">
@@ -177,11 +177,12 @@ selected: @page.status), {} %>
         </div>
       </div>
       <% end %>
-      <p><%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary" %></p>
+      
+      <%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary", :style => "float: left;margin-left: 2em;" %>
       <div class="actions">
-        <%= f.submit class: "btn btn-success" %>
+        <%= f.submit class: "btn btn-success", :style => "margin-left: 2em;" %>
       </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

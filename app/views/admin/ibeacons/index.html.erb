@@ -25,6 +25,14 @@
                 <th aria-label="Udid: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Udid</th>
                 <th aria-label="Major: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Major</th>
                 <th aria-label="Minor: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Minor</th>
+                <%= form_tag(admin_ibeacons_path, :method => "GET") do %>
+                  <th aria-label="Minor: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Store
+                    <%= select_tag 'store_id', options_from_collection_for_select(@stores, "id", "name", params[:store_id]), :prompt => 'All', hide_label: true, class: "input-sm", onchange: "this.form.submit();"  %>
+                  <%#= select_tag 'Store', :prompt => 'All', hide_label: true, class: "input-sm" do %>
+                    <%#= options_for_selectoptions_from_collection_for_select(@stores, "id", "name") %>
+                  <%# end %>
+                  </th> <!--   class: "form-control input-sm"  :selected => params[:store_id],   -->
+                <% end %>
                 <th colspan="3" aria-label="Actions" style="width: 104px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Actions</th>
               </tr>
             </thead>
@@ -35,6 +43,7 @@
                 <td><%= ibeacon.udid %></td>
                 <td><%= ibeacon.major %></td>
                 <td><%= ibeacon.minor %></td>
+                <td><%= @stores.find_by_id(ibeacon.store_id).name %></td>
                 <td><%= link_to "",admin_ibeacon_path(ibeacon), class: "fa fa-eye" %></td>
                 <td><%= link_to '', edit_admin_ibeacon_path(ibeacon), class: "fa fa-pencil" %></td>
                 <td><%= link_to '', admin_ibeacon_path(ibeacon), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -44,7 +44,10 @@
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :offer_for %></label>
           <div class="col-sm-9">
-            <%= f.number_field :offer_for, :class => "form-control" %>
+            <%#= f.number_field :offer_for, :class => "form-control" %>
+            <%= f.select(:offer_for) do %>
+              <%= options_for_select([['New User', 'new_user'],['Existing User', 'existing_user'], ['Both', 'both_user']]) %>
+            <% end %>
           </div>
         </div>
         <div class="form-group">

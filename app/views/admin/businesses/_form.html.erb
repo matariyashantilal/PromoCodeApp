@@ -104,20 +104,21 @@
                 <%= store_form.text_field :address, :class => "form-control" %>
               </div>
             </div>
-
+<!--
             <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :latitude %></label>
+              <label  class="col-sm-3 control-label"><%#= store_form.label :latitude %></label>
               <div class="col-sm-9">
-                <%= store_form.text_field :latitude, :class => "form-control" %>
+                <%#= store_form.text_field :latitude, :class => "form-control" %>
               </div>
             </div>
 
             <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :longitude %></label>
+              <label  class="col-sm-3 control-label"><%#= store_form.label :longitude %></label>
               <div class="col-sm-9">
-                <%= store_form.text_field :longitude, :class => "form-control" %>
+                <%#= store_form.text_field :longitude, :class => "form-control" %>
               </div>
             </div>
+          -->
 
             <div class="form-group">
               <label  class="col-sm-3 control-label"><%= store_form.label :contact_person %></label>
@@ -140,8 +141,8 @@
         </div>
       <% end %>
       <div class="col-sm-12">
-        <p><%= f.link_to_add "Add a Store", :stores, :class => "btn btn-primary" %></p>
-        <div class="actions">
+        <%= f.link_to_add "Add a Store", :stores, :class => "btn btn-primary", :style => "float: left;" %>
+        <div class="actions col-sm-6">
           <%= f.submit class: "btn btn-success" %>
         </div>
       </div>

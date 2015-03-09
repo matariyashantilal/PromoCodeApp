@@ -2,8 +2,28 @@ class Admin::IbeaconsController < Admin::BaseController
   before_action :set_ibeacon, only: [:show, :edit, :update, :destroy]
 
   def index
-    @ibeacons = Ibeacon.all
-    
+    store_id = params[:store_id]
+    logger.warn('===========#{store_id}====================')
+    puts(store_id)
+    #@ibeacons = []
+    @selected_store = 0
+    if params[:store_id].present?
+      puts('if')
+      filterIbeacons = Ibeacon.find_by_store_id(store_id)
+      if filterIbeacons == nil
+        @ibeacons = []   
+      else
+        @ibeacons = @ibeacons.to_a.push filterIbeacons
+      end
+      @selected_store = params[:store_id]
+      puts(@selected_store)
+      puts(@ibeacons.inspect)
+    else
+      puts('else')
+      @ibeacons = Ibeacon.all
+    end
+    @stores = Store.all
+    puts('======================================')
   end
 
   def show
@@ -46,6 +66,6 @@ class Admin::IbeaconsController < Admin::BaseController
     end
 
     def ibeacon_params
-      params.require(:ibeacon).permit(:udid, :major, :minor)
+      params.require(:ibeacon).permit(:udid, :major, :minor, :store_id)
     end
 end
