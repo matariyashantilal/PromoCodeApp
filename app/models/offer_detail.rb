@@ -3,4 +3,6 @@ class OfferDetail < ActiveRecord::Base
   belongs_to :offer
 	#validation  
   validates :offer_id, uniqueness: {scope: :user_id}, presence: true
+
+ 
 end

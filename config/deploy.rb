@@ -85,7 +85,6 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke 'swagger_docs'
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
@@ -94,8 +93,9 @@ task :deploy => :environment do
     end
   end
 end
-task :swagger_docs do
-  queue "cd #{deploy_to}/current ; bundle exec rake swagger:docs"
+
+task :accesslog do
+  queue "tail -f /sites/indorse/shared/log/production.log"
 end
 # For help in making your deploy script, see the Mina documentation:
 #
@@ -103,4 +103,3 @@ end
 #  - http://nadarei.co/mina/tasks
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
-

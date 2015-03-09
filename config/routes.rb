@@ -45,6 +45,8 @@ Rails.application.routes.draw do
         post 'near_by_store_list' => "stores#near_by_store_list",:as => :near_by_store_list
         post 'complete_task' => "offers#complete_task",:as => :complete_task
         post 'add_visits' => "offers#add_visits",:as => :add_visits
+        post 'login_with_facebook' => "users#login_with_facebook",:as => :login_with_facebook
+       
       end
     end
   end

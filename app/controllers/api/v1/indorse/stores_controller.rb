@@ -6,15 +6,9 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
   def near_by_store_list
     latitude  = params[:latitude].to_f
     longitude = params[:longitude].to_f
-    #@stores   = Store.near([latitude, longitude], 100).includes(:offers).where("offers.offer_expire_on >= ?", Date.today.beginning_of_day).references(:offers)
-    @stores   = Store.near([latitude, longitude], 100).includes(:ibeacons)
-    #@stores   = Store.near([latitude, longitude], 100).joins(:offers).includes(:ibeacons)
-    #@stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ?",Date.today.beginning_of_day).includes(:ibeacons)
-   
-    if @stores.present?
-      render_json({:result=>{:messages => 'Store list received successfully.',:rstatus=>1, :errorcode => "", :data => @stores}}.to_json)
-    else
-      render_json({:errors => "No Store found"}.to_json)
+    @stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ?",Date.today.beginning_of_day).includes(:ibeacons)
+    if !@stores.present?
+      render_json({:result=>{:messages =>"No Store found.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
     end
   end
   
