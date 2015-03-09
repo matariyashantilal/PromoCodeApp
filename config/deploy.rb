@@ -95,7 +95,7 @@ task :deploy => :environment do
   end
 end
 task :swagger_docs do
-  queue "cd #{deploy_to}/current ; bundle exec rake swagger:docs"
+  queue "cd #{deploy_to}/current ; RAILS_ENV=production bundle exec rake swagger:docs"
 end
 # For help in making your deploy script, see the Mina documentation:
 #
