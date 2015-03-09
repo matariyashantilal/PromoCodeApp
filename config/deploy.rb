@@ -93,13 +93,6 @@ task :deploy => :environment do
     end
   end
 end
-task :swagger => :environment do
-  begin
-    queue "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake swagger:docs"
-  rescue Exception => e
-    puts "======#{e.message}=========="
-  end
-end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
