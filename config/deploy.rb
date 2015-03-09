@@ -93,10 +93,13 @@ task :deploy => :environment do
     end
   end
 end
+
+task :accesslog do
+  queue "tail -f /sites/indorse/shared/log/production.log"
+end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
 #  - http://nadarei.co/mina/tasks
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
-
