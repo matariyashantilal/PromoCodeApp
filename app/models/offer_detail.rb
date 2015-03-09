@@ -4,6 +4,5 @@ class OfferDetail < ActiveRecord::Base
 	#validation  
   validates :offer_id, uniqueness: {scope: :user_id}, presence: true
 
-  scope :check_stutus_is_claimed, -> (offer_id,user_id){ where("offer_id = ? and user_id = ?",offer_id,user_id)}
  
 end
