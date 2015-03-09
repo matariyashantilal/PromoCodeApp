@@ -91,7 +91,16 @@
                 <div class="form-group">
                   <label  class="col-sm-3 control-label"><%= offer_form.label :offer_for %></label>
                   <div class="col-sm-9">
-                    <%= offer_form.text_field :offer_for, :class => "form-control" %>
+                    <%#= offer_form.text_field :offer_for, :class => "form-control" %>
+                    <%= offer_form.select(:offer_for) do %>
+                      <%= options_for_select([['New User', 'new_user'],['Existing User', 'existing_user'], ['Both', 'both_user']]) %>
+                    <% end %>
+                    <%#= f.select(:offer_for, [['User', 'user'], ['Vip', 'vip'], ['Admin', 'admin']]) %>
+                    <%#= f.select :status, options_for_select(Page.statuses.collect { |s| [s[0].titleize, s[0]] }, 
+selected: @page.status), {} %>
+                    <%#= offer_form.select :offer_for, Offer.offer_for, hide_label: true, class: "form-control input-sm"  %>
+
+                    <%#= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
                   </div>
                 </div>
 
