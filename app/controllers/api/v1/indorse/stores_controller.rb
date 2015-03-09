@@ -12,7 +12,7 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
     @stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ?",Date.today.beginning_of_day).includes(:ibeacons)
    
     if @stores.present?
-
+      render_json({:result=>{:messages => 'Store list received successfully.',:rstatus=>1, :errorcode => "", :data => @stores}}.to_json)
     else
       render_json({:errors => "No Store found"}.to_json)
     end
