@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   ##associations
    has_many :authentication_tokens, :dependent => :destroy
    #
-
+  scope :get_user_device_ids,lambda { |device_id| where("device_id = ?", device_id) }
+  scope :without_user, lambda{|user| where (user ? ["id != ?", user.id] : {}) } 
+  
   ## Class Methods ##
   class << self
     def authenticate_user_with_auth(email, password)
@@ -33,7 +35,30 @@ class User < ActiveRecord::Base
     def success_message
       {:message=> "ok", :errorcode => "",:rstatus=>1}
     end
+    
+    def register_with_social_media(token,email,oauth_token)
+        u             = User.new 
+        logger.warn("===========#{token.fetch.raw_attributes[:id]}")
+        u.password_not_required    = 1
+        u.provider    = "facebook"
+        u.email       = email
+        u.first_name  = token.fetch.first_name
+        u.last_name   = token.fetch.last_name
+        u.oauth_token = oauth_token
+        return u
+    end
+  
   end
+
+  def check_duplicate_device_ids(device_id,user)
+    @users = User.without_user(user).get_user_device_ids(device_id)
+    if @users.present?
+    @users.update_all({:device_id => nil})
+    end
+    user.device_id = device_id
+    user.save 
+  end
+
   def admin?
     self.type == "Admin"
   end
@@ -46,6 +71,7 @@ class User < ActiveRecord::Base
     self.type == "Customer"
   end
 
+ 
   ## Instance Method ##
   def password_required?
     if password_not_required == 1

@@ -33,6 +33,7 @@ gem 'paperclip'
 gem "nested_form"
 gem 'geocoder'
 gem 'unicorn'
+gem 'fb_graph'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

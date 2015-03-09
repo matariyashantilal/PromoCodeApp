@@ -1,7 +1,7 @@
 class Api::V1::Indorse::UsersController < Api::V1::BaseController
   before_filter :authentication_user_with_authentication_token, :only => [:update_notification]
   
-  swagger_controller :users, "User[signup/signin/update_notification]"
+  swagger_controller :users, "User[signup/signin/update_notification/login_with_facebook]"
 
   def sign_up
     @user = User.find_by(email: params[:user][:email])
@@ -80,6 +80,49 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
     response :not_found
   end
   
+  def login_with_facebook
+    if params[:user][:oauth_token].present?
+       begin
+        token       = FbGraph::User.me(params[:user][:oauth_token])
+        @user_email = token.fetch.email
+        puts("======#{@user_email}")
+        @user       = User.find_by_email(@user_email)
+        if @user.present?
+            device_id = params[:user][:device_id]
+            @user.check_duplicate_device_ids(params[:user][:device_id],@user)  
+            #@user.check_duplicate_device_ids(device_id,@user)
+            puts("======#{@user_email}========existing ")
+            @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
+           # render :file => "api/v1/Indorse/users/sign_up"
+        else
+           @user = User.register_with_social_media(token,@user_email,params[:user][:oauth_token])
+           if @user.save
+
+              puts("======#{@user_email}========new user ")
+              @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
+              # render :file => "api/v1/Indorse/users/sign_up"
+           else
+             render_json({:result=>{:messages => @user.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
+           end
+        end
+        rescue  FbGraph::InvalidToken
+          render_json({:result=>{:messages =>"Invalid Token",:rstatus=>0, :errorcode => 404}}.to_json)
+
+      end
+    else
+       render_json({:result=>{:messages =>"Token missing",:rstatus=>0, :errorcode => 404}}.to_json)
+    end
+  end
+  
+   swagger_api :login_with_facebook do
+    summary "Facebook login"
+    param :form, "user[device_id]", :string, :optional, "Device id"
+    param :form, "user[oauth_token]", :string, :required, "Authentication token from facebook"
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
+
   private
 
     def user_create_params
