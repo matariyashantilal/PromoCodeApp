@@ -85,7 +85,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    
+
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/tmp/restart.txt"
@@ -93,8 +93,12 @@ task :deploy => :environment do
     end
   end
 end
-task :swagger do
-  queue "cd #{deploy_to}/current ; RAILS_ENV=production bundle exec rake swagger:docs"
+task :swagger => :environment do
+  begin
+    queue "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake swagger:docs"
+  rescue Exception => e
+    puts "======#{e.message}=========="
+  end
 end
 # For help in making your deploy script, see the Mina documentation:
 #
