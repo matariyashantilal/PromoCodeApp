@@ -9,10 +9,18 @@
       </span>
     </h3>
   </div>
+
   <div class="panel-body">
     <div class="col-md-2"></div>
     
       <%=form_for([:admin,@ibeacon], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+      <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
+            <div class="col-sm-9">
+              <%= f.select :store_id, Store.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+            </div>
+        </div>
+
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :udid %></label>
           <div class="col-sm-9">
