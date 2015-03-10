@@ -32,7 +32,7 @@ class Admin::BusinessesController < Admin::BaseController
 
   def update
      if  @business.update(business_params)
-        redirect_to admin_business_path(@ibeacon), :notice => "Business Submitted Updated."
+        redirect_to admin_business_path(@business), :notice => "Business Submitted Updated."
     else
       flash.now[:alert] = @business.errors.full_messages
       render :edit

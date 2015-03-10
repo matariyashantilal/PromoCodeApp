@@ -15,7 +15,7 @@
     <%= nested_form_for([:admin,@store], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
 
       <div class="form-group">
-        <div class="col-sm-3 control-label"></div>
+      <lable class="col-sm-3 control-label"><%= f.label :business_id ,"Business"  %></lable>
         <div class="col-sm-9">
           <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true, class: "form-control input-sm"  %>
         </div>
