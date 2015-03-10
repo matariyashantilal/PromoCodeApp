@@ -5,6 +5,9 @@ class Store < ActiveRecord::Base
 	has_many   :ibeacons,dependent: :destroy
 	has_many   :visitor_details , dependent: :destroy
 	
+	validates_presence_of :name, :address, :contact_person, :contact_number
+	validates_associated :offers, :ibeacons
+
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?	
 

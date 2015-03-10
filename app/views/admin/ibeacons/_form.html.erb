@@ -13,17 +13,6 @@
     <div class="col-md-2"></div>
     
       <%=form_for([:admin,@ibeacon], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
-        <% if @ibeacon.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@ibeacon.errors.count, "error") %> prohibited this ibeacon from being saved:</h2>
-          <ul>
-            <% @ibeacon.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-          </div>
-        <% end %>
-
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :udid %></label>
           <div class="col-sm-9">

@@ -24,6 +24,7 @@ class Admin::OffersController < Admin::BaseController
    if @offer.save
       redirect_to admin_offer_path(@offer), :notice => "offer Submitted Successfully."
     else
+      flash.now[:alert] = @offer.errors.full_messages
       render :new
     end
   end
@@ -32,6 +33,7 @@ class Admin::OffersController < Admin::BaseController
     if  @offer.update(offer_params)
         redirect_to admin_offer_path(@offer), :notice => "offer Submitted Updated."
     else
+      flash.now[:alert] = @offer.errors.full_messages
       render :edit
     end
   end

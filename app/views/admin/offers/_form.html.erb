@@ -18,17 +18,6 @@
       <div class="col-md-2"></div>
 
       <%= form_for([:admin,@offer], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
-        <% if @offer.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
-            <ul>
-              <% @offer.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :offer_name %></label>
           <div class="col-sm-9">
