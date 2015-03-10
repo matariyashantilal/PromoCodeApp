@@ -5,11 +5,12 @@
         <!-- User   -->
         <div class="user-menu" style="text-align: left !important;">
             <%#= image_tag 'User.png' ,:class => "avatar" %>
-            
+            <%= link_to '/admin/businesses' , :method => "get" do %>
             <div class="user-info">
                 <div class="welcome">Welcome,</div>
                 <div class="username">Admin</div>
             </div>
+            <% end %>
         <!--    <div class="user-status">
                 <i class="fa fa-circle "></i>
             </div>  -->

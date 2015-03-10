@@ -25,7 +25,7 @@ class Admin::BusinessesController < Admin::BaseController
     if @business.save
       redirect_to admin_business_path(@business), :notice => "Business Submitted Successfully."
     else
-      flash.now[:alert] = @business.errors.full_messages
+      flash.now[:alert] = @business.errors.full_messages.uniq
       render :new
     end
   end
@@ -34,7 +34,7 @@ class Admin::BusinessesController < Admin::BaseController
      if  @business.update(business_params)
         redirect_to admin_business_path(@business), :notice => "Business Submitted Updated."
     else
-      flash.now[:alert] = @business.errors.full_messages
+      flash.now[:alert] = @business.errors.full_messages.uniq
       render :edit
     end
   end

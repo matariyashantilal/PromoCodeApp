@@ -9,7 +9,6 @@
 //= require jquery.accordion
 //= require bootstrap-typeahead
 //= require jpreLoader.min
-//= require preloader-delighted
 //= require jquery.easy-pie-chart
 //= require core.js
 // require_tree .

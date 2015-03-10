@@ -22,7 +22,7 @@
 //= require wysihtml5-0.3.0
 //= require wysihtml5-0.4.0pre.min
 //= require bootstrap-wysihtml5.js
-
+//= require bootstrapValidator.js
 
 
 //= require summernote.min
@@ -31,7 +31,6 @@
 //= require jquery.accordion
 //= require bootstrap-typeahead
 //= require jpreLoader.min
-//= require preloader-delighted
 //= require jquery.easy-pie-chart
 //= require core
 //= require_self
@@ -46,7 +45,6 @@ $(".offer_type_radio").on("change", function(){
 	offer_type($(this).val());
 });
 function offer_type(val){
-	console.log("==================="+val)
 	if (val == "Punchcard"){
     $("div#task_perform").hide();
     $("div#punch_count").show();

@@ -34,8 +34,7 @@ class Offer < ActiveRecord::Base
     end
     if offer_valid_upto < offer_expire_on
     		errors.add(:offer_valid_upto, "is be invalid")
-    		logger.warn("===== Dates ====== #{offer_valid_upto}==== #{offer_expire_on}")
-    	end
+    end
 
   end
 
