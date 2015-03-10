@@ -22,7 +22,7 @@
 //= require wysihtml5-0.3.0
 //= require wysihtml5-0.4.0pre.min
 //= require bootstrap-wysihtml5.js
-//= require bootstrapValidator.js
+
 
 
 //= require summernote.min
