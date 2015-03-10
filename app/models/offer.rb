@@ -9,7 +9,7 @@ class Offer < ActiveRecord::Base
 	validates :image, :attachment_presence => true
 	validates_presence_of :offer_name
 	validates :task_url, :presence => true, :if => lambda { |o| o.offer_type == "OneTime"}
-	validates_presence_of :punch_count, :if => lambda { |o| o.offer_type == "Punchcard"}
+	validates :punch_count, :presence => true, :inclusion => {:in => 1..8, :message => "should be between 1-8"}, :if => lambda { |o| o.offer_type == "Punchcard"}
 	validate :validate_offer_dates
 
 	#image
