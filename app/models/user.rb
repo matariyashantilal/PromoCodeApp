@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   ## validations       
 
-  # validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :first_name, :last_name, :email
   validates :password, :length => {:in => 8..128},:if => :password_required?
-  validates :password, :presence => true, :if => :password_required?
+  validates :password, confirmation: true, :presence => true
 
-  validates_confirmation_of :password
+  # validates_confirmation_of :password
  
  
  

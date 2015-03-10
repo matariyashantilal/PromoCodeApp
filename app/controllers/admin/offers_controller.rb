@@ -50,6 +50,6 @@ class Admin::OffersController < Admin::BaseController
     end
 
     def offer_params
-      params.require(:offer).permit(:offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on)
+      params.require(:offer).permit(:offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on, :store_id, :task_url, :image)
     end
 end
