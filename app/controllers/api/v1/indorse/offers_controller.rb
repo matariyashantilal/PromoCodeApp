@@ -14,7 +14,7 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
               render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
             end
         else
-           render_json({:errors => "No offers found"}.to_json)
+           render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
         end
     else
         render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)
@@ -47,7 +47,7 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
                  end  
                  
             else 
-                render_json({:errors => "No offers found"}.to_json)
+                render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
             end 
         else
             render_json({:result=>{:messages =>@visit_detail.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)

@@ -5,7 +5,8 @@ class Store < ActiveRecord::Base
 	has_many   :ibeacons,dependent: :destroy
 	has_many   :visitor_details , dependent: :destroy
 	
-	validates_presence_of :name, :address, :contact_person, :contact_number
+	validates_presence_of :name, :address, :contact_person
+	validates :contact_number, length: { is: 10 }
 	validates_associated :offers, :ibeacons
 
 	geocoded_by :address
