@@ -65,7 +65,7 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
       #@result = SettingContent.first.about_us
       #@result = "http://complitech.net/contact/"
     else
-      render_json({:result=>{:messages =>"Sorry no data found",:rstatus=>0, :errorcode =>404}}.to_json)
+      render_json({:result=>{:messages =>"Sorry, no data was found.",:rstatus=>0, :errorcode =>404}}.to_json)
       return
     end
     render_json({:result=>{:messages =>"ok",:rstatus=>1,:errorcode =>""},:data=>{ :url => request.protocol + request.host_with_port + @result }}.to_json)

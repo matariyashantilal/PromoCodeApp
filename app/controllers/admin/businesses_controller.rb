@@ -23,7 +23,7 @@ class Admin::BusinessesController < Admin::BaseController
   def create
     @business = Business.new(business_params)
     if @business.save
-      redirect_to admin_business_path(@business), :notice => "business Submitted Successfully."
+      redirect_to admin_business_path(@business), :notice => "Business Submitted Successfully."
     else
       flash.now[:alert] = @business.errors.full_messages
       render :new
