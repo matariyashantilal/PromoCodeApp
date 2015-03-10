@@ -34,8 +34,24 @@
 //= require preloader-delighted
 //= require jquery.easy-pie-chart
 //= require core
-
+//= require_self
 // require demo
 // require jquery.ml-keyboard
 // require theme-options
 // require_tree .
+$( document ).ready(function() {
+ 	offer_type();
+});
+$(".offer_type_radio").on("change", function(){
+	offer_type();
+});
+function offer_type(){
+	var offer_type = $(".offer_type_radio:checked").val();
+	if (offer_type == "Punchcard"){
+    $("div#task_perform").hide();
+    $("div#punch_count").show();
+  }else if(offer_type == "OneTime"){
+     $("div#task_perform").show();
+    $("div#punch_count").hide();
+  }
+}

@@ -17,7 +17,7 @@
     <div class="panel-body">
       <div class="col-md-2"></div>
 
-      <%= form_for([:admin,@offer], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+      <%= form_for([:admin,@offer], :html => {:class => "form-horizontal col-md-8",:multipart => true}) do |f| %>
         <% if @offer.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -28,18 +28,23 @@
             </ul>
           </div>
         <% end %>
-
+        <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
+            <div class="col-sm-9">
+              <%= f.select :store_id, Store.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+            </div>
+        </div>
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :offer_name %></label>
           <div class="col-sm-9">
             <%= f.text_field :offer_name, :class => "form-control" %>
           </div>
         </div>
-        <div class="form-group">
-          <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
-          <div class="col-sm-9">
-            <%= f.text_field :task_to_perform, :class => "form-control" %>
-          </div>
+       <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :image ,"QR Code"  %></lable>
+            <div class="col-sm-9">
+            <%= f.file_field :image %>
+            </div>
         </div>
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :offer_for %></label>
@@ -53,19 +58,37 @@
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :offer_type %></label>
           <div class="col-sm-9">
-            <%= f.text_field :offer_type, :class => "form-control" %>
+            <div id="radio">
+              <% Offer::OFFER_TYPE.each do |offer_type| %>
+                <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio" %>
+                  <%= offer_type %>
+                <% end %>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
-          <div class="col-sm-9">
-            <%= f.number_field :punch_count, :class => "form-control" %>
+        <div id="task_perform">
+          <div class="form-group">
+           <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
+           <div class="col-sm-9">
+              <% Offer::TASK_TO_PERFORM.each do |task_to_perform| %>
+                <%= f.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook") %> <%= task_to_perform %>
+              <% end %>
+    
+           </div>
+          </div>
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :task_url ,"URL" %></label>
+            <div class="col-sm-9">
+              <%= f.text_field :task_url, :class => "form-control" %>
+           </div>
           </div>
         </div>
-        <div class="form-group">
-          <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
-          <div class="col-sm-9">
-            <%= f.number_field :punch_count, :class => "form-control" %>
+        <div id="punch_count" >
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
+            <div class="col-sm-9">
+              <%= f.number_field :punch_count, :class => "form-control" %>
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -86,4 +109,7 @@
       <% end %>
     </div>
   </div>
+  <script type="text/javascript">
+
+  </script>
 </div>
