@@ -17,21 +17,13 @@
 //= require less-1.5.0.min
 //= require bootstrap.min
 //= require bootstrap 
-//= require bootstrap-switch
 //= require jquery_nested_form
 //= require wysihtml5-0.3.0
 //= require wysihtml5-0.4.0pre.min
 //= require bootstrap-wysihtml5.js
-
-
-
 //= require summernote.min
 //= require summernote
-
-//= require jquery.accordion
-//= require bootstrap-typeahead
-//= require jpreLoader.min
-//= require jquery.easy-pie-chart
+// require jquery.accordion
 //= require core
 //= require_self
 // require demo
