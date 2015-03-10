@@ -40,17 +40,18 @@
 // require theme-options
 // require_tree .
 $( document ).ready(function() {
- 	offer_type();
+ 	offer_type($(".offer_type_radio:checked").val());
 });
 $(".offer_type_radio").on("change", function(){
-	offer_type();
+	offer_type($(this).val());
 });
-function offer_type(){
-	var offer_type = $(".offer_type_radio:checked").val();
-	if (offer_type == "Punchcard"){
+function offer_type(val){
+	console.log("==================="+val)
+	if (val == "Punchcard"){
     $("div#task_perform").hide();
     $("div#punch_count").show();
-  }else if(offer_type == "OneTime"){
+    $("div#punch_count").css('display','block');
+  }else if(val == "OneTime"){
      $("div#task_perform").show();
     $("div#punch_count").hide();
   }

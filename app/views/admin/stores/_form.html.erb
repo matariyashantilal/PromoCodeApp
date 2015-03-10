@@ -70,14 +70,12 @@
                     <%= offer_form.text_field :offer_name, :class => "form-control" %>
                   </div>
                 </div>
-
                 <div class="form-group">
-                  <label  class="col-sm-3 control-label"><%= offer_form.label :task_to_perform %></label>
-                  <div class="col-sm-9">
-                    <%= offer_form.text_field :task_to_perform, :class => "form-control" %>
-                  </div>
+                    <lable class="col-sm-3 control-label"><%= f.label :image ,"QR Code"  %></lable>
+                    <div class="col-sm-9">
+                      <%= f.file_field :image %>
+                    </div>
                 </div>
-                
                 <div class="form-group">
                   <label  class="col-sm-3 control-label"><%= offer_form.label :offer_for %></label>
                   <div class="col-sm-9">
@@ -97,16 +95,39 @@ selected: @page.status), {} %>
                 <div class="form-group">
                   <label  class="col-sm-3 control-label"><%= offer_form.label :offer_type %></label>
                   <div class="col-sm-9">
-                    <%= offer_form.text_field :offer_type, :class => "form-control" %>
+                    <div id="radio">
+                      <% Offer::OFFER_TYPE.each do |offer_type| %>
+                        <%= offer_form.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio", :onClick => 'offer_type($(this).val());' %>
+                          <%= offer_type %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <label  class="col-sm-3 control-label"><%= offer_form.label :punch_count %></label>
-                  <div class="col-sm-9">
-                    <%= offer_form.number_field :punch_count, :class => "form-control" %>
+                 <div id="task_perform">
+                    <div class="form-group">
+                      <label  class="col-sm-3 control-label"><%= offer_form.label :task_to_perform %></label>
+                      <div class="col-sm-9">
+                        <% Offer::TASK_TO_PERFORM.each do |task_to_perform| %>
+                          <%= offer_form.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook") %> <%= task_to_perform %>
+                        <% end %>
+            
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label  class="col-sm-3 control-label"><%= offer_form.label :task_url ,"URL" %></label>
+                      <div class="col-sm-9">
+                        <%= offer_form.text_field :task_url, :class => "form-control" %>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div id="punch_count" style="display: none" >
+                    <div class="form-group">
+                      <label  class="col-sm-3 control-label"><%= offer_form.label :punch_count %></label>
+                      <div class="col-sm-9">
+                        <%= offer_form.number_field :punch_count, :class => "form-control" %>
+                      </div>
+                    </div>
+                  </div>
 
                 <div class="form-group">
                   <label  class="col-sm-3 control-label"><%= offer_form.label :offer_valid_upto %></label>
