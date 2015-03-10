@@ -24,6 +24,7 @@ class Admin::StoresController <Admin::BaseController
     if @store.save
       redirect_to admin_store_path(@store), :notice => "Store created successfully."
     else
+      flash.now[:alert] = @store.errors.full_messages
       render :new
     end
   end
@@ -33,6 +34,7 @@ class Admin::StoresController <Admin::BaseController
     if @store.update(store_params)
         redirect_to admin_store_path(@store), :notice => "Store updated successfully."
     else
+      flash.now[:alert] = @store.errors.full_messages
       render :edit
     end
   end

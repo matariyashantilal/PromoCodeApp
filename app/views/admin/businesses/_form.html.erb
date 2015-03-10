@@ -12,16 +12,7 @@
   <div class="panel-body">
     <div class="col-md-2"></div>
     <%=  nested_form_for([:admin,@business], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
-      <% if @business.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
-          <ul>
-            <% @business.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+  
 
       <div class="form-group">
         <label  class="col-sm-3 control-label"><%= f.label :business_name %></label>
