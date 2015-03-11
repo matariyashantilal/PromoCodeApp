@@ -6,9 +6,16 @@ end
 json.data do
   json.id @offer.id
   json.offer_name @offer.offer_name
+  json.offer_for @offer.offer_for
+   json.image @offer.image.url
+  json.offer_type @offer.offer_type
+		     
   json.offer_valid_upto @offer.offer_valid_upto
-  json.task_to_perform @offer.task_to_perform
-  json.is_claim_status @offer_details.is_claimed
-	json.task_url @offer.task_url
-	json.punch_count @offer.punch_count
+  
+  if @offer.offer_type == "OneTime"
+    json.task_to_perform @offer.task_to_perform
+    json.task_url @offer.task_url
+  end
+ json.is_claim_status @offer.check_stutus_is_claimed(@current_user.id)
+      
 end

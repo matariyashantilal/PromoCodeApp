@@ -46,7 +46,8 @@ Rails.application.routes.draw do
         post 'complete_task' => "offers#complete_task",:as => :complete_task
         post 'add_visits' => "offers#add_visits",:as => :add_visits
         post 'login_with_facebook' => "users#login_with_facebook",:as => :login_with_facebook
-       
+        post 'my_rewards_detail' => "stores#my_rewards_detail",:as => :my_rewards_detail
+      
       end
     end
   end

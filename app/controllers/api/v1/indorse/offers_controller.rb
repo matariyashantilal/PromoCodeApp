@@ -32,26 +32,37 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
   end
 
   def add_visits
-    store=Store.find(params[:store_id])
-    if store.present? && @current_user.present?
-        visit_detail=VisitorDetail.new(store_id: store.id,user_id: @current_user.id)
-        visit_count=VisitorDetail.get_punch_count(@current_user.id,store.id)
-        check_new=VisitorDetail.check_for_new(@current_user.id,store.id)
-        if visit_detail.save
-            @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",visit_count)
-            if @offers.present?
-                  @offers.each do |offer|
-                      puts("==#{offer.inspect}")
-                      @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
-                      @offer_details.save
-                 end  
-                 
-            else 
-                render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
-            end 
-        else
+    @store=Store.find(params[:store_id])
+    if @store.present? && @current_user.present?
+        visit_detail=VisitorDetail.new(store_id: @store.id,user_id: @current_user.id)
+        @visit_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id).count
+        check_new=VisitorDetail.check_for_new(@current_user.id,@store.id)
+        @is_save=VisitorDetail.check_for_today_visit(@current_user.id,@store.id)  
+        if @is_save == 0 
+          if !visit_detail.save
             render_json({:result=>{:messages =>@visit_detail.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
-        end
+          end
+        end        
+        @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",@visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",@visit_count)
+        puts("=====#{@offers.count}")
+        if @offers.present?
+            @valid_offers = []
+            @offers.each do |offer|
+                puts("==#{offer.inspect}")
+                @visit_offer_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id,offer.created_at).count
+                puts("==#{@visit_offer_count}")
+                if offer.punch_count < @visit_offer_count
+                    @valid_offers << offer
+                    @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
+                    @offer_details.save
+                end
+            end  
+            if !@valid_offers.present?
+              render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
+            end  
+        else 
+            render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
+        end 
     else
         render_json({:errors => "No user found with authentication_token = #{params[:authentication_token]}"}.to_json)
     end 
