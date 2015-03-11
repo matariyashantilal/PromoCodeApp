@@ -32,13 +32,13 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
   end
 
   def add_visits
-    store=Store.find(params[:store_id])
-    if store.present? && @current_user.present?
-        visit_detail=VisitorDetail.new(store_id: store.id,user_id: @current_user.id)
-        visit_count=VisitorDetail.get_punch_count(@current_user.id,store.id)
-        check_new=VisitorDetail.check_for_new(@current_user.id,store.id)
+    @store=Store.find(params[:store_id])
+    if @store.present? && @current_user.present?
+        visit_detail=VisitorDetail.new(store_id: @store.id,user_id: @current_user.id)
+        @visit_count=VisitorDetail.get_punch_count(@current_user.id,@store.id)
+        check_new=VisitorDetail.check_for_new(@current_user.id,@store.id)
         if visit_detail.save
-            @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",visit_count)
+            @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",@visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",@visit_count)
             if @offers.present?
                   @offers.each do |offer|
                       puts("==#{offer.inspect}")
