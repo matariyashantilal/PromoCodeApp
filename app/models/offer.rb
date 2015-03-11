@@ -41,7 +41,8 @@ class Offer < ActiveRecord::Base
 	#install method
 
 	def check_stutus_is_claimed(userid)
-		offer_detail=offer_details.find_by(user_id:userid)
-		offer_detail.present? ? offer_detail.is_claimed.present? ? true : false : false
+		offer_detail=offer_details.where(user_id:userid ,is_claimed: false)
+
+		offer_detail.present? ?  true : false 
 	end
 end

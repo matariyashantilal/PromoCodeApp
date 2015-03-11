@@ -4,5 +4,9 @@ class OfferDetail < ActiveRecord::Base
 	#validation  
   validates :offer_id, uniqueness: {scope: :user_id}, presence: true
 
+  #scope
+ 	
+ 
+
  
 end
