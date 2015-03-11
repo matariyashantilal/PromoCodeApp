@@ -4,8 +4,19 @@ class Admin::OffersController < Admin::BaseController
   
 
   def index
-    @offers = Offer.all
-   
+    #@offers = Offer.all
+    store_id = params[:store_id]
+    if params[:store_id].present?
+      filterOffers = Offer.find_by_store_id(store_id)
+      if filterOffers == nil
+        @offers = []   
+      else
+        @offers = @Offers.to_a.push filterOffers
+      end
+    else
+      @offers = Offer.all
+    end
+    @stores = Store.all
   end
 
   def show

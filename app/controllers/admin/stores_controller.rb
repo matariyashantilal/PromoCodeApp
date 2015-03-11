@@ -3,8 +3,19 @@ class Admin::StoresController <Admin::BaseController
 
 
   def index
-    @stores = Store.all
-   
+    #@stores = Store.all
+    business_id = params[:business_id]
+    if params[:business_id].present?
+      filterStores = Store.find_by_business_id(business_id)
+      if filterStores == nil
+        @stores = []   
+      else
+        @stores = @stores.to_a.push filterStores
+      end
+    else
+      @stores = Store.all
+    end
+    @businesses = Business.all
   end
 
   def show

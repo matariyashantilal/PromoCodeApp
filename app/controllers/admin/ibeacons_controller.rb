@@ -3,27 +3,17 @@ class Admin::IbeaconsController < Admin::BaseController
 
   def index
     store_id = params[:store_id]
-    logger.warn('===========#{store_id}====================')
-    puts(store_id)
-    #@ibeacons = []
-    @selected_store = 0
     if params[:store_id].present?
-      puts('if')
       filterIbeacons = Ibeacon.find_by_store_id(store_id)
       if filterIbeacons == nil
         @ibeacons = []   
       else
         @ibeacons = @ibeacons.to_a.push filterIbeacons
       end
-      @selected_store = params[:store_id]
-      puts(@selected_store)
-      puts(@ibeacons.inspect)
     else
-      puts('else')
       @ibeacons = Ibeacon.all
     end
     @stores = Store.all
-    puts('======================================')
   end
 
   def show

@@ -10,6 +10,12 @@
         </span>
       </h3>
     </div>
+    <div align="right" style="margin-right:2%;" > 
+              <%= form_tag(admin_offers_path, :method => "GET") do %>
+              <span> Filter by store </span>
+               <%= select_tag 'store_id', options_from_collection_for_select(@stores, "id", "name", params[:store_id]), :prompt => 'All', hide_label: true, class: "input-sm", onchange: "this.form.submit();"  %>
+          <% end %>
+        </div>
     <div class="panel-body">
       <div class="table-responsive">
         <div id="example_wrapper" class="dataTables_wrapper" role="grid">
