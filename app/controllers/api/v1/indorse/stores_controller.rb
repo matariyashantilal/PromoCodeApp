@@ -1,7 +1,7 @@
 class Api::V1::Indorse::StoresController < Api::V1::BaseController
-  before_filter :authentication_user_with_authentication_token, :only => [:near_by_store_list]
+  before_filter :authentication_user_with_authentication_token, :only => [:near_by_store_list,:my_rewards_detail]
   
-  swagger_controller :stores, "Store[store_list]"
+  swagger_controller :stores, "Store[store_list/my_rewards_detail]"
 
   def near_by_store_list
     latitude  = params[:latitude].to_f
@@ -21,4 +21,23 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
     response :not_acceptable
     response :not_found
   end
+
+
+  def my_rewards_detail
+  
+    @stores   = Store.joins(:offers).joins(:offer_details).where("user_id = ? ",@current_user.id).uniq
+    if !@stores.present?
+      render_json({:result=>{:messages =>"Please enter a valid latitude and longitude.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
+    end  
+
+  end
+  
+  swagger_api :my_rewards_detail do
+    summary "Get offer for claim is allow"
+    param :form, :authentication_token, :string,:required, "Auth Token"
+   response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
+
 end
