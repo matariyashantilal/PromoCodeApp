@@ -402,7 +402,7 @@ a {
 }
 .left-sidebar .sidebar-holder .nav li a:hover {
   text-decoration: none;
-  background-color: #23bab5;
+  background-color: rgb(89, 199, 32);
   color: #ffffff;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
