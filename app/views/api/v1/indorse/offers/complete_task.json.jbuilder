@@ -7,6 +7,7 @@ json.data do
   json.id @offer.id
   json.offer_name @offer.offer_name
   json.offer_for @offer.offer_for
+   json.image @offer.image.url
   json.offer_type @offer.offer_type
 		     
   json.offer_valid_upto @offer.offer_valid_upto
