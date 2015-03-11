@@ -23,7 +23,7 @@ json.stores do
             json.task_url offer.task_url
           else
             json.punch_count offer.punch_count
-            json.visit_count VisitorDetail.get_punch_count(@current_user.id,store.id)
+            json.visit_count VisitorDetail.get_visitor_detail(@current_user.id,store.id,offer.created_at).count
           end
           json.is_claim_status offer.check_stutus_is_claimed(@current_user.id)
           

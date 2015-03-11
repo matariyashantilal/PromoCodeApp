@@ -35,15 +35,23 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
     @store=Store.find(params[:store_id])
     if @store.present? && @current_user.present?
         visit_detail=VisitorDetail.new(store_id: @store.id,user_id: @current_user.id)
-        @visit_count=VisitorDetail.get_punch_count(@current_user.id,@store.id)
+        @visit_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id).count
         check_new=VisitorDetail.check_for_new(@current_user.id,@store.id)
         if visit_detail.save
-            @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",@visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",@visit_count)
+            @offers=Offer.get_non_expired_offers
+            @offers = check_new != 0 ? @offers.existing_user_offer.where("punch_count <= ? ",@visit_count) : @offers.new_user_offer.where("punch_count <= ? ",@visit_count)
+            
             if @offers.present?
                   @offers.each do |offer|
                       puts("==#{offer.inspect}")
-                      @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
-                      @offer_details.save
+                      
+                      @visit_offer_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id,offer.created_at).count
+                      puts("==#{@visit_offer_count}")
+                    
+                      if offer.punch_count < @visit_offer_count
+                          @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
+                          @offer_details.save
+                      end
                  end  
                  
             else 

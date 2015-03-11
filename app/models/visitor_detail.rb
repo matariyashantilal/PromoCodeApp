@@ -5,5 +5,5 @@ class VisitorDetail < ActiveRecord::Base
   #scope
 
   scope :check_for_new, -> (user_id,store_id){ where("user_id = ? and store_id = ? and is_claim = ? ",user_id,store_id,true).count}
-  scope :get_punch_count, -> (user_id,store_id){ where("user_id = ? and store_id = ? ",user_id,store_id).count}
+  scope :get_visitor_detail, -> (user_id,store_id,date=nil){ where("user_id = ? and store_id = ? and created_at > ? and is_claim = ? ",user_id,store_id,date,false)unless date.nil?}
 end
