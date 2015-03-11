@@ -8,7 +8,7 @@
         </span>
       </h3>
     </div>
-    <div align="right" style="margin-right:2%;" > 
+    <div align="right" style="margin-right:2%; margin-top: 5px;" > 
               <%= form_tag(admin_stores_path, :method => "GET") do %>
               <span> Filter by business </span>
                <%= select_tag 'business_id', options_from_collection_for_select(@businesses, "id", "business_name", params[:business_id]), :prompt => 'All', hide_label: true, class: "input-sm", onchange: "this.form.submit();"  %>

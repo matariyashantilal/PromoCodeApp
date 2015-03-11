@@ -14,7 +14,7 @@
       </h3>
 
     </div>
-    <div align="right" style="margin-right:2%;" > 
+    <div align="right" style="margin-right:2%;margin-top: 5px;" > 
               <%= form_tag(admin_ibeacons_path, :method => "GET") do %>
               <span> Filter by store </span>
                <%= select_tag 'store_id', options_from_collection_for_select(@stores, "id", "name", params[:store_id]), :prompt => 'All', hide_label: true, class: "input-sm", onchange: "this.form.submit();"  %>
