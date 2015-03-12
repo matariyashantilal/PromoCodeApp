@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   namespace :business do
     root 'users#index'
+    resources :businesses, only: [:edit, :update, :show], path: :business
+    resources :offers
   end
 
   get 'terms' => 'dashboard#show_terms'
