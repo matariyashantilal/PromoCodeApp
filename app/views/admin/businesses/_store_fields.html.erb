@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Store Details</div>
+  <div class="panel-body">
+
+    <div class="form-group">
+      <label  class="col-sm-3 control-label"><%= f.label :name %></label>
+      <div class="col-sm-9">
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  class="col-sm-3 control-label"><%= f.label :address %></label>
+      <div class="col-sm-9">
+        <%= f.text_field :address, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  class="col-sm-3 control-label"><%= f.label :contact_person %></label>
+      <div class="col-sm-9">
+        <%= f.text_field :contact_person, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  class="col-sm-3 control-label"><%= f.label :contact_number %></label>
+      <div class="col-sm-9">
+        <%= f.number_field :contact_number, :class => "form-control" %>
+      </div>
+    </div>
+    
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      <%= f.link_to_remove "Remove this Store", :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
