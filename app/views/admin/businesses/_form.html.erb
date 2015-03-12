@@ -77,67 +77,11 @@
         </div>
       </div>
 
-      <%= f.fields_for :stores do |store_form| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">Store Details</div>
-          <div class="panel-body">
-      
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :name %></label>
-              <div class="col-sm-9">
-                <%= store_form.text_field :name, :class => "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :address %></label>
-              <div class="col-sm-9">
-                <%= store_form.text_field :address, :class => "form-control" %>
-              </div>
-            </div>
-<!--
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%#= store_form.label :latitude %></label>
-              <div class="col-sm-9">
-                <%#= store_form.text_field :latitude, :class => "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%#= store_form.label :longitude %></label>
-              <div class="col-sm-9">
-                <%#= store_form.text_field :longitude, :class => "form-control" %>
-              </div>
-            </div>
-          -->
-
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :contact_person %></label>
-              <div class="col-sm-9">
-                <%= store_form.text_field :contact_person, :class => "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label  class="col-sm-3 control-label"><%= store_form.label :contact_number %></label>
-              <div class="col-sm-9">
-                <%= store_form.number_field :contact_number, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="col-sm-3"></div>
-            <div class="col-sm-9">
-              <%= store_form.link_to_remove "Remove this Store", :class => "btn btn-danger" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <div class="col-sm-12">
-        <%= f.link_to_add "Add a Store", :stores, :class => "btn btn-primary", :style => "float: left;" %>
-        <div class="actions col-sm-6">
-          <%= f.submit class: "btn btn-success" %>
-        </div>
+      <%= f.fields_for :stores %>
+      <%= f.link_to_add "Add a Store", :stores, :class => "btn btn-primary", :style => "float: left;" %>
+      <div class="actions col-sm-6">
+        <%= f.submit class: "btn btn-success" %>
       </div>
-      
     <% end %>
   </div>
 </div>

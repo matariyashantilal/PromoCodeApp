@@ -12,24 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require jquery-ui-1.10.3.custom.min
-//= require less-1.5.0.min
+// require less-1.5.0.min
 //= require bootstrap.min
-//= require bootstrap 
-//= require jquery_nested_form
-//= require wysihtml5-0.3.0
-//= require wysihtml5-0.4.0pre.min
-//= require bootstrap-wysihtml5.js
-//= require summernote.min
-//= require summernote
-// require jquery.accordion
 //= require core
+//= require jquery_nested_form
 //= require_self
-// require demo
-// require jquery.ml-keyboard
-// require theme-options
-// require_tree .
+
 $( document ).ready(function() {
  	offer_type($(".offer_type_radio:checked").val());
 });

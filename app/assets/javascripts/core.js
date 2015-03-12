@@ -26,7 +26,7 @@ $('.close-right-user').click(function(){
 
 
 //user-canvas
-        $('.user-canvas').easyPieChart({
+/*        $('.user-canvas').easyPieChart({
          animate: 3000,
          lineWidth : 8,
          size : 110,
@@ -43,7 +43,7 @@ $('.close-right-user').click(function(){
          barColor: '#df6c6e'
      });
 
-
+*/
     // Sidebar Toggle
     $('.toggle-left-sidebar').on('click', function (e) {
     	e.preventDefault();
@@ -150,7 +150,7 @@ $('.options-holder .fa-links').on('click',function(e){
 }
 
 //input search function
-$('.nav-input-search').typeahead({
+/*$('.nav-input-search').typeahead({
      source: [
         { id: 'dashboard', name: 'dashboard' },
         { id: 'dashboard', name: 'Chat' },
@@ -218,7 +218,7 @@ $('.nav-input-search').typeahead({
       ],
         itemSelected: displayResult
   });
-
+*/
 
    });
     function init() {

@@ -1,20 +1,16 @@
 class Admin::BusinessesController < Admin::BaseController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
 
-
-
   def index
-    @businesses = Business.all
-  
+    @businesses = Business.all  
   end
 
-  def show
-   
+  def show   
   end
 
   def new
     @business = Business.new
-   
+    @store = @business.stores.build
   end
 
   def edit

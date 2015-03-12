@@ -1,11 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery-ui-1.10.3.custom.min
 //= require less-1.5.0.min
 //= require bootstrap.min
-//= require bootstrap 
-//= require jquery.accordion
-// require jpreLoader.min
 //= require core.js
-// require_tree .

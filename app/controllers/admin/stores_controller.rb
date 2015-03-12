@@ -24,7 +24,8 @@ class Admin::StoresController <Admin::BaseController
 
   def new
     @store = Store.new
-  
+    @offer = @store.offers.build
+    @ibeacon = @store.ibeacons.build
   end
 
   def edit
