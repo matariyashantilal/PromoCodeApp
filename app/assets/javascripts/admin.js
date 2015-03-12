@@ -19,6 +19,7 @@
 
 $( document ).ready(function() {
  	offer_type($(".offer_type_radio:checked").val());
+ 	 initialize();
 });
 $(".offer_type_radio").on("change", function(){
 	offer_type($(this).val());

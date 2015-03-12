@@ -10,7 +10,7 @@ class Store < ActiveRecord::Base
 	validates_associated :offers, :ibeacons
 
 	geocoded_by :address
-	after_validation :geocode, :if => :address_changed?	
+	#after_validation :geocode, :if => :address_changed?	
 
 	accepts_nested_attributes_for :offers, :allow_destroy => true
 	accepts_nested_attributes_for :ibeacons, :allow_destroy => true

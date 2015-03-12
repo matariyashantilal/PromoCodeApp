@@ -49,13 +49,18 @@
         </div>
       </div>
 
-      <%= f.fields_for :offers %>        
-      <%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary", :style => "float: left;" %><br/><br/><br/>
+      <%= f.fields_for :offers %>   
+        
+      <%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary" %>
+      <br/><br/>
 
       <%= f.fields_for :ibeacons  %>
-      <%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary", :style => "float: left;margin-left: 2em;" %>
+     
+      <%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary" %>
+      <br/><br/>
       <div class="actions">
-        <%= f.submit class: "btn btn-success", :style => "margin-left: 2em;" %>
+        <%= f.submit class: "btn btn-success" %>
+     
       </div>
       <% end %>
     </div>
