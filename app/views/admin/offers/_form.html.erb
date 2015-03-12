@@ -61,7 +61,7 @@
            <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
            <div class="col-sm-9">
               <% Offer::TASK_TO_PERFORM.each do |task_to_perform| %>
-                <%= f.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook") %> <%= task_to_perform %>
+                <%= f.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook"),:class => "task_to_radio" %> <%= task_to_perform %>
               <% end %>
     
            </div>

@@ -54,7 +54,7 @@ $('.close-right-user').click(function(){
     $('.minibar-small').click(function(){
       $('.site-holder').toggleClass('mini-sidebar')
     });
-    $('ul.nav-list').accordion();
+    //$('ul.nav-list').accordion();
 
     $(".refresh-storage").click(function(e){
 	e.preventDefault();
@@ -236,7 +236,7 @@ $('.options-holder .fa-links').on('click',function(e){
         });
 
   
-        $('.progress .progress-bar').progressbar(); 
+       // $('.progress .progress-bar').progressbar(); 
         $('.fa-hover').click(function(e){
           e.preventDefault();
           var valued= $(this).find('i').attr('class');

@@ -11,7 +11,7 @@ class Admin::IbeaconsController < Admin::BaseController
         @ibeacons = @ibeacons.to_a.push filterIbeacons
       end
     else
-      @ibeacons = Ibeacon.all
+      @ibeacons = Ibeacon.includes(:store)
     end
     @stores = Store.all
   end

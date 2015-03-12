@@ -12,11 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require less-1.5.0.min
 //= require bootstrap.min
-//= require core
-//= require jquery_nested_form
 //= require_self
+//= require jquery_nested_form
+//= require core
 
 $( document ).ready(function() {
  	offer_type($(".offer_type_radio:checked").val());
