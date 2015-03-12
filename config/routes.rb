@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     resources :businesses
 
     resources :setting_contents
+
+    get  'edit' => 'users#edit', :as => :edit
+      
+    post  'change_password' => 'users#change_password', :as => :change_password
+        
+
   end
 
   namespace :business do
