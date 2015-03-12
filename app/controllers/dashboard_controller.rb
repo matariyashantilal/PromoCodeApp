@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
 	  	if current_user.admin?
 	  		redirect_to admin_root_path
 	  	elsif current_user.business? 
-	  		redirect_to business_root_path
+	  		redirect_to edit_business_business_path(current_user)
 	  	end
   	else
   		redirect_to new_user_session_path
