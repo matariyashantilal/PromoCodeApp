@@ -1,0 +1,17 @@
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i> New iBeacon
+       <span class="panel-options">
+        <%= link_to 'Show', business_ibeacons_path(@ibeacon), :class => "label label-info" if !@business_ibeacon.new_record? %>
+        <%= link_to 'Back', business_ibeacons_path, :class => "label label-info" %>
+      </span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    <%= render 'form' %>
+  </div>
+</div>

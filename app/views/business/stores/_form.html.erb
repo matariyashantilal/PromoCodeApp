@@ -1,0 +1,71 @@
+<%= nested_form_for([:business,@business_store], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+  
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :name %></label>
+    <div class="col-sm-9">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :address %></label>
+    <div class="col-sm-9">
+      <%= f.text_field :address, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :latitude %></label>
+    <div class="col-sm-9">
+      <%= f.text_field :latitude, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :longitude %></label>
+    <div class="col-sm-9">
+      <%= f.text_field :longitude, :class => "form-control" %>
+    </div>
+  </div>
+      
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :contact_person %></label>
+    <div class="col-sm-9">
+      <%= f.text_field :contact_person, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="col-sm-3 control-label"><%= f.label :contact_number %></label>
+    <div class="col-sm-9">
+      <%= f.number_field :contact_number, :class => "form-control" %>
+    </div>
+  </div>
+
+  <%= f.fields_for :offers %>   
+  <%= f.link_to_add "Add an offer", :offers, :class => "btn btn-primary", style:"margin-left: 28px;" %>
+      <br/><br/>
+
+  <%= f.fields_for :ibeacons  %>
+     
+  <%= f.link_to_add "Add an iBeacon", :ibeacons, :class => "btn btn-primary", style:"margin-left: 28px;" %>
+      <br/><br/>
+  <div class="actions">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  function initialize() {
+    store_address = new google.maps.places.Autocomplete(
+    (document.getElementById('store_address')),
+    { types: ['geocode'] });
+     google.maps.event.addListener(store_address, 'place_changed', function () {
+        fillInAddress(store_address);
+    });
+  }
+  function fillInAddress(store_address) {
+
+    var place = store_address.getPlace();
+
+    $("#store_latitude").val(place.geometry.location.lat().toFixed(7));
+    $("#store_longitude").val(place.geometry.location.lng().toFixed(7));
+}
+</script>

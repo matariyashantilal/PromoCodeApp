@@ -1,0 +1,53 @@
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="fa fa-archive"></i><%= @business_store.name %>
+        <span class="panel-options">
+          <%= link_to 'Edit', edit_business_store_path(@business_store), class: "label label-info" %> 
+          <%= link_to 'Back', business_stores_path, class: "label label-info" %>
+        </span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+          <div class="dataTables_length" id="example_length">
+            
+          </div>
+          <div id="example_filter" class="dataTables_filter pull-right">
+            
+          </div>
+          <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+            <thead>
+              <tr role="row">
+                <th aria-label="Name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Name</th>
+                <th aria-label="Address: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Address</th>
+                <th aria-label="Latitude: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Latitude</th>
+                <th aria-label="Longitude: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Longitude</th>
+                <th aria-label="Contact Person: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Person</th>
+                <th aria-label="Contact Number: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Number</th>
+                
+              </tr>
+            </thead>
+       
+            <tbody aria-relevant="all" aria-live="polite" role="alert">
+            
+              <tr class="gradeA odd">
+                <td><%= @business_store.name %></td>
+                <td><%= @business_store.address %></td>
+                <td><%= @business_store.latitude %></td>
+                <td><%= @business_store.longitude %></td>
+                <td><%= @business_store.contact_person %></td>
+                <td><%= @business_store.contact_number %></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
