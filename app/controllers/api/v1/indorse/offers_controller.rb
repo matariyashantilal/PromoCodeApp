@@ -4,7 +4,8 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
   swagger_controller :offers, "Offer[complete_task/add_visits]"
 
   def complete_task
-    @offer=Offer.get_non_expired_offers.find(params[:offer_id])
+    @offers=Offer.includes(:store)
+    @offer=@offers.get_non_expired_offers.find(params[:offer_id])
     puts("======#{@offer.inspect}=====")
     if @current_user.present? 
         if @offer.present?
