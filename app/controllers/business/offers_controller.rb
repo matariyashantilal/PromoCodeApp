@@ -16,7 +16,7 @@ class Business::OffersController < Business::BaseController
     else
       @business_offers = current_user.offers
     end
-    @stores = Store.all
+    @stores = current_user.stores
   end
 
   # GET /business/offers/1
