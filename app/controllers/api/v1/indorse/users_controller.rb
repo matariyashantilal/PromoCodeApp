@@ -11,11 +11,21 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
       unless @user.save
         render_json({:result=>{:messages => @user.display_errors,:rstatus=>0, :errorcode => 404}}.to_json)
       else
+
+        device_id = params[:user][:device_id]
+        if device_id.present?
+          @user.check_duplicate_device_ids(device_id,@user)
+        end
         @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
       end
     else
       @user = User.authenticate_user_with_auth(params[:user][:email],params[:user][:password])  
       if @user.present?
+
+        device_id = params[:user][:device_id]
+        if device_id.present?
+          @user.check_duplicate_device_ids(device_id,@user)
+        end
         @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
       else
        render_json({:result=>{:messages => User.invalid_credentials,:rstatus=>0, :errorcode => 404}}.to_json)
@@ -27,6 +37,8 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
     summary "Creates a new User"
     param :form, "user[email]", :string, :required, "Email"
     param :form, "user[password]", :string, :required, "password"
+    param :form, "user[device_id]", :string, :optional, "Device id"
+  
     response :unauthorized
     response :not_acceptable
     response :not_found
@@ -89,8 +101,7 @@ class Api::V1::Indorse::UsersController < Api::V1::BaseController
         @user       = User.find_by_email(@user_email)
         if @user.present?
             device_id = params[:user][:device_id]
-            @user.check_duplicate_device_ids(params[:user][:device_id],@user)  
-            #@user.check_duplicate_device_ids(device_id,@user)
+            @user.check_duplicate_device_ids(device_id,@user)
             puts("======#{@user_email}========existing ")
             @authentication_token = @user.authentication_tokens.create(:auth_token => AuthenticationToken.generate_unique_token)
            # render :file => "api/v1/Indorse/users/sign_up"
