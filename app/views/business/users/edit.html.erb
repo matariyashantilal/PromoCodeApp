@@ -1,0 +1,48 @@
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>  Change Password
+       <span class="panel-options">
+        
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    
+    <%=form_for :user , :html => {:class => "form-horizontal col-md-8"} ,:url => business_change_password_path do |f| %>
+      
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :current_password ,"Current Password" %></label>
+        <div class="col-sm-9">
+         <%= f.password_field :current_password, autocomplete: "off", :class =>"form-control", :placeholder => "Password" %>
+                   
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :password ,"New Password" %></label>
+        <div class="col-sm-9">
+         <%= f.password_field :password, autocomplete: "off", :class =>"form-control", :placeholder => "Password" %>
+                   
+        </div>
+      </div>
+
+     
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :password_confirmation, "Password Confirmation" %></label>
+        <div class="col-sm-9">
+           <%= f.password_field :password_confirmation, autocomplete: "off", :class =>"form-control", :placeholder => "Password" %>
+        </div>
+      </div>
+  
+      <div class="actions" style="width: 20%;
+margin-left: 50%;">
+        <%= f.submit class: "btn btn-success btn-block" ,:value => "Save" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+

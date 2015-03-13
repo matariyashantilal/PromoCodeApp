@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :offers
     resources :stores
     resources :ibeacons
+    get  'edit' => 'users#edit', :as => :edit      
+    post  'change_password' => 'users#change_password', :as => :change_password
   end
 
   get 'terms' => 'dashboard#show_terms'
