@@ -25,10 +25,10 @@
 
       <li class=' '>
           <!-- <a href='portlets' data-original-title='Portlets'> -->
-          <%#= link_to '/admin/stores', :method => "get" do %>
+          <%= link_to business_stores_path, :method => "get" do %>
               <i class='fa fa-indent'></i>
               <span class='hidden-minibar'>Stores</span>
-          <!-- <#% end %>  -->
+          <% end %>
       </li>
       <li class=' '>
        <!--   <a href='portlets' data-original-title='Portlets'>  -->
@@ -39,19 +39,12 @@
       </li>
      <li class=' '>
      <!--   <a href='/admin/ibeacons' data-original-title='Portlets'>  -->
-        <%#= link_to '/admin/ibeacons', :method => "get" do %>
+        <%= link_to business_ibeacons_path, :method => "get" do %>
             <i class='fa fa-indent'></i>
             <span class='hidden-minibar'>iBeacons</span>
-       <!-- <#% end %>-->
-    </li>
-                    
-    <li class=' '>
-       <!--  <a href='portlets' data-original-title='Portlets'> -->
-        <%#= link_to '/admin/setting_contents/1/edit', :method => "get" do %>
-            <i class='fa fa-indent'></i>
-            <span class='hidden-minibar'>Contents</span>
-        <!--<#% end %>-->
-    </li>
+        <% end %>
+    </li>          
+    
 </ul>
 
 <!-- /.Menu -->

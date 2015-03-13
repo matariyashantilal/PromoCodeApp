@@ -7,26 +7,20 @@ Rails.application.routes.draw do
   
     root 'businesses#index'
     resources :offers
-
     resources :ibeacons
-
     resources :stores
-
     resources :businesses
-
     resources :setting_contents
-
-    get  'edit' => 'users#edit', :as => :edit
-      
+    get  'edit' => 'users#edit', :as => :edit      
     post  'change_password' => 'users#change_password', :as => :change_password
-        
-
   end
 
   namespace :business do
     root 'users#index'
     resources :businesses, only: [:edit, :update, :show], path: :business
     resources :offers
+    resources :stores
+    resources :ibeacons
   end
 
   get 'terms' => 'dashboard#show_terms'

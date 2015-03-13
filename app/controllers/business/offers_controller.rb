@@ -43,6 +43,7 @@ class Business::OffersController < Business::BaseController
         format.html { redirect_to business_offer_path(@business_offer), notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @business_offer }
       else
+        flash.now[:alert] = @business_offer.errors.full_messages
         format.html { render :new }
         format.json { render json: @business_offer.errors, status: :unprocessable_entity }
       end
@@ -57,6 +58,7 @@ class Business::OffersController < Business::BaseController
         format.html { redirect_to business_offer_path(@business_offer), notice: 'Offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @business_offer }
       else
+        flash.now[:alert] = @business_offer.errors.full_messages
         format.html { render :edit }
         format.json { render json: @business_offer.errors, status: :unprocessable_entity }
       end

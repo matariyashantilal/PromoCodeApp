@@ -45,6 +45,7 @@ class Business::BusinessesController < Business::BaseController
         format.html { redirect_to business_business_path(@business_business), notice: 'Business was successfully updated.' }
         format.json { render :show, status: :ok, location: @business_business }
       else
+        flash.now[:alert] = @business_business.errors.full_messages
         format.html { render :edit }
         format.json { render json: @business_business.errors, status: :unprocessable_entity }
       end

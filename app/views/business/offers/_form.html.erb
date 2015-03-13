@@ -1,8 +1,10 @@
 <%= form_for([:business,@business_offer], :html => {:class => "form-horizontal col-md-8",:multipart => true}) do |f| %>
+  
+  
   <div class="form-group">
     <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
       <div class="col-sm-9">
-        <%= f.select :store_id, Store.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+        <%= f.select :store_id, current_user.stores.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
       </div>
   </div>
   <div class="form-group">

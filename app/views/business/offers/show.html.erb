@@ -1,4 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_business_offer_path(@business_offer) %> |
-<%= link_to 'Back', business_offers_path %>
+<div class="col-md-12">
+	<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="fa fa-archive"></i> <%= @business_offer.offer_name %>
+        <span class="panel-options">
+          <%= link_to 'Edit', edit_business_offer_path(@business_offer), class: "label label-info" %>
+          <%= link_to 'Back', business_offers_path, class: "label label-info" %>
+        </span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+          <div class="dataTables_length" id="example_length">            
+          </div>
+          <div id="example_filter" class="dataTables_filter pull-right">            
+          </div>
+          <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+            <thead>
+              <tr role="row">
+                <th aria-label="Offer Name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Offer Name</th>
+                <th aria-label="Task To Perform: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Task To Perform</th>
+                <th aria-label="Offer For: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer For</th>
+                <th aria-label="Offer Valid Upto: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Valid Upto</th>
+                <th aria-label="Offer Expires On: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Expires On</th>
+              </tr>
+            </thead>       
+            <tbody aria-relevant="all" aria-live="polite" role="alert">          
+              <tr class="gradeA odd">
+                <td><%= @business_offer.offer_name %></td>
+                <td><%= @business_offer.task_to_perform %></td>
+                <td><%= @business_offer.offer_for %></td>
+                <td><%= @business_offer.offer_valid_upto %></td>
+                <td><%= @business_offer.offer_expire_on %></td>
+              </tr>            
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
