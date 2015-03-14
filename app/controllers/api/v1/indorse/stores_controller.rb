@@ -6,9 +6,13 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
   def near_by_store_list
     latitude  = params[:latitude].to_f
     longitude = params[:longitude].to_f
-    @stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ?",Date.today.beginning_of_day).includes(:ibeacons).uniq
-    if !@stores.present?
-      render_json({:result=>{:messages =>"Please enter a valid latitude and longitude.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
+    if latitude.present? && longitude.present?
+      @stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ?",Date.today.beginning_of_day).includes(:ibeacons).uniq
+      if !@stores.present?
+        render_json({:result=>{:messages =>"No Stores Present.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
+      end
+    else
+      render_json({:result=>{:messages =>"Please enter a latitude and longitude.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)
     end
   end
   
