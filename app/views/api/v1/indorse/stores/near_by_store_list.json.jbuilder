@@ -17,7 +17,7 @@ json.stores do
 		      json.offer_name offer.offer_name
           json.offer_for offer.offer_for
           json.offer_type offer.offer_type
-           json.image offer.image.url
+           json.image offer.get_image_url
 		      json.offer_valid_upto offer.offer_valid_upto
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform
@@ -50,7 +50,7 @@ json.stores do
           json.offer_name offer.offer_name
           json.offer_for offer.offer_for
           json.offer_type offer.offer_type
-           json.image offer.image.url
+           json.image offer.get_image_url
           json.offer_valid_upto offer.offer_valid_upto
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform

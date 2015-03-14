@@ -38,6 +38,10 @@ class Offer < ActiveRecord::Base
 
   end
 
+  def get_image_url
+  	Rails.application.secrets.host + self.image.try(:url)
+  end
+
 	#install method
 
 	def check_stutus_is_claimed(userid)
