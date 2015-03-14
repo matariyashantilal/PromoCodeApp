@@ -28,7 +28,6 @@ gem 'spring',        group: :development
 gem 'swagger-docs'
 gem 'devise'
 gem "font-awesome-rails"
-gem 'ckeditor'
 gem 'paperclip'
 gem "nested_form"
 gem 'geocoder'
