@@ -16,10 +16,26 @@
 //= require_self
 //= require jquery_nested_form
 //= require core
+//= require summernote.js
+//= require summernote.min.js
+
 
 $( document ).ready(function() {
  	offer_type($(".offer_type_radio:checked").val());
- 	 initialize();
+ 	
+  //editor setting
+  $('#setting_content_terms_condition, #setting_content_about_us').summernote({
+  height: 300,
+  width: 800,   //set editable area's height
+  focus: true    //set focus editable area after Initialize summernote
+  });
+  $('#setting_content_about_us').summernote({
+  height: 200,
+  width: 600,   //set editable area's height
+  focus: true    //set focus editable area after Initialize summernote
+  });
+
+	 //
 });
 $(".offer_type_radio").on("change", function(){
 	offer_type($(this).val());
