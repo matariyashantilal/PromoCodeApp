@@ -5,7 +5,7 @@
         <!-- User   -->
         <div class="user-menu" style="text-align: left !important;">
             <%#= image_tag 'User.png' ,:class => "avatar" %>
-            <%= link_to '/admin/businesses' , :method => "get" do %>
+            <%= link_to admin_businesses_path , :method => "get" do %>
             <div class="user-info">
                 <div class="welcome">Welcome,</div>
                 <div class="username">Admin</div>
@@ -22,7 +22,7 @@
                       <li class=''>
                       
                       <!--  <a href='dashboard' data-original-title='Dashboard'> -->
-                      <%= link_to '/admin/businesses', :'data-original-title' =>'Businesses', :method => "get" do %>
+                      <%= link_to admin_businesses_path, :'data-original-title' =>'Businesses', :method => "get" do %>
                              <i class='fa fa-home'></i>
                             <span class='hidden-minibar'>Businesses</span>
                         <% end %>
@@ -37,21 +37,21 @@
 -->
                     <li class=' '>
                         <!-- <a href='portlets' data-original-title='Portlets'> -->
-                        <%= link_to '/admin/stores', :method => "get" do %>
+                        <%= link_to admin_stores_path, :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Stores</span>
                         <% end %>
                     </li>
                     <li class=' '>
                      <!--   <a href='portlets' data-original-title='Portlets'>  -->
-                        <%= link_to '/admin/offers', :method => "get" do %>
+                        <%= link_to admin_offers_path, :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Offers</span>
                         <% end %>
                     </li>
                      <li class=' '>
                      <!--   <a href='/admin/ibeacons' data-original-title='Portlets'>  -->
-                        <%= link_to '/admin/ibeacons', :method => "get" do %>
+                        <%= link_to admin_ibeacons_path, :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>iBeacons</span>
                         <% end %>
@@ -59,13 +59,13 @@
                     
                     <li class=' '>
                        <!--  <a href='portlets' data-original-title='Portlets'> -->
-                        <%= link_to '/admin/setting_contents/1/edit', :method => "get" do %>
+                        <%= link_to edit_admin_setting_content_path(SettingContent.first), :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Contents</span>
                         <% end %>
                     </li>
                     <li class=' '>
-                        <%= link_to '/admin/edit', :method => "get" do %>
+                        <%= link_to admin_edit_path, :method => "get" do %>
                             <i class='fa fa-indent'></i>
                             <span class='hidden-minibar'>Change Password</span>
                         <% end %>
