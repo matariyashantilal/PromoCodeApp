@@ -19,7 +19,6 @@
 //= require summernote.js
 //= require summernote.min.js
 
-
 $( document ).ready(function() {
  	offer_type($(".offer_type_radio:checked").val());
  	
@@ -35,7 +34,6 @@ $( document ).ready(function() {
   focus: true    //set focus editable area after Initialize summernote
   });
 
-	 //
 });
 $(".offer_type_radio").on("change", function(){
 	offer_type($(this).val());
