@@ -1,19 +1,12 @@
 <!-- .left-sidebar -->
 <div class="left-sidebar">
   <div class="sidebar-holder">
-    <!-- User   -->
     <div class="user-menu" style="text-align: left !important;">
-      <%#= image_tag 'User.png' ,:class => "avatar" %>
-      <%#= link_to '/admin/businesses' , :method => "get" do %>
         <div class="user-info">
           <div class="welcome">Welcome,</div>
           <div class="username"><%= current_user.fullname%></div>
-        </div>
-      <!--<#% end %>-->
-        
+        </div>      
     </div>
-        <!-- /.User   -->
-
     <!-- Menu -->
     <ul class="nav  nav-list" style="text-align: left;">
       <li class=''>
@@ -24,38 +17,29 @@
       </li>
 
       <li class=' '>
-          <!-- <a href='portlets' data-original-title='Portlets'> -->
           <%= link_to business_stores_path, :method => "get" do %>
               <i class='fa fa-indent'></i>
               <span class='hidden-minibar'>Stores</span>
           <% end %>
       </li>
       <li class=' '>
-       <!--   <a href='portlets' data-original-title='Portlets'>  -->
           <%= link_to business_offers_path, :method => "get" do %>
               <i class='fa fa-indent'></i>
               <span class='hidden-minibar'>Offers</span>
           <% end %>
       </li>
-     <li class=' '>
-     <!--   <a href='/admin/ibeacons' data-original-title='Portlets'>  -->
+      <li class=' '>
         <%= link_to business_ibeacons_path, :method => "get" do %>
             <i class='fa fa-indent'></i>
             <span class='hidden-minibar'>iBeacons</span>
         <% end %>
-    </li>
-    <li class=' '>
+      </li>
+      <li class=' '>
         <%= link_to business_edit_path, :method => "get" do %>
             <i class='fa fa-indent'></i>
             <span class='hidden-minibar'>Change Password</span>
-        <% end %>
-        
-    </li>          
-    
-</ul>
-
-<!-- /.Menu -->
-
-</div>
-<!-- /.left-sidebar Holder-->
+        <% end %>  
+      </li>          
+    </ul>
+  </div>
 </div>

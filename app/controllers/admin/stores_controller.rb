@@ -3,7 +3,6 @@ class Admin::StoresController <Admin::BaseController
 
 
   def index
-    #@stores = Store.all
     business_id = params[:business_id]
     if params[:business_id].present?
       filterStores = Store.find_by_business_id(business_id)
@@ -42,7 +41,6 @@ class Admin::StoresController <Admin::BaseController
   end
 
   def update
-   
     if @store.update(store_params)
         redirect_to admin_store_path(@store), :notice => "Store updated successfully."
     else

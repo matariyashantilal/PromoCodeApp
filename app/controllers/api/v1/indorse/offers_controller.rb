@@ -6,11 +6,9 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
   def complete_task
     @offers=Offer.includes(:store)
     @offer=@offers.get_non_expired_offers.find(params[:offer_id])
-    puts("======#{@offer.inspect}=====")
-    if @current_user.present? 
+     if @current_user.present? 
         if @offer.present?
             @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: @offer.id)
-            puts("============#{@offer_details.inspect}======")
             if !@offer_details.save
               render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
             end
@@ -34,9 +32,7 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
 
   def add_visits
     @store=Store.find(params[:store_id])
-    puts("=====current_user.id")
-    puts(@current_user.id)
-    if @store.present? && @current_user.present?
+   if @store.present? && @current_user.present?
         visit_detail=VisitorDetail.new(store_id: @store.id,user_id: @current_user.id)
         @visit_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id).count
         check_new=VisitorDetail.check_for_new(@current_user.id,@store.id)
@@ -46,8 +42,6 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
             render_json({:result=>{:messages =>@visit_detail.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
           end
         end        
-        puts("=========check new=========")
-        puts(check_new)
         storeOffer = Offer.all.get_non_expired_offers.where("store_id = ?", @store.id)
         puts("=====storeOffer=====")
         puts(storeOffer)

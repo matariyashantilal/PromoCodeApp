@@ -22,7 +22,6 @@ class Admin::IbeaconsController < Admin::BaseController
 
   def new
     @ibeacon = Ibeacon.new
-   
   end
 
   def edit

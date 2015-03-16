@@ -2,24 +2,13 @@
     <a href="#" class="toggle-left-sidebar">
         <i class="fa fa-th-list"></i>
     </a>
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <div class="navbar-brand" >
-        <!-- <a class="navbar-brand" href="#"> -->
         <%= image_tag "logo_small.png", :style=>"height: 45px !important;" %>
         </div>
-        <!-- </a> -->
     </div>
     <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <!-- <form role="search" class="search-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control  nav-input-search " placeholder="Search ">
-                        <i class="fa fa-search"></i>
-                    </div>
-                </form> -->
-            </li>
+        <ul class="nav navbar-nav navbar-right"> 
             <li>
                 <%=link_to destroy_user_session_path,:method => "delete" ,:class=>"logout" do%>
                     <i class="fa fa-power-off" style="color:rgb(89, 199, 32);" ></i>

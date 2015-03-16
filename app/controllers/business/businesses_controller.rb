@@ -1,29 +1,20 @@
 class Business::BusinessesController < Business::BaseController
   before_action :set_business_business, only: [:show, :edit, :update, :destroy]
 
-  # GET /business/businesses
-  # GET /business/businesses.json
-  def index
+   def index
     @business_businesses = Business.all
   end
 
-  # GET /business/businesses/1
-  # GET /business/businesses/1.json
   def show
   end
 
-  # GET /business/businesses/new
   def new
     @business_business = Business.new
   end
 
-  # GET /business/businesses/1/edit
   def edit
   end
-
-  # POST /business/businesses
-  # POST /business/businesses.json
-  def create
+def create
     @business_business = Business.new(business_business_params)
 
     respond_to do |format|
@@ -37,9 +28,7 @@ class Business::BusinessesController < Business::BaseController
     end
   end
 
-  # PATCH/PUT /business/businesses/1
-  # PATCH/PUT /business/businesses/1.json
-  def update
+ def update
     respond_to do |format|
       if @business_business.update(business_business_params)
         format.html { redirect_to business_business_path(@business_business), notice: 'Business was successfully updated.' }

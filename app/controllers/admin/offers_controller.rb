@@ -1,10 +1,7 @@
 class Admin::OffersController < Admin::BaseController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
-  
-
   def index
-    #@offers = Offer.all
     store_id = params[:store_id]
     if params[:store_id].present?
       filterOffers = Offer.find_by_store_id(store_id)
@@ -52,14 +49,12 @@ class Admin::OffersController < Admin::BaseController
   def destroy
     @offer.destroy
     redirect_to admin_offers_path, notice: 'offer was successfully destroyed.' 
-   
   end
 
   private
     def set_offer
       @offer = Offer.find(params[:id])
     end
-
     def offer_params
       params.require(:offer).permit(:offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on, :store_id, :task_url, :image)
     end
