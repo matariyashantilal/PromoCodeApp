@@ -17,7 +17,7 @@
 //= require jquery_nested_form
 //= require core
 //= require summernote.js
-// require summernote.min.js
+//= require summernote.min.js
 
 $( document ).ready(function() {
   $(".offer_type_radio:checked").each(function( index ) {
