@@ -35,9 +35,6 @@ function offer_type(val,id){
       var punch_count="div#punch_count"
   
   }
-    console.log("--------erty--------------------"+task_perform);
-    console.log("--------erty--------------------"+punch_count);
-
   	if (val == "Punchcard"){
       $(task_perform).hide();
       $(punch_count).show();
