@@ -21,6 +21,8 @@ json.data do
   if @offer.offer_type == "OneTime"
     json.task_to_perform @offer.task_to_perform
     json.task_url @offer.task_url
+    json.punch_count ""
+    json.visit_count ""
   end
  json.is_claim_status @offer.check_stutus_is_claimed(@current_user.id)
       

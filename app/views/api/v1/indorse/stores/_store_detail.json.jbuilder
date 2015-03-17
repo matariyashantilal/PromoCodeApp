@@ -22,7 +22,11 @@ json.stores do
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform
             json.task_url offer.task_url
+            json.punch_count ""
+            json.visit_count ""
           else
+            json.task_to_perform ""
+            json.task_url ""
             json.punch_count offer.punch_count
             json.visit_count VisitorDetail.get_visitor_detail(@current_user.id,store.id,offer.created_at).count
           end
@@ -55,7 +59,12 @@ json.stores do
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform
             json.task_url offer.task_url
+            json.punch_count ""
+            json.visit_count ""
+        
           else
+            json.task_to_perform ""
+            json.task_url ""
             json.punch_count offer.punch_count
             json.visit_count VisitorDetail.get_visitor_detail(@current_user.id,store.id,offer.created_at).count
           end
