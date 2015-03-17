@@ -46,16 +46,20 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
         @offers = check_new != 0 ? Offer.get_non_expired_offers.existing_user_offer.where("punch_count <= ? ",@visit_count) : Offer.get_non_expired_offers.new_user_offer.where("punch_count <= ? ",@visit_count)
         puts("=====#{@offers.count}")
         if @offers.present?
+            @valid_offers = []
             @offers.each do |offer|
                 puts("==#{offer.inspect}")
                 @visit_offer_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id,offer.created_at).count
                 puts("==#{@visit_offer_count}")
                 if offer.punch_count < @visit_offer_count
+                    @valid_offers >> offer
                     @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
                     @offer_details.save
                 end
             end  
-                   
+            if !@valid_offers.present?
+              render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
+            end  
         else 
             render_json({:errors => "Offer not found. Please enter a valid offer first."}.to_json)
         end 

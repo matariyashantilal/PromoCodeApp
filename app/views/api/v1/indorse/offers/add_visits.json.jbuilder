@@ -4,7 +4,7 @@ json.rstatus  "1"
 json.errorcode ""
 end
 json.data do
-	json.array! @offers.each do |offer|	
+	json.array! @valid_offers.each do |offer|	
   	json.id offer.id
   	json.offer_name offer.offer_name
   	json.offer_for offer.offer_for
