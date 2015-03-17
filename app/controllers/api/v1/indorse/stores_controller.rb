@@ -27,7 +27,7 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
   
     @stores   = Store.joins(:offers).joins(:offer_details).where("user_id = ? ",@current_user.id).uniq
     if !@stores.present?
-      render_json({:result=>{:messages =>"Please enter a valid latitude and longitude.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
+      render_json({:result=>{:messages =>"Sorry,No rewards found.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
     end  
 
   end
