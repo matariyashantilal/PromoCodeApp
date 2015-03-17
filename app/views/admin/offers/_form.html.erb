@@ -50,9 +50,15 @@
           <div class="col-sm-9">
             <div id="radio">
               <% Offer::OFFER_TYPE.each do |offer_type| %>
-                <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio" %>
-                  <%= offer_type %>
+                <% if f.object.offer_type.present? %>                       
+                    <%= f.radio_button :offer_type,offer_type,:checked =>(f.object.offer_type == offer_type), :class => "offer_type_radio",:onClick => 'offer_type($(this).val());' %>
+                      <%= offer_type %>
+                <% else %>   
+                    <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio",:onClick => 'offer_type($(this).val());' %>
+                      <%= offer_type %>
                 <% end %>
+              <% end %>
+               
             </div>
           </div>
         </div>

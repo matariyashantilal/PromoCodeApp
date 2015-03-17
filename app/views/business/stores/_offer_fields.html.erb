@@ -25,14 +25,20 @@
         <label  class="col-sm-3 control-label"><%= f.label :offer_type %></label>
         <div class="col-sm-9">
           <div id="radio">
-            <% Offer::OFFER_TYPE.each do |offer_type| %>
-              <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio", :onClick => 'offer_type($(this).val());' %>
-                <%= offer_type %>
+            <% Offer::OFFER_TYPE.each do |offer_type| %> 
+              <% if f.object.offer_type.present? %>                            
+            
+                  <%= f.radio_button :offer_type,offer_type,:checked =>(f.object.offer_type == offer_type), :class => "offer_type_radio", :onClick => 'offer_type($(this).val(),$(this).data("offerid"));' ,data: {offerid: f.options[:child_index]}%>
+                  <%= offer_type %>
+              <% else %>
+                 <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio", :onClick => 'offer_type($(this).val(),$(this).data("offerid"));' ,data: {offerid: f.options[:child_index]} %>
+                  <%= offer_type %>
+              <% end %>
             <% end %>
           </div>
         </div>
       </div>
-      <div id="task_perform">
+      <div id="task_perform_<%= f.options[:child_index] %>">
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
           <div class="col-sm-9">
@@ -48,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div id="punch_count" style="display: none" >
+      <div id="punch_count_<%= f.options[:child_index] %>" style="display: none" >
         <div class="form-group">
           <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
           <div class="col-sm-9">
@@ -74,4 +80,3 @@
       </div>
     </div>
   </div>
-</div>

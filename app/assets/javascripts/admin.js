@@ -17,11 +17,12 @@
 //= require jquery_nested_form
 //= require core
 //= require summernote.js
-//= require summernote.min.js
+// require summernote.min.js
 
 $( document ).ready(function() {
- 	offer_type($(".offer_type_radio:checked").val());
- 	
+  $(".offer_type_radio:checked").each(function( index ) {
+    offer_type($(this).val(), $(this).data('offerid'));
+   });
   //editor setting
   $('#setting_content_terms_condition, #setting_content_about_us').summernote({
   height: 300,
@@ -36,15 +37,27 @@ $( document ).ready(function() {
 
 });
 $(".offer_type_radio").on("change", function(){
-	offer_type($(this).val());
+    offer_type($(this).val(),$(this).data('offerid'));	
 });
-function offer_type(val){
-	if (val == "Punchcard"){
-    $("div#task_perform").hide();
-    $("div#punch_count").show();
-    $("div#punch_count").css('display','block');
-  }else if(val == "OneTime"){
-     $("div#task_perform").show();
-    $("div#punch_count").hide();
+function offer_type(val,id){
+  if (id !==null &&  id!== undefined) {
+      var task_perform="div#task_perform_" + id
+      var punch_count="div#punch_count_" + id
+  }else
+  {
+      var task_perform="div#task_perform"
+      var punch_count="div#punch_count"
+  
   }
+    console.log("--------erty--------------------"+task_perform);
+    console.log("--------erty--------------------"+punch_count);
+
+  	if (val == "Punchcard"){
+      $(task_perform).hide();
+      $(punch_count).show();
+      $(punch_count).css('display','block');
+    }else if(val == "OneTime"){
+       $(task_perform).show();
+      $(punch_count).hide();
+    }
 }
