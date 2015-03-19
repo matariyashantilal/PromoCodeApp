@@ -20,8 +20,9 @@ class Offer < ActiveRecord::Base
 	TASK_TO_PERFORM= %w(Facebook Twitter Instagram)
 	
 	#scope
-	scope :new_user_offer, -> { where(offer_for: 0) }
-	scope :existing_user_offer, -> { where(offer_for: 1) }
+	scope :new_user_offer, -> { where("offer_for = ? OR offer_for = ?",0,2) }
+	scope :existing_user_offer, -> { where("offer_for = ? OR offer_for = ?",1,2) }
+	
 	scope :get_non_expired_offers, -> {where("offer_expire_on >= ?",Date.today.beginning_of_day)}
 
 	def validate_offer_dates
