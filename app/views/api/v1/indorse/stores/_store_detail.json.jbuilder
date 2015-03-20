@@ -12,7 +12,8 @@ json.stores do
       json.latitude store.latitude
       json.longitude store.longitude
     	json.offers do
-    		json.array! store.offers.each do |offer|
+        offers=store.offers.get_non_expired_offers
+    		json.array! offers.each do |offer|
 		      json.id offer.id
 		      json.offer_name offer.offer_name
           json.offer_for offer.offer_for
@@ -31,7 +32,6 @@ json.stores do
             json.visit_count VisitorDetail.get_visitor_detail(@current_user.id,store.id,offer.created_at).count
           end
           json.is_claim_status offer.check_stutus_is_claimed(@current_user.id)
-          
 		    end
   		end
       json.ibeacons do
@@ -46,7 +46,8 @@ json.stores do
   end
   json.use do
      @stores.each do |store|
-      json.array! store.offers.each do |offer|
+      offers=store.offers.get_non_expired_offers
+      json.array! offers.each do |offer|
         status=offer.check_stutus_is_claimed(@current_user.id)
         if status.present?
 
