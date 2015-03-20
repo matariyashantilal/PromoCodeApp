@@ -55,10 +55,13 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
             @offers.each do |offer|
                 puts("==#{offer.inspect}")
                 @visit_offer_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id,offer.created_at).count
+                puts("======#{@visit_offer_count}=====")
+                  if offer.punch_count.present?                
                     if offer.punch_count <= @visit_offer_count
                       @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
                       @offer_details.save
                     end
+                  end
             end  
         end
          puts("=======@store.inspect")
