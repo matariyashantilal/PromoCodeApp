@@ -3,15 +3,10 @@ class Admin::OffersController < Admin::BaseController
 
   def index
     store_id = params[:store_id]
-    if params[:store_id].present?
-      filterOffers = Offer.find_by_store_id(store_id)
-      if filterOffers == nil
-        @offers = []   
-      else
-        @offers = @Offers.to_a.push filterOffers
-      end
+    if store_id.present?
+      @offers = Offer.where("store_id = ?",store_id).includes(:store)
     else
-      @offers = Offer.all
+      @offers = Offer.all.includes(:store)
     end
     @stores = Store.all
   end

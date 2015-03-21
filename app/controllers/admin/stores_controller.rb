@@ -4,15 +4,10 @@ class Admin::StoresController <Admin::BaseController
 
   def index
     business_id = params[:business_id]
-    if params[:business_id].present?
-      filterStores = Store.find_by_business_id(business_id)
-      if filterStores == nil
-        @stores = []   
-      else
-        @stores = @stores.to_a.push filterStores
-      end
+    if business_id.present?
+      @stores = Store.where("business_id = ?",business_id)
     else
-      @stores = Store.all
+      @stores = Store.includes(:business)
     end
     @businesses = Business.all
   end

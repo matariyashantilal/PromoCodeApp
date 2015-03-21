@@ -26,20 +26,22 @@
           <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
             <thead>
               <tr role="row">
-                <th aria-label="Offer Name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Offer Name</th>
-                <th aria-label="Task To Perform: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Task To Perform</th>
-                <th aria-label="Offer For: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer For</th>
-                <th aria-label="Offer Type: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Type</th>
-                <th aria-label="Punch Count: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Punch Count</th>
-                <th aria-label="Offer Valid Upto: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Valid Upto</th>
-                <th aria-label="Offer Expires On: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Expires On</th>
-                <th colspan="3" aria-label="Actions" style="width: 104px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Actions</th>
+                <th>Store Name</th>
+                <th>Offer Name</th>
+                <th>Task To Perform</th>
+                <th>Offer For</th>
+                <th>Offer Type</th>
+                <th>Punch Count</th>
+                <th>Offer Valid Upto</th>
+                <th>Offer Expires On</th>
+                <th colspan="3">Actions</th>
               </tr>
             </thead>
        
             <tbody aria-relevant="all" aria-live="polite" role="alert">
             <% @offers.each do |offer| %>
               <tr class="gradeA odd">
+                <td><%= offer.store.name %></td>
                 <td><%= offer.offer_name %></td>
                 <td><%= offer.task_to_perform %></td>
                 <td><%= offer.offer_for %></td>
