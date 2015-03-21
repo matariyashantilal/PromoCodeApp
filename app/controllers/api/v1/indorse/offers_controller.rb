@@ -35,7 +35,10 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
    if @store.present? && @current_user.present?
         visit_detail=VisitorDetail.new(store_id: @store.id,user_id: @current_user.id)
         @visit_count=VisitorDetail.get_visitor_detail(@current_user.id,@store.id).count
+        puts("===#{@visit_count}=========dddd=======")
         check_new=VisitorDetail.check_for_new(@current_user.id,@store.id)
+        puts("===#{check_new}=========dd=======")
+        
         @is_save=VisitorDetail.check_for_today_visit(@current_user.id,@store.id)  
         if @is_save == 0 
           if !visit_detail.save
@@ -43,9 +46,9 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
           end
         end        
         storeOffer = Offer.all.get_non_expired_offers.where("store_id = ?", @store.id)
-        puts("=====storeOffer=====")
+        logger.warn("=====#{storeOffer.inspect}=====")
         puts(storeOffer)
-        @offers = check_new != 0 ? storeOffer.existing_user_offer.where("punch_count <= ? ",@visit_count) : storeOffer.new_user_offer.where("punch_count >= ? ",@visit_count)
+        @offers = check_new != 0 ? storeOffer.existing_user_offer : storeOffer.new_user_offer
         puts("=====#{@offers.count}")
         if @offers.present?
             puts("==== offer present ======")
