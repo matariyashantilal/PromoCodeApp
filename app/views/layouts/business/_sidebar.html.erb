@@ -34,12 +34,18 @@
             <span class='hidden-minibar'>iBeacons</span>
         <% end %>
       </li>
+      <li>
+        <%= link_to business_offer_details_path, :'data-original-title' =>'Businesses', :method => "get" do %>
+             <i class='fa fa-money'></i>
+            <span class='hidden-minibar'>Offer Details</span>
+        <% end %> 
+      </li>
       <li class=' '>
         <%= link_to business_edit_path, :method => "get" do %>
             <i class='fa fa-indent'></i>
             <span class='hidden-minibar'>Change Password</span>
         <% end %>  
-      </li>          
+      </li>
     </ul>
   </div>
 </div>

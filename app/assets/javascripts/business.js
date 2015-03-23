@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
 //= require_self
+//= require bootstrap.min
 //= require jquery_nested_form
 //= require core
 
@@ -21,6 +21,7 @@ $( document ).ready(function() {
  $(".offer_type_radio:checked").each(function( index ) {
     offer_type($(this).val(), $(this).data('offerid'));
    });
+ setNavigation();
 });
 $(".offer_type_radio").on("change", function(){
 	offer_type($(this).val());
@@ -43,4 +44,19 @@ function offer_type(val,id){
        $(task_perform).show();
       $(punch_count).hide();
     }
+}
+$(function () {
+  setNavigation();
+});
+function setNavigation() {
+  var path = window.location.pathname;
+  path = path.replace(/\/$/, "");
+  path = decodeURIComponent(path);
+
+  $(".nav-list a").each(function () {
+    var href = $(this).attr('href');
+    if (path.substring(0, href.length) === href) {
+      $(this).closest('li').addClass('active');
+    }
+  });
 }

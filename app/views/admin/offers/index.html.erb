@@ -27,8 +27,8 @@
           <% if @offers.present? %>
             <thead>
               <tr role="row">
-                <th>Store Name</th>
                 <th>Offer Name</th>
+                <th>Store Name</th>
                 <th>Task To Perform</th>
                 <th>Offer For</th>
                 <th>Offer Type</th>
@@ -42,8 +42,8 @@
             <tbody aria-relevant="all" aria-live="polite" role="alert">
             <% @offers.each do |offer| %>
               <tr class="gradeA odd">
-                <td><%= offer.store.name %></td>
                 <td><%= offer.offer_name %></td>
+                <td><%= offer.store.name %></td>
                 <td><%= offer.task_to_perform %></td>
                 <td><%= offer.offer_for %></td>
                 <td><%= offer.offer_type %></td>

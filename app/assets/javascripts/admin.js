@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
 //= require_self
+//= require bootstrap.min
 //= require jquery_nested_form
 //= require core
 //= require summernote.js
@@ -23,18 +23,12 @@ $( document ).ready(function() {
   $(".offer_type_radio:checked").each(function( index ) {
     offer_type($(this).val(), $(this).data('offerid'));
    });
-  //editor setting
+  setNavigation();
   $('#setting_content_terms_condition, #setting_content_about_us').summernote({
   height: 300,
   width: 800,   //set editable area's height
   focus: true    //set focus editable area after Initialize summernote
   });
-  $('#setting_content_about_us').summernote({
-  height: 200,
-  width: 600,   //set editable area's height
-  focus: true    //set focus editable area after Initialize summernote
-  });
-
 });
 $(".offer_type_radio").on("change", function(){
     offer_type($(this).val(),$(this).data('offerid'));	
@@ -57,4 +51,19 @@ function offer_type(val,id){
        $(task_perform).show();
       $(punch_count).hide();
     }
+}
+$(function () {
+  setNavigation();
+});
+function setNavigation() {
+  var path = window.location.pathname;
+  path = path.replace(/\/$/, "");
+  path = decodeURIComponent(path);
+
+  $(".nav-list a").each(function () {
+    var href = $(this).attr('href');
+    if (path.substring(0, href.length) === href) {
+      $(this).closest('li').addClass('active');
+    }
+  });
 }

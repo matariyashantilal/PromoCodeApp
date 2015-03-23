@@ -1,2 +1,89 @@
+  <div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Store
+       <span class="panel-options">
+       <%= link_to 'Show', admin_store_path(@store), :class => "label label-info" if !@store.new_record? %>
+        <%= link_to 'Back', admin_stores_path, :class => "label label-info" %>
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    
+    <%= nested_form_for([:admin,@store], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
 
-<%= render 'form' %>
+      <div class="form-group">
+      <lable class="col-sm-3 control-label"><%= f.label :business_id ,"Business"  %></lable>
+        <div class="col-sm-9">
+          <%= f.select :business_id, Business.pluck(:business_name, :id), hide_label: true, class: "form-control input-sm"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :name %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :address %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :address, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :latitude %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :latitude, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :longitude %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :longitude, :class => "form-control" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_person %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :contact_person, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_number %></label>
+        <div class="col-sm-9">
+          <%= f.number_field :contact_number, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit class: "btn btn-success" %>
+     
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  initialize();
+  function initialize() {
+    store_address = new google.maps.places.Autocomplete(
+    (document.getElementById('store_address')),
+    { types: ['geocode'] });
+     google.maps.event.addListener(store_address, 'place_changed', function () {
+        fillInAddress(store_address);
+    });
+  }
+  function fillInAddress(store_address) {
+
+    var place = store_address.getPlace();
+
+    $("#store_latitude").val(place.geometry.location.lat().toFixed(7));
+    $("#store_longitude").val(place.geometry.location.lng().toFixed(7));
+}
+</script>
