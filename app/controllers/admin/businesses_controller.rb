@@ -27,7 +27,7 @@ class Admin::BusinessesController < Admin::BaseController
   end
 
   def update
-     if  @business.update(business_params)
+    if params[:business][:password].present? ?  @business.update(business_params) : @business.update(business_params_without_password)
         redirect_to admin_business_path(@business), :notice => "Business Submitted Updated."
     else
       flash.now[:alert] = @business.errors.full_messages.uniq
@@ -47,5 +47,9 @@ class Admin::BusinessesController < Admin::BaseController
 
     def business_params
       params.require(:business).permit(:business_name, :address, :contact_person, :contact_number,:first_name,:last_name,:email,:password,:password_confirmation,stores_attributes: [:id, :name,:address, :latitude, :longitude, :contact_person, :contact_number, :_destroy])
+    end
+
+  def business_params_without_password
+      params.require(:business).permit(:business_name, :address, :contact_person, :contact_number,:first_name,:last_name,:email,stores_attributes: [:id, :name,:address, :latitude, :longitude, :contact_person, :contact_number, :_destroy])
     end
 end

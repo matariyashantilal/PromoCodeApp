@@ -12,7 +12,8 @@
     <div class="form-group">
       <label  class="col-sm-3 control-label"><%= f.label :address %></label>
       <div class="col-sm-9">
-        <%= f.text_field :address, :class => "form-control" %>
+        <%= f.text_field :address ,:onclick=>'initialize($(this).data("storeid"));
+  ' ,:class => "form-control" ,data: {storeid: f.options[:child_index]} %>
       </div>
     </div>
     <div class="form-group">
@@ -49,20 +50,20 @@
   </div>
 </div>
 <script type="text/javascript">
-  initialize();
-  function initialize() {
-    business_stores_attributes_0_address = new google.maps.places.Autocomplete(
-    (document.getElementById('business_stores_attributes_0_address')),
+  function initialize(val) {
+    address="business_stores_attributes_"+val+"_address"
+    address = new google.maps.places.Autocomplete(
+    (document.getElementById(address)),
     { types: ['geocode'] });
-     google.maps.event.addListener(business_stores_attributes_0_address, 'place_changed', function () {
-        fillInAddress(business_stores_attributes_0_address);
+     google.maps.event.addListener(address, 'place_changed', function () {
+        fillInAddress(address,val);
     });
   }
-  function fillInAddress(business_stores_attributes_0_address ) {
-
-    var place = business_stores_attributes_0_address.getPlace();
-
-    $("#business_stores_attributes_0_latitude").val(place.geometry.location.lat().toFixed(7));
-    $("#business_stores_attributes_0_longitude").val(place.geometry.location.lng().toFixed(7));
+  function fillInAddress(address,val) {
+    var place = address.getPlace();
+    latitude="#business_stores_attributes_"+val+"_latitude"
+    longitude="#business_stores_attributes_"+val+"_longitude"
+    $(latitude).val(place.geometry.location.lat().toFixed(7));
+    $(longitude).val(place.geometry.location.lng().toFixed(7));
 }
 </script>
