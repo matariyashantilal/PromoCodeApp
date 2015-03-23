@@ -1,0 +1,90 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Offer Details</div>
+    <div class="panel-body">  
+      
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :offer_name %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :offer_name, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :image ,"QR Code"  %></lable>
+          <div class="col-sm-9">
+            <%= f.file_field :image %>
+          </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :offer_for %></label>
+        <div class="col-sm-9">
+          <%= f.select(:offer_for) do %>
+            <%= options_for_select([['New User', 'new_user'],['Existing User', 'existing_user'], ['Both', 'both_user']]) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :offer_type %></label>
+        <div class="col-sm-9">
+          <div id="radio">
+            <% Offer::OFFER_TYPE.each do |offer_type1| %>
+              <% if f.object.offer_type.present? %>                            
+      
+                  <%= f.radio_button :offer_type,offer_type1,:checked =>(f.object.offer_type == offer_type1), :class => "offer_type_radio", :onClick => 'offer_type($(this).val(),$(this).data("offerid"));' ,data: {offerid: f.options[:child_index]} %>
+          
+                   <%= offer_type1 %>
+              <% else %>
+                  <%= f.radio_button :offer_type,offer_type1,:checked =>(offer_type1 == "OneTime"), :class => "offer_type_radio", :onClick => 'offer_type($(this).val(),$(this).data("offerid"));' ,data: {offerid: f.options[:child_index]} %>
+          
+                   <%= offer_type1 %>
+              
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+       <div id="task_perform_<%= f.options[:child_index] %>">
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
+            <div class="col-sm-9">
+              <% Offer::TASK_TO_PERFORM.each do |task_to_perform| %>
+                <%= f.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook") %> <%= task_to_perform %>
+              <% end %>
+  
+            </div>
+          </div>
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :task_url ,"URL" %></label>
+            <div class="col-sm-9">
+              <%= f.text_field :task_url, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div id="punch_count_<%= f.options[:child_index] %>" style="display: none" >
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
+            <div class="col-sm-9">
+              <%= f.number_field :punch_count, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :offer_valid_upto %></label>
+        <div class="col-sm-9">
+          <%= f.datetime_select :offer_valid_upto, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :offer_expire_on %></label>
+        <div class="col-sm-9">
+          <%= f.datetime_select :offer_expire_on, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-9">
+        <%= f.link_to_remove "Remove this offer", :class => "btn btn-danger" %>
+      </div>
+    </div>
+</div>

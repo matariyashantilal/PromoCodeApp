@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "apis": [
+    {
+      "path": "api/v1/indorse/sessions.{format}",
+      "description": "Logout"
+    },
+    {
+      "path": "api/v1/indorse/passwords.{format}",
+      "description": "Password"
+    },
+    {
+      "path": "api/v1/indorse/users.{format}",
+      "description": "User[signup/signin]"
+    }
+  ]
+}

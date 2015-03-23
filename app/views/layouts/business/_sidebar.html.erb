@@ -1,0 +1,45 @@
+<!-- .left-sidebar -->
+<div class="left-sidebar">
+  <div class="sidebar-holder">
+    <div class="user-menu" style="text-align: left !important;">
+        <div class="user-info">
+          <div class="welcome">Welcome,</div>
+          <div class="username"><%= current_user.fullname%></div>
+        </div>      
+    </div>
+    <!-- Menu -->
+    <ul class="nav  nav-list" style="text-align: left;">
+      <li class=''>
+        <%= link_to edit_business_business_path(current_user), :'data-original-title' =>'Businesses', :method => "get" do %>
+             <i class='fa fa-home'></i>
+            <span class='hidden-minibar'>Business Profile</span>
+       <% end %> 
+      </li>
+
+      <li class=' '>
+          <%= link_to business_stores_path, :method => "get" do %>
+              <i class='fa fa-indent'></i>
+              <span class='hidden-minibar'>Stores</span>
+          <% end %>
+      </li>
+      <li class=' '>
+          <%= link_to business_offers_path, :method => "get" do %>
+              <i class='fa fa-indent'></i>
+              <span class='hidden-minibar'>Offers</span>
+          <% end %>
+      </li>
+      <li class=' '>
+        <%= link_to business_ibeacons_path, :method => "get" do %>
+            <i class='fa fa-indent'></i>
+            <span class='hidden-minibar'>iBeacons</span>
+        <% end %>
+      </li>
+      <li class=' '>
+        <%= link_to business_edit_path, :method => "get" do %>
+            <i class='fa fa-indent'></i>
+            <span class='hidden-minibar'>Change Password</span>
+        <% end %>  
+      </li>          
+    </ul>
+  </div>
+</div>

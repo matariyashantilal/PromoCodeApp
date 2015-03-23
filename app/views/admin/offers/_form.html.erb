@@ -1,0 +1,111 @@
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Offers
+       <span class="panel-options">
+            <%#= link_to '<i class="fa fa-long-arrow-left"></i>'.html_safe, admin_offers_path, :class => "label label-info" %>
+            <%= link_to 'Show', admin_offer_path(@offer), :class => "label label-info" if !@offer.new_record? %>
+            <%= link_to 'Back'.html_safe, admin_offers_path, :class => "label label-info" %>
+
+          </span>
+       <!-- <span class="panel-options">
+        <%= link_to 'Back', admin_offers_path %>
+      </span> -->
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-2"></div>
+
+      <%= form_for([:admin,@offer], :html => {:class => "form-horizontal col-md-8",:multipart => true}) do |f| %>
+        <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
+            <div class="col-sm-9">
+              <%= f.select :store_id, Store.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+            </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_name %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :offer_name, :class => "form-control" %>
+          </div>
+        </div>
+       <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :image ,"QR Code"  %></lable>
+            <div class="col-sm-9">
+            <%= f.file_field :image %>
+            </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_for %></label>
+          <div class="col-sm-9">
+            <%#= f.number_field :offer_for, :class => "form-control" %>
+            <%= f.select(:offer_for) do %>
+              <%= options_for_select([['New User', 'new_user'],['Existing User', 'existing_user'], ['Both', 'both_user']]) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_type %></label>
+          <div class="col-sm-9">
+            <div id="radio">
+              <% Offer::OFFER_TYPE.each do |offer_type| %>
+                <% if f.object.offer_type.present? %>                       
+                    <%= f.radio_button :offer_type,offer_type,:checked =>(f.object.offer_type == offer_type), :class => "offer_type_radio",:onClick => 'offer_type($(this).val());' %>
+                      <%= offer_type %>
+                <% else %>   
+                    <%= f.radio_button :offer_type,offer_type,:checked =>(offer_type == "OneTime"), :class => "offer_type_radio",:onClick => 'offer_type($(this).val());' %>
+                      <%= offer_type %>
+                <% end %>
+              <% end %>
+               
+            </div>
+          </div>
+        </div>
+        <div id="task_perform">
+          <div class="form-group">
+           <label  class="col-sm-3 control-label"><%= f.label :task_to_perform %></label>
+           <div class="col-sm-9">
+              <% Offer::TASK_TO_PERFORM.each do |task_to_perform| %>
+                <%= f.radio_button :task_to_perform, task_to_perform,:checked =>(task_to_perform =="Facebook"),:class => "task_to_radio" %> <%= task_to_perform %>
+              <% end %>
+    
+           </div>
+          </div>
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :task_url ,"URL" %></label>
+            <div class="col-sm-9">
+              <%= f.text_field :task_url, :class => "form-control" %>
+           </div>
+          </div>
+        </div>
+        <div id="punch_count" >
+          <div class="form-group">
+            <label  class="col-sm-3 control-label"><%= f.label :punch_count %></label>
+            <div class="col-sm-9">
+              <%= f.number_field :punch_count, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_valid_upto %></label>
+          <div class="col-sm-9">
+            <%= f.datetime_select :offer_valid_upto, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :offer_expire_on %></label>
+          <div class="col-sm-9">
+            <%= f.datetime_select :offer_expire_on, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+  </script>
+</div>

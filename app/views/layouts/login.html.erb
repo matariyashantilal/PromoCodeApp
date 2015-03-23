@@ -1,0 +1,15 @@
+
+ <!DOCTYPE html>
+<html>
+	<head>
+	  <title>InDorse</title>
+	  <%= stylesheet_link_tag  'login', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'login', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body style="background-color: #171A25">
+		<div class="container">
+      <%= yield %>
+		</div>
+	</body>
+</html>

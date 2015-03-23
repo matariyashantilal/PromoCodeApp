@@ -1,0 +1,55 @@
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="fa fa-archive"></i> Listing Stores
+        <span class="panel-options">
+          <%= link_to 'New Store', new_business_store_path, class: "label label-success" %>
+        </span>
+      </h3>
+    </div>
+    <!--<div align="right" style="margin-right:2%; margin-top: 5px;" > 
+      <%#= form_tag(business_stores_path, :method => "GET") do %>
+        <span> Filter by business </span>
+        <%#= select_tag 'business_id', options_from_collection_for_select(@businesses, "id", "business_name", params[:business_id]), :prompt => 'All', hide_label: true, class: "input-sm", onchange: "this.form.submit();"  %>
+      <#% end %>
+    </div>-->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+          <div class="dataTables_length" id="example_length">
+            
+          </div>
+          <div id="example_filter" class="dataTables_filter pull-right">
+            
+          </div>
+          <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+            <thead>
+              <tr role="row">
+                <th aria-label="Name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Name</th>
+                <th aria-label="Address: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Address</th>
+                <th aria-label="Contact Person: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Person</th>
+                <th aria-label="Contact Number: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Number</th>
+                <th colspan="3" aria-label="Actions" style="width: 104px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Actions</th>
+              </tr>
+            </thead>
+       
+            <tbody aria-relevant="all" aria-live="polite" role="alert">
+            <% @business_stores.each do |store| %>
+              <tr class="gradeA odd">
+                <td><%= store.name %></td>
+                <td><%= store.address %></td>
+                <td><%= store.contact_person %></td>
+                <td><%= store.contact_number %></td>
+                <td><%= link_to "",business_store_path(store), class: "fa fa-eye" %></td>
+                <td><%= link_to '', edit_business_store_path(store), class: "fa fa-pencil" %></td>
+                <td><%= link_to '', business_store_path(store), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

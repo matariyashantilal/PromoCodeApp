@@ -1,0 +1,88 @@
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New Business
+       <span class="panel-options">
+        <%= link_to 'Show', admin_business_path(@business), :class => "label label-info" if !@business.new_record? %>
+        <%= link_to 'Back', admin_businesses_path, :class => "label label-info" %>
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    <%=  nested_form_for([:admin,@business], :html => {:id => "defaultForm", :class => "form-horizontal col-md-8 bootstrap-validator-form" }) do |f| %>
+  
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :business_name %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :business_name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :address %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :address, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_person %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :contact_person, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :contact_number %></label>
+        <div class="col-sm-9">
+          <%= f.number_field :contact_number, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :first_name%></label>
+        <div class="col-sm-9">
+          <%= f.text_field :first_name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :last_name %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :last_name, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :email %></label>
+        <div class="col-sm-9">
+          <%= f.text_field :email, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :password %></label>
+        <div class="col-sm-9">
+          <%= f.password_field :password , autocomplete: "off", :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="col-sm-3 control-label"><%= f.label :password_confirmation %></label>
+        <div class="col-sm-9">
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+        </div>
+      </div>
+
+      <%= f.fields_for :stores %>
+      <%= f.link_to_add "Add a Store", :stores, :class => "btn btn-primary", :style => "float: left;" %>
+      <div class="actions col-sm-6">
+        <%= f.submit class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

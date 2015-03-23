@@ -1,0 +1,45 @@
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="fa fa-archive"></i> <%= @business.business_name %>
+        <span class="panel-options">
+        	<%= link_to 'Edit', edit_admin_business_path(@business), class: "label label-info" %>
+					<%= link_to 'Back',admin_businesses_path, class: "label label-info" %>
+        </span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+      	<div id="example_wrapper" class="dataTables_wrapper" role="grid">
+          <div class="dataTables_length" id="example_length">
+            
+          </div>
+          <div id="example_filter" class="dataTables_filter pull-right">
+            
+          </div>
+          <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+            <thead>
+              <tr role="row">
+                <th aria-label="Business name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Business name</th>
+                <th aria-label="Address: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Address</th>
+                <th aria-label="Contact Person: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Person</th>
+                <th aria-label="Contact Number: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Contact Number</th>
+              </tr>
+            </thead>
+       
+            <tbody aria-relevant="all" aria-live="polite" role="alert">
+            	<tr class="gradeA odd">
+                <td><%= @business.business_name %></td>
+                <td><%= @business.address %></td>
+                <td><%= @business.contact_person %></td>
+                <td><%= @business.contact_number %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<br>
