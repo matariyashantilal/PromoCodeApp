@@ -25,7 +25,7 @@ class Admin::OffersController < Admin::BaseController
   def create
     @offer = Offer.new(offer_params)
    if @offer.save
-      redirect_to admin_offer_path(@offer), :notice => "offer Submitted Successfully."
+      redirect_to admin_offer_path(@offer), :notice => "Offer was successfully created."
     else
       flash.now[:alert] = @offer.errors.full_messages
       render :new
@@ -34,7 +34,7 @@ class Admin::OffersController < Admin::BaseController
 
   def update
     if  @offer.update(offer_params)
-        redirect_to admin_offer_path(@offer), :notice => "offer Submitted Updated."
+        redirect_to admin_offer_path(@offer), :notice => "Offer was successfully updated."
     else
       flash.now[:alert] = @offer.errors.full_messages
       render :edit
@@ -43,7 +43,7 @@ class Admin::OffersController < Admin::BaseController
 
   def destroy
     @offer.destroy
-    redirect_to admin_offers_path, notice: 'offer was successfully destroyed.' 
+    redirect_to admin_offers_path, notice: 'Offer was successfully destroyed.' 
   end
 
   private

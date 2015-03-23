@@ -30,7 +30,7 @@ class Admin::IbeaconsController < Admin::BaseController
   def create
     @ibeacon = Ibeacon.new(ibeacon_params)
     if @ibeacon.save
-      redirect_to admin_ibeacon_path(@ibeacon), :notice => "Ibeacon Submitted Successfully."
+      redirect_to admin_ibeacon_path(@ibeacon), :notice => "Ibeacon was successfully created."
     else
       flash.now[:alert] = @ibeacon.errors.full_messages
       render :new
@@ -39,7 +39,7 @@ class Admin::IbeaconsController < Admin::BaseController
 
   def update
     if  @ibeacon.update(ibeacon_params)
-        redirect_to admin_ibeacon_path(@ibeacon), :notice => "Ibeacon Submitted Updated."
+        redirect_to admin_ibeacon_path(@ibeacon), :notice => "Ibeacon was successfully updated."
     else
       flash.now[:alert] = @ibeacon.errors.full_messages
       render :edit

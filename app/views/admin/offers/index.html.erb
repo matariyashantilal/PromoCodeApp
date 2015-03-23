@@ -24,6 +24,7 @@
             
           </div>
           <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+          <% if @offers.present? %>
             <thead>
               <tr role="row">
                 <th>Store Name</th>
@@ -53,6 +54,9 @@
                 <td><%= link_to '', edit_admin_offer_path(offer), class: "fa fa-pencil" %></td>
                 <td><%= link_to '', admin_offer_path(offer), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
+            <% end %>
+            <% else %>
+              Offer not found. Please enter a valid offer first.
             <% end %>
             </tbody>
           </table>

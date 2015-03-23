@@ -9,7 +9,7 @@ class Business::UsersController < Business::BaseController
   	if params[:user][:current_password].present? && params[:user][:password].present?      	
       if current_user.update_with_password(changes_password_params)
         sign_in(current_user, bypass: true)
-   				redirect_to business_business_path(current_user), :notice => "Updated your password succesfull."
+   				redirect_to business_business_path(current_user), :notice => "Password updated successfully."
    	  else
   	   	flash.now[:alert] = "Invalid password"
    	    render :edit
