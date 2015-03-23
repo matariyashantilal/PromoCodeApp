@@ -44,3 +44,18 @@ function offer_type(val,id){
       $(punch_count).hide();
     }
 }
+$(function () {
+  setNavigation();
+});
+function setNavigation() {
+  var path = window.location.pathname;
+  path = path.replace(/\/$/, "");
+  path = decodeURIComponent(path);
+
+  $(".nav-list a").each(function () {
+    var href = $(this).attr('href');
+    if (path.substring(0, href.length) === href) {
+      $(this).closest('li').addClass('active');
+    }
+  });
+}
