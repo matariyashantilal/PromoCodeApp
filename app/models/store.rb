@@ -5,7 +5,7 @@ class Store < ActiveRecord::Base
 	has_many   :ibeacons,dependent: :destroy
 	has_many   :visitor_details , dependent: :destroy
 	
-	validates_presence_of :name, :address, :contact_person
+	validates_presence_of :name, :address, :contact_person, :longitude, :latitude
 	validates :contact_number, length: { is: 10 }
 	validates_associated :offers, :ibeacons
 	validates_uniqueness_of :name, :scope => [:address], :message => "Name and address already taken."

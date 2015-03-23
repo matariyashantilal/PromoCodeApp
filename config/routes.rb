@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     root 'users#index'
     resources :businesses, only: [:edit, :update, :show], path: :business
     resources :offers
+    get '/offer_details' => 'offers#offer_details', :as => "offer_details"
+    get '/:id/claim' => 'offers#claim', :as => "offer_claim"
+
     resources :stores
     resources :ibeacons
     get  'edit' => 'users#edit', :as => :edit      

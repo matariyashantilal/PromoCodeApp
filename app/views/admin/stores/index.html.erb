@@ -26,8 +26,8 @@
           <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
             <thead>
               <tr role="row">
-                <th>Business Name</th>
                 <th>Store Name</th>
+                <th>Business Name</th>
                 <th>Address</th>
                 <th>Contact Person</th>
                 <th>Contact Number</th>
@@ -38,8 +38,8 @@
             <tbody aria-relevant="all" aria-live="polite" role="alert">
             <% @stores.each do |store| %>
               <tr class="gradeA odd">
-                <td><%= store.business.fullname %></td>
                 <td><%= store.name %></td>
+                <td><%= store.business.business_name %></td>
                 <td><%= store.address %></td>
                 <td><%= store.contact_person %></td>
                 <td><%= store.contact_number %></td>
