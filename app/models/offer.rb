@@ -1,6 +1,9 @@
 class Offer < ActiveRecord::Base
+	
 	belongs_to   :store
 	has_many :offer_details , dependent: :destroy
+	
+	before_save :check_offer_type_for
 	#enumaration 
 	enum offer_for: [ :new_user, :existing_user,:both_user ]
 
@@ -37,6 +40,14 @@ class Offer < ActiveRecord::Base
     		errors.add(:offer_valid_upto, "is be invalid")
     end
 
+  end
+
+  def check_offer_type_for
+  	if  offer_type == "Punchcard"
+  		puts("==========#{offer_type}")
+  		 write_attribute(:task_to_perform,nil)
+  	
+  	end
   end
 
   def get_image_url
