@@ -12,29 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
 //= require_self
+//= require bootstrap.min
 //= require jquery_nested_form
 //= require core
 //= require summernote.js
-//= require summernote.min.js
 
 $( document ).ready(function() {
   $(".offer_type_radio:checked").each(function( index ) {
     offer_type($(this).val(), $(this).data('offerid'));
    });
-  //editor setting
+  setNavigation();
   $('#setting_content_terms_condition, #setting_content_about_us').summernote({
   height: 300,
   width: 800,   //set editable area's height
   focus: true    //set focus editable area after Initialize summernote
   });
-  $('#setting_content_about_us').summernote({
-  height: 200,
-  width: 600,   //set editable area's height
-  focus: true    //set focus editable area after Initialize summernote
-  });
-
 });
 $(".offer_type_radio").on("change", function(){
     offer_type($(this).val(),$(this).data('offerid'));	
