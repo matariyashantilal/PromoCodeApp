@@ -4,7 +4,9 @@
     </a>
     <div class="navbar-header">
         <div class="navbar-brand" >
-        <%= image_tag "logo_small.png", :style=>"height: 45px !important;" %>
+        <%= link_to admin_businesses_path, :'data-original-title' =>'Businesses', :method => "get" do %>
+            <%= image_tag "logo_small.png", :style=>"height: 45px !important;" %>
+        <% end %>
         </div>
     </div>
     <div class="collapse navbar-collapse">

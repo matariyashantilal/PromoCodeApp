@@ -434,7 +434,7 @@ a {
 .left-sidebar .sidebar-holder .nav li.active > a {
   text-decoration: none;
   background-color: #1A2022;
-  border-left: 3px solid #23bab5;
+  border-left: 3px solid rgb(89, 199, 32);
   color: #ffffff;
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
