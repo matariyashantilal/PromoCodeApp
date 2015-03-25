@@ -35,9 +35,9 @@
                 <td><%= business.address %></td>
                 <td><%= business.contact_person %></td>
                 <td><%= business.contact_number %></td>
-                <td><%= link_to "",admin_business_path(business), class: "fa fa-eye" %></td>
-                <td><%= link_to '', edit_admin_business_path(business), class: "fa fa-pencil" %></td>
-                <td><%= link_to '', admin_business_path(business), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "",admin_business_path(business), class: "fa fa-eye", title: "View" %></td>
+                <td><%= link_to '', edit_admin_business_path(business), class: "fa fa-pencil", title: "Edit" %></td>
+                <td><%= link_to '', admin_business_path(business), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete"  %></td>
               </tr>
             <% end %>
             </tbody>

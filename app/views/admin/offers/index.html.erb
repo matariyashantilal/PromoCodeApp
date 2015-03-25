@@ -50,9 +50,9 @@
                 <td><%= offer.punch_count %></td>
                 <td><%= offer.offer_valid_upto %></td>
                 <td><%= offer.offer_expire_on %></td>
-                <td><%= link_to "",admin_offer_path(offer), class: "fa fa-eye" %></td>
-                <td><%= link_to '', edit_admin_offer_path(offer), class: "fa fa-pencil" %></td>
-                <td><%= link_to '', admin_offer_path(offer), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "",admin_offer_path(offer), class: "fa fa-eye", title: "View" %></td>
+                <td><%= link_to '', edit_admin_offer_path(offer), class: "fa fa-pencil", title: "Edit" %></td>
+                <td><%= link_to '', admin_offer_path(offer), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete" %></td>
               </tr>
             <% end %>
             <% else %>
