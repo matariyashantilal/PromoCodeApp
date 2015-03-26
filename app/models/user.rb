@@ -3,17 +3,26 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
   ## validations       
 
-  validates_presence_of  :email
   
-  validates :password, :length => {:in => 8..128} ,:if => :password_required?
+ 
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates_confirmation_of :password
+  validates_presence_of   :email, if: :email_required?
+  validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
+  validates_format_of     :email, with: VALID_EMAIL_REGEX, allow_blank: true, if: :email_changed?,:message => "Please use a valid email address."
+
+  validates_presence_of     :password, if: :password_required?
+  validates_confirmation_of :password, if: :password_required?
+  validates_length_of       :password, within: 8..128, allow_blank: true,:message => "length cannot be less than 8 characters."
   validates :password, confirmation: true, :presence => true,:if => :password_required?
 
-  # validates_confirmation_of :password
- 
- 
+   def email_required?
+        true
+   end
  
    ## Custom Attributes ##
   attr_accessor :check_device_type_validation,:password_not_required
