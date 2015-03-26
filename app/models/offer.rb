@@ -37,7 +37,7 @@ class Offer < ActiveRecord::Base
     	errors.add(:offer_expire_on, "can't be in the past")
     end
     if offer_valid_upto < offer_expire_on
-    		errors.add(:offer_valid_upto, "is be invalid")
+    		errors.add(:offer_valid_upto, "should be greater than expire date")
     end
 
   end

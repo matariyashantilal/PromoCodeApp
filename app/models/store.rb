@@ -8,7 +8,7 @@ class Store < ActiveRecord::Base
 	validates_presence_of :name, :address, :contact_person
 	validates :contact_number, length: { is: 10 }
 	validates_associated :offers, :ibeacons
-	validates_uniqueness_of :name, :scope => [:address], :message => "Name and address already taken."
+	validates_uniqueness_of :name, :scope => [:address], :message => "and address already taken."
 	geocoded_by :address
 	#after_validation :geocode, :if => :address_changed?	
 
