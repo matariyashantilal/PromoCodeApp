@@ -19,18 +19,24 @@
           <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
             <thead>
               <tr role="row">
-                <th aria-label="Offer Name: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Offer Name</th>
-                <th aria-label="Task To Perform: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Task To Perform</th>
-                <th aria-label="Offer For: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer For</th>
-                <th aria-label="Offer Valid Upto: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Valid Upto</th>
-                <th aria-label="Offer Expires On: activate to sort column ascending" style="width: 151px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Offer Expires On</th>
+                <th>Image</th>
+                <th>Offer Name</th>
+                <th>Task To Perform</th>
+                <th>Task URL</th>
+                <th>Offer For</th>
+                <th>Punch Count</th>
+                <th>Offer Valid Upto</th>
+                <th>Offer Expires On</th>
               </tr>
             </thead>       
             <tbody aria-relevant="all" aria-live="polite" role="alert">          
               <tr class="gradeA odd">
+                <td><%= image_tag @business_offer.image.try(:url), :size => "150x150" %></td>
                 <td><%= @business_offer.offer_name %></td>
                 <td><%= @business_offer.task_to_perform %></td>
+                <td><%= @business_offer.task_url %></td>
                 <td><%= @business_offer.offer_for %></td>
+                <td><%= @business_offer.punch_count.to_i %></td>
                 <td><%= @business_offer.offer_valid_upto %></td>
                 <td><%= @business_offer.offer_expire_on %></td>
               </tr>            

@@ -5,7 +5,7 @@ class Business < User
 	accepts_nested_attributes_for :stores,:allow_destroy => true
 
 	validates_presence_of :business_name, :contact_person, :contact_number
-	validates :contact_number, length: { is: 10 }
+	validates :contact_number, length: { is: 10 ,message:"should be of 10 characters."}
 	validates_associated :stores
 	
 end

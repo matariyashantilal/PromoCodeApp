@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   ## validations       
 
   validates_presence_of  :email
+  
   validates :password, :length => {:in => 8..128} ,:if => :password_required?
   validates :password, confirmation: true, :presence => true,:if => :password_required?
 

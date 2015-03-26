@@ -28,7 +28,7 @@ class Admin::StoresController <Admin::BaseController
   def create
     @store = Store.new(store_params)
     if @store.save
-      redirect_to admin_store_path(@store), :notice => "Store created successfully."
+      redirect_to admin_store_path(@store), :notice => "Store was successfully created."
     else
       flash.now[:alert] = @store.errors.full_messages
       render :new
@@ -37,7 +37,7 @@ class Admin::StoresController <Admin::BaseController
 
   def update
     if @store.update(store_params)
-        redirect_to admin_store_path(@store), :notice => "Store updated successfully."
+        redirect_to admin_store_path(@store), :notice => "Store was successfully updated."
     else
       flash.now[:alert] = @store.errors.full_messages
       render :edit
@@ -46,7 +46,7 @@ class Admin::StoresController <Admin::BaseController
 
   def destroy
     @store.destroy
-    redirect_to admin_stores_path, notice: 'Store destroyed successfully.'
+    redirect_to admin_stores_path, notice: 'Store was successfully destroyed.'
   end
 
   private

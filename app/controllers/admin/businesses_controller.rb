@@ -19,7 +19,7 @@ class Admin::BusinessesController < Admin::BaseController
   def create
     @business = Business.new(business_params)
     if @business.save
-      redirect_to admin_business_path(@business), :notice => "Business Submitted Successfully."
+      redirect_to admin_business_path(@business), :notice => "Business was successfully created."
     else
       flash.now[:alert] = @business.errors.full_messages.uniq
       render :new
@@ -28,7 +28,7 @@ class Admin::BusinessesController < Admin::BaseController
 
   def update
     if params[:business][:password].present? ?  @business.update(business_params) : @business.update(business_params_without_password)
-        redirect_to admin_business_path(@business), :notice => "Business Submitted Updated."
+        redirect_to admin_business_path(@business), :notice => "Business was successfully updated."
     else
       flash.now[:alert] = @business.errors.full_messages.uniq
       render :edit

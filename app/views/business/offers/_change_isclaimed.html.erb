@@ -1,0 +1,11 @@
+<button type="button" class="btn btn-info %> dropdown-toggle" data-toggle="dropdown">
+  <%= offer.is_claimed %>
+  <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+  <% if !offer.is_claimed %>
+    <li> 
+      <%= link_to('True',business_offer_claim_path(offer),:remote => true) %>
+    </li>
+  <% end %>
+</ul>

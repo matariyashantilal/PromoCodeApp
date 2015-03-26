@@ -75,6 +75,18 @@ class Business::OffersController < Business::BaseController
     end
   end
 
+  def offer_details
+    @offer_details = OfferDetail.includes(:offer,:customer)
+  end
+
+  def claim
+    respond_to do |format|
+      @offer_detail = OfferDetail.find(params[:id])
+      @offer_detail.update_column(:is_claimed, "true")
+      format.js{}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_business_offer

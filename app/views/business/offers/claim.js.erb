@@ -1,0 +1,1 @@
+$('.is_claimed_<%= @offer_detail.id %>').html('<%= j(render :partial => "change_isclaimed", locals: {offer: @offer_detail}) %>');

@@ -24,10 +24,11 @@
             
           </div>
           <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+          <% if @offers.present? %>
             <thead>
               <tr role="row">
-                <th>Store Name</th>
                 <th>Offer Name</th>
+                <th>Store Name</th>
                 <th>Task To Perform</th>
                 <th>Offer For</th>
                 <th>Offer Type</th>
@@ -41,18 +42,21 @@
             <tbody aria-relevant="all" aria-live="polite" role="alert">
             <% @offers.each do |offer| %>
               <tr class="gradeA odd">
-                <td><%= offer.store.name %></td>
                 <td><%= offer.offer_name %></td>
+                <td><%= offer.store.name %></td>
                 <td><%= offer.task_to_perform %></td>
                 <td><%= offer.offer_for %></td>
                 <td><%= offer.offer_type %></td>
                 <td><%= offer.punch_count %></td>
                 <td><%= offer.offer_valid_upto %></td>
                 <td><%= offer.offer_expire_on %></td>
-                <td><%= link_to "",admin_offer_path(offer), class: "fa fa-eye" %></td>
-                <td><%= link_to '', edit_admin_offer_path(offer), class: "fa fa-pencil" %></td>
-                <td><%= link_to '', admin_offer_path(offer), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "",admin_offer_path(offer), class: "fa fa-eye", title: "View" %></td>
+                <td><%= link_to '', edit_admin_offer_path(offer), class: "fa fa-pencil", title: "Edit" %></td>
+                <td><%= link_to '', admin_offer_path(offer), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete" %></td>
               </tr>
+            <% end %>
+            <% else %>
+              Offer not found. Please enter a valid offer first.
             <% end %>
             </tbody>
           </table>
