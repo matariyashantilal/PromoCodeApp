@@ -18,8 +18,9 @@ json.stores do
 		      json.offer_name offer.offer_name
           json.offer_for offer.offer_for
           json.offer_type offer.offer_type
-           json.image offer.get_image_url
+          json.image offer.get_image_url
 		      json.offer_valid_upto offer.offer_valid_upto
+          json.expire_remaining offer.get_expire_remaining_time
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform
             json.task_url offer.task_url
@@ -55,8 +56,10 @@ json.stores do
           json.offer_name offer.offer_name
           json.offer_for offer.offer_for
           json.offer_type offer.offer_type
-           json.image offer.get_image_url
+          json.image offer.get_image_url
           json.offer_valid_upto offer.offer_valid_upto
+          json.expire_remaining offer.get_expire_remaining_time
+         
           if offer.offer_type == "OneTime"
             json.task_to_perform offer.task_to_perform
             json.task_url offer.task_url

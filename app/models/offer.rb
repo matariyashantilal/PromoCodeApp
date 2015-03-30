@@ -50,6 +50,21 @@ class Offer < ActiveRecord::Base
   	end
   end
 
+  def get_expire_remaining_time
+  	diff=TimeDifference.between(self.offer_expire_on,Date.today).in_days
+  	if diff.to_i <= 0 
+  		diff=TimeDifference.between(self.offer_expire_on,Date.today).in_hours
+  		if diff.to_i <= 0
+  			diff="#{diff} hour"
+  		else 
+  		diff=	"#{diff} hours"
+  		end
+  	else
+  		diff =  "#{diff.to_i} days"
+  	end
+  	diff
+  end
+
   def get_image_url
   	Rails.application.secrets.host + self.image.try(:url)
   end
