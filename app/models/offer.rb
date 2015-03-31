@@ -57,12 +57,12 @@ class Offer < ActiveRecord::Base
   	if diff.to_i <= 0 
   		diff=TimeDifference.between(self.offer_expire_on,Date.today).in_hours
   		if diff.to_i <= 0
-  			diff="#{diff} hour"
+  			diff="#{diff} Hour"
   		else 
-  		diff=	"#{diff} hours"
+  		diff=	"#{diff} Hours"
   		end
   	else
-  		diff =  "#{diff.to_i} days"
+  		diff =  "#{diff.to_i} Days"
   	end
   	diff
   end
