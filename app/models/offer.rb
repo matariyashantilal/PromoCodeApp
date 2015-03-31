@@ -14,6 +14,7 @@ class Offer < ActiveRecord::Base
 	validates :task_url, :presence => true, :if => lambda { |o| o.offer_type == "OneTime"}
 	validates :punch_count, :presence => true, :inclusion => {:in => 1..8, :message => "should be between 1-8"}, :if => lambda { |o| o.offer_type == "Punchcard"}
 	validate :validate_offer_dates
+	validates :punch_count, :numericality => true,if: :punch_count?
 
 	#image
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
