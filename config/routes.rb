@@ -54,6 +54,7 @@ Rails.application.routes.draw do
         post 'add_visits' => "offers#add_visits",:as => :add_visits
         post 'login_with_facebook' => "users#login_with_facebook",:as => :login_with_facebook
         post 'my_rewards_detail' => "stores#my_rewards_detail",:as => :my_rewards_detail
+        post 'my_used_rewards_detail' => "stores#my_used_rewards_detail",:as => :my_used_rewards_detail 
       
       end
     end

@@ -78,4 +78,10 @@ class Offer < ActiveRecord::Base
 
 		offer_detail.present? ?  true : false 
 	end
+
+  def used_reward_offer
+    offer = offer_details.where(is_claimed: true)
+    offer.present? ? true : false 
+  end
+
 end

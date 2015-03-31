@@ -1,5 +1,5 @@
 class Api::V1::Indorse::StoresController < Api::V1::BaseController
-  before_filter :authentication_user_with_authentication_token, :only => [:near_by_store_list,:my_rewards_detail]
+  before_filter :authentication_user_with_authentication_token, :only => [:near_by_store_list,:my_rewards_detail,:my_used_rewards_detail]
   
   swagger_controller :stores, "Store[store_list/my_rewards_detail]"
 
@@ -38,6 +38,24 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
   
   swagger_api :my_rewards_detail do
     summary "Get offer for claim is allow"
+    param :form, :authentication_token, :string,:required, "Auth Token"
+   response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
+
+
+def my_used_rewards_detail
+  
+    @stores   = Store.joins(:offers).joins(:offer_details).where("user_id = ?   ",@current_user.id).uniq
+    if !@stores.present?
+      render_json({:result=>{:messages =>"Sorry,No Used rewards found.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
+    end  
+
+end
+  
+  swagger_api :my_used_rewards_detail do
+    summary "Get all used offer "
     param :form, :authentication_token, :string,:required, "Auth Token"
    response :unauthorized
     response :not_acceptable
