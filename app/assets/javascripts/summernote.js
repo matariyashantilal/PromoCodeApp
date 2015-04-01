@@ -2108,11 +2108,11 @@
                      '<div class="modal-body">' +
                        '<div class="row-fluid">' +
 
-                       '<div class="form-group">' +
+                       '<div>' +
                          '<label>' + lang.link.textToDisplay + '</label>' +
                          '<span class="note-link-text form-control input-xlarge uneditable-input" />' +
                        '</div>' +
-                       '<div class="form-group">' +
+                       '<div>' +
                          '<label>' + lang.link.url + '</label>' +
                          '<input class="note-link-url form-control span12" type="text" />' +
                        '</div>' +
@@ -2134,7 +2134,7 @@
                          '<div class="modal-body">' +
                            '<div class="row-fluid">' +
 
-                           '<div class="form-group">' +
+                           '<div>' +
                              '<label>' + lang.video.url + '</label>&nbsp;<small class="text-muted">' + lang.video.providers + '</small>' +
                              '<input class="note-video-url form-control span12" type="text" />' +
                            '</div>' +

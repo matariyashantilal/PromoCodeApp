@@ -16,7 +16,7 @@
 //= require bootstrap.min
 //= require jquery_nested_form
 //= require core
-//= require summernote.js
+// require summernote.js
 //= require summernote.min.js
 
 $( document ).ready(function() {
