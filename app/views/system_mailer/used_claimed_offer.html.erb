@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello ,<%= @user.first_name if @user.first_name.present? %></h1>
+    <% if @offer.offer_type =="OneTime" %>
+        <% if @offer.task_to_perform=="Facebook" %>
+          <p>
+          You have completed your task for liking <%= @offer.task_to_perform %> . You can now claim your offer<br>
+          </p>
+        <% else %>
+        	<p>
+          You have completed your task for following <%= @offer.task_to_perform %> . You can now claim your offer.<br>
+          </p>
+        <% end %>
+    <% else %>
+        <p>
+          You have completed your <%= @offer.punch_count %> visits. You can now claim your offer. <br>
+        </p>
+    <% end %>
+  </body>
+</html>

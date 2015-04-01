@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @user.first_name if @user.first_name.present? %></h1>
+    <% if @offer.offer_type =="OneTime" %>
+        <% if @offer.task_to_perform=="Facebook" %>
+          <p>
+            You have completed your task for liking <%= @offer.task_to_perform %> . You can now claim your offer<br>
+          </p>
+        <% else %>
+          <p>
+            You have completed your task for following <%= @offer.task_to_perform %> . You can now claim your offer.<br>
+          </p>
+        <% end %>
+    <% else %>
+      <p>
+        You have completed your <%= @offer.punch_count %> visits. You can now claim your offer. <br>
+      </p>
+    <% end %>
+
+    <h3>Store Details</h3>
+    <table>
+      <tr>
+        <td>
+          Store Name
+        </td>
+        <td>
+          :
+        </td>
+        <td>
+          <%= @store.name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Store Address
+        </td>
+        <td>
+          :
+        </td>
+        <td>
+          <%= @store.address %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Contact Number
+        </td>
+        <td>
+          :
+        </td>
+        <td>
+          <%= @store.contact_number %>
+        </td>
+      </tr>
+    </table>
+
+    <h3>Offer Details</h3>
+    <table>
+      <tr>
+        <td>
+          Offer Name
+        </td>
+        <td>
+          :
+        </td>
+        <td>
+          <%= @offer.offer_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Task Performed
+        </td>
+        <td>
+          :
+        </td>
+        <td>
+          <%= @offer.task_to_perform %>
+        </td>
+      </tr>
+    </table>
+
+   <img src="<%= @offer.image.url %>">
+  </body>
+</html>

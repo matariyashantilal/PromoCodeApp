@@ -9,7 +9,9 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
      if @current_user.present? 
         if @offer.present?
             @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: @offer.id)
-            if !@offer_details.save
+            if @offer_details.save
+               SystemMailer.complete_task_mail(@current_user,@offer.store.business.email,@offer).deliver_now
+            else
               render_json({:result=>{:messages =>@offer_details.errors.full_messages,:rstatus=>0, :errorcode => 404}}.to_json)
             end
         else
@@ -60,6 +62,8 @@ class Api::V1::Indorse::OffersController < Api::V1::BaseController
                     if offer.punch_count <= @visit_offer_count
                       @offer_details=OfferDetail.new(user_id: @current_user.id,offer_id: offer.id)
                       @offer_details.save
+                     SystemMailer.complete_task_mail(@current_user,offer.store.business.email,offer).deliver_now
+         
                     end
                   end
             end  

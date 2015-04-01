@@ -82,7 +82,8 @@ class Business::OffersController < Business::BaseController
   def claim
     respond_to do |format|
       @offer_detail = OfferDetail.find(params[:id])
-      @offer_detail.update_column(:is_claimed, "true")
+      SystemMailer.used_claimed_offer(@offer_detail.customer,current_user.email,@offer_detail.offer).deliver_now 
+      @offer_detail.update_column(:is_claimed, "true") 
       format.js{}
     end
   end
@@ -96,5 +97,5 @@ class Business::OffersController < Business::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_offer_params
       params.require(:offer).permit(:offer_name, :task_to_perform, :offer_for, :offer_type, :punch_count, :offer_valid_upto, :offer_expire_on, :store_id, :task_url, :image)
-    end
+    end 
 end
