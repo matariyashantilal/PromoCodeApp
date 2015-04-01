@@ -34,6 +34,7 @@ gem 'geocoder'
 gem 'unicorn'
 gem 'fb_graph'
 gem 'time_difference'
+gem 'pushmeup'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
