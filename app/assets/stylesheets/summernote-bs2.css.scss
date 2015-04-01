@@ -4428,12 +4428,16 @@
     opacity: 0.8;
     filter: alpha(opacity=80);
   }
+  .modal.in{display:inline-table !important;}
+  .modal.in .modal-dialog{width:auto !important; margin:auto !important;} 
+  
   .note-editor .modal {
     position: fixed;
     top: 10%;
     left: 50%;
     z-index: 1050;
-    width: 700px;
+    width: 50%;
+    /*display:inline-block !important;*/
     margin-left: -280px;
     background-color: #ffffff;
     border: 1px solid #999;
