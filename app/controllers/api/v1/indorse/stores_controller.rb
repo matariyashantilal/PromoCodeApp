@@ -7,13 +7,10 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
     latitude  = params[:latitude].to_f
     longitude = params[:longitude].to_f
     if latitude.present? && longitude.present?
-      oid = OfferDetail.where("user_id = ? AND is_claimed = 't'",@current_user.id)
-      @stores   = Store.near([latitude, longitude], 100).joins(:offers)
-      if oid.blank?
-        @stores   = @stores.where("offer_expire_on >= ? ",Date.today.beginning_of_day).includes(:ibeacons).uniq
-      else
-        @stores   = @stores.where("offer_expire_on >= ? AND offers.id NOT in (?)",Date.today.beginning_of_day,oid).includes(:ibeacons).uniq
-      end
+      puts "==========#{@current_user.inspect}========="
+      @oids = OfferDetail.where("user_id = ? AND is_claimed = 't'",@current_user.id).pluck(:offer_id)
+      puts "-----------------#{@oids}"
+      @stores   = Store.near([latitude, longitude], 100).joins(:offers).where("offer_expire_on >= ? ",Date.today.beginning_of_day).includes(:ibeacons).uniq
       if !@stores.present?
         render_json({:result=>{:messages =>"No Stores Present.",:rstatus=>1, :errorcode =>""},:data=>{}}.to_json)    
       end
