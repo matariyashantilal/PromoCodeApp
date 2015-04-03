@@ -47,6 +47,7 @@ class Offer < ActiveRecord::Base
   	if  offer_type == "Punchcard"
   		puts("==========#{offer_type}")
   		 write_attribute(:task_to_perform,nil)
+  		 write_attribute(:task_url,nil)
   	else
   		 write_attribute(:punch_count,nil)
   	end
