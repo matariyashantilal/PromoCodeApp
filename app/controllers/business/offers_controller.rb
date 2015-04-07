@@ -26,6 +26,10 @@ class Business::OffersController < Business::BaseController
 
   # GET /business/offers/new
   def new
+    if current_user.stores.count <= 0
+      flash[:alert] = "Please create new store before creation of new offer."
+      redirect_to new_business_store_path
+    end
     @business_offer = Offer.new
   end
 
@@ -76,7 +80,7 @@ class Business::OffersController < Business::BaseController
   end
 
   def offer_details
-    @offer_details = OfferDetail.includes(:offer,:customer)
+    @offer_details = current_user.offer_details.includes(:offer,:customer)
   end
 
   def claim

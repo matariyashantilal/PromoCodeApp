@@ -11,11 +11,17 @@ class Business::UsersController < Business::BaseController
         sign_in(current_user, bypass: true)
    				redirect_to business_business_path(current_user), :notice => "Password updated successfully."
    	  else
-  	   	flash.now[:alert] = "Invalid password"
+  	   	#flash.now[:alert] = "Invalid password"
+        flash.now[:alert] = current_user.errors.full_messages.uniq
    	    render :edit
       end
     else
-    	flash.now[:alert] = "Invalid password"
+    	#flash.now[:alert] = "Invalid password"
+      if !params[:user][:current_password].present?
+        flash.now[:alert] = "Current password can't be blank."
+      elsif
+        flash.now[:alert] = "New password can't be blank."
+      end
    	  render :edit
     end 
   end

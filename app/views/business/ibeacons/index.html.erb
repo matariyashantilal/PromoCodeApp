@@ -4,7 +4,7 @@
     <h3 class="panel-title">
       <i class="fa fa-archive"></i> Listing iBeacons
       <span class="panel-options">            
-        <%= link_to 'New iBeacons', new_business_ibeacon_path, class: "label label-success" %>
+        <%= link_to 'New iBeacon', new_business_ibeacon_path, class: "label label-success" %>
       </span>        
     </h3>
     </div>
@@ -42,9 +42,9 @@
                 <td><%= ibeacon.major %></td>
                 <td><%= ibeacon.minor %></td>
                 <td><%= ibeacon.store.try(:name) %></td>
-                <td><%= link_to "",admin_business_path(ibeacon), class: "fa fa-eye" %></td>
+                <td><%= link_to "",business_ibeacon_path(ibeacon), class: "fa fa-eye" %></td>
                 <td><%= link_to '', edit_business_ibeacon_path(ibeacon), class: "fa fa-pencil" %></td>
-                <td><%= link_to '', admin_business_path(ibeacon), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to '', business_ibeacon_path(ibeacon), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
             </tbody>
