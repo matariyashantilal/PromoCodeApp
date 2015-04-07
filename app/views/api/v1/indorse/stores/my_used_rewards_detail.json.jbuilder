@@ -6,10 +6,12 @@ end
 json.data do
   json.use do
     @stores.each do |store|
-      offers=store.offers.get_non_expired_offers
-      json.array! offers.each do |offer|
+      offerDetails = store.offer_details.where("user_id = ?",@current_user.id)
+      json.array! offerDetails.each do |offerDetail|
+        offer=Offer.find(offerDetail.offer_id)
         if offer.used_reward_offer.present?
           json.id offer.id
+          json.store_name store.name
           json.offer_name offer.offer_name
           json.offer_for offer.offer_for
           json.offer_type offer.offer_type

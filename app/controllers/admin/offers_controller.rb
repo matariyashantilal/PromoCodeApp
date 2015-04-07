@@ -16,7 +16,7 @@ class Admin::OffersController < Admin::BaseController
   end
 
   def new
-    if current_user.stores.count <= 0
+    if Store.count <= 0
       flash[:alert] = "Please create new store before creation of new offer."
       redirect_to new_admin_store_path
     end
