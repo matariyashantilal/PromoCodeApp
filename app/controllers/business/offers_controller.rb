@@ -80,9 +80,7 @@ class Business::OffersController < Business::BaseController
   end
 
   def offer_details
-    #@offer_details = OfferDetail.includes(:offer,:customer)
-    @offer_details = current_user.offers.joins(:offer_details).includes(:offer,:customer)
-    #@offer_details = current_user.stores.joins(:offers).joins(:offer_details).includes(:offer,:customer)
+    @offer_details = OfferDetail.includes(:offer,:customer)
   end
 
   def claim
