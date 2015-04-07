@@ -1,32 +1,86 @@
-<%= form_for([:business,@business_ibeacon], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+<!--
+<%#= form_for([:business,@business_ibeacon], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
   <div class="form-group">
-    <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
+    <lable class="col-sm-3 control-label"><%#= f.label :store_id ,"Store"  %></lable>
     <div class="col-sm-9">
-      <%= f.select :store_id, current_user.stores.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+      <%#= f.select :store_id, current_user.stores.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
     </div>
   </div>
 
   <div class="form-group">
-    <label  class="col-sm-3 control-label"><%= f.label :udid %></label>
+    <label  class="col-sm-3 control-label"><%#= f.label :udid %></label>
     <div class="col-sm-9">
-      <%= f.text_field :udid, :class => "form-control" %>
+      <%#= f.text_field :udid, :class => "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label  class="col-sm-3 control-label"><%= f.label :major %></label>
+    <label  class="col-sm-3 control-label"><%#= f.label :major %></label>
     <div class="col-sm-9">
-      <%= f.text_field :major, :class => "form-control" %>
+      <%#= f.text_field :major, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <label  class="col-sm-3 control-label"><%= f.label :minor %></label>
+    <label  class="col-sm-3 control-label"><%#= f.label :minor %></label>
     <div class="col-sm-9">
-      <%= f.text_field :minor, :class => "form-control" %>
+      <%#= f.text_field :minor, :class => "form-control" %>
     </div>
   </div>
 
   <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
+    <%#= f.submit class: "btn btn-success" %>
   </div>
+<%# end %>
+
+-->
+
+
+
+<div class="col-md-12" id="div_3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+       <i class="fa fa-arrows-h"></i>   New iBeacon
+       <span class="panel-options">
+        <%= link_to 'Show', business_ibeacon_path(@business_ibeacon), :class => "label label-info" if !@business_ibeacon.new_record? %>
+        <%= link_to 'Back', business_ibeacons_path, :class => "label label-info" %>
+      </span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    
+      <%=form_for([:business,@business_ibeacon], :html => {:class => "form-horizontal col-md-8"}) do |f| %>
+      <div class="form-group">
+          <lable class="col-sm-3 control-label"><%= f.label :store_id ,"Store"  %></lable>
+            <div class="col-sm-9">
+              <%= f.select :store_id, current_user.stores.pluck(:name, :id), hide_label: true, class: "form-control input-sm"  %>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :udid %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :udid, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :major %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :major, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="col-sm-3 control-label"><%= f.label :minor %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :minor, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+        </div>
 <% end %>

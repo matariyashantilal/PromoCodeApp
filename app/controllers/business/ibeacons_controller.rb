@@ -26,6 +26,10 @@ class Business::IbeaconsController < Business::BaseController
 
   # GET /business/ibeacons/new
   def new
+    if current_user.stores.count <= 0
+      flash[:alert] = "Please create new store before creation of new iBeacon."
+      redirect_to new_business_store_path
+    end
     @business_ibeacon = Ibeacon.new
   end
 

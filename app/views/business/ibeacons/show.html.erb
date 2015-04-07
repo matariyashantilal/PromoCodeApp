@@ -1,4 +1,55 @@
+<!--
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_business_ibeacon_path(@business_ibeacon) %> |
-<%= link_to 'Back', business_ibeacons_path %>
+<%#= link_to 'Edit', edit_business_ibeacon_path(@business_ibeacon) %> |
+<%#= link_to 'Back', business_ibeacons_path %>
+
+-->
+
+
+<div class="col-md-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="fa fa-archive"></i> <%= @business_ibeacon.udid %>
+        <span class="panel-options">
+        	<%= link_to 'Edit', edit_business_ibeacon_path(@business_ibeacon), class: "label label-info" %>
+					<%= link_to 'Back', business_ibeacons_path, class: "label label-info" %>
+        </span>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+          <div class="dataTables_length" id="example_length">
+            
+          </div>
+          <div id="example_filter" class="dataTables_filter pull-right">
+            
+          </div>
+          <table aria-describedby="example_info" class="table table-bordered table-hover table-striped display dataTable" id="example">
+            <thead>
+              <tr role="row">
+                <th aria-label="Udid: activate to sort column ascending" aria-sort="ascending" style="width: 178px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting_asc">Udid</th>
+                <th aria-label="Major: activate to sort column ascending" style="width: 234px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Major</th>
+                <th aria-label="Minor: activate to sort column ascending" style="width: 245px;" colspan="1" rowspan="1" aria-controls="example" tabindex="0" role="columnheader" class="sorting">Minor</th>
+              </tr>
+            </thead>
+       
+            <tbody aria-relevant="all" aria-live="polite" role="alert">
+            
+              <tr class="gradeA odd">
+                <td><%= @business_ibeacon.udid %></td>
+                <td><%= @business_ibeacon.major %></td>
+                <td><%= @business_ibeacon.minor %></td>
+              </tr>
+           
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+

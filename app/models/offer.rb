@@ -1,5 +1,4 @@
 class Offer < ActiveRecord::Base
-	
 	belongs_to   :store
 	has_many :offer_details , dependent: :destroy
 	
@@ -15,6 +14,8 @@ class Offer < ActiveRecord::Base
 	validates :punch_count, :presence => true, :inclusion => {:in => 1..8, :message => "should be between 1-8"}, :if => lambda { |o| o.offer_type == "Punchcard"}
 	validate :validate_offer_dates
 	validates :punch_count, :numericality => true,if: :punch_count?
+  validate :validate_store_presence
+
 
 	#image
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
@@ -28,6 +29,13 @@ class Offer < ActiveRecord::Base
 	scope :existing_user_offer, -> { where("offer_for = ? OR offer_for = ?",1,2) }
 	
 	scope :get_non_expired_offers, -> {where("offer_expire_on >= ?",Date.today.beginning_of_day)}
+
+
+  def validate_store_presence
+    if !store_id.present? && !new_record?
+      errors.add(:store_id, "can't be blank. Please create the new one.")
+    end
+  end
 
 	def validate_offer_dates
     
