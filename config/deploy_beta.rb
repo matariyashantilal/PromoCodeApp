@@ -10,12 +10,12 @@ require 'mina/puma'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, '45.55.148.39'
+set :domain, '162.243.228.130'
 set :user, 'root'
 set :deploy_to, '/sites/indorse'
 set :repository, 'git@bitbucket.org:Designlico/indorsenew.git'
 set :branch, 'ror'
-set :rails_env, 'production'            
+set :rails_env, 'staging'            
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 #set :port, '19070'     # SSH port number.        # Replace ssh port if you are using different port
 
@@ -41,7 +41,7 @@ task :environment do
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use[ruby-1.9.3-p125@default]'
-  invoke :'rvm:use[ruby-2.2.0-preview1@indorse]'
+  invoke :'rvm:use[ruby-2.0.0-p353@indorse]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
