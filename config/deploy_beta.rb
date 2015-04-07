@@ -15,7 +15,7 @@ set :user, 'root'
 set :deploy_to, '/sites/indorse'
 set :repository, 'git@bitbucket.org:Designlico/indorsenew.git'
 set :branch, 'ror'
-set :rails_env, 'production'            
+set :rails_env, 'staging'            
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 #set :port, '19070'     # SSH port number.        # Replace ssh port if you are using different port
 
