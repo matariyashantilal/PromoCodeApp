@@ -47,7 +47,7 @@ class Api::V1::Indorse::StoresController < Api::V1::BaseController
     response :not_found
   end
 
-
+        
 def my_used_rewards_detail
   
     @stores   = Store.joins(:offers).joins(:offer_details).where("user_id = ?   ",@current_user.id).uniq

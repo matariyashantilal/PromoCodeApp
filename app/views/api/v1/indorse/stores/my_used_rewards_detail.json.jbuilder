@@ -6,7 +6,7 @@ end
 json.data do
   json.use do
     @stores.each do |store|
-      offerDetails = store.offer_details.where("user_id = ?",@current_user.id)
+      offerDetails = store.offer_details.where("is_claimed=true AND user_id = ?",@current_user.id)
       json.array! offerDetails.each do |offerDetail|
         offer=Offer.find(offerDetail.offer_id)
         if offer.used_reward_offer.present?
