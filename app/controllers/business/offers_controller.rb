@@ -88,15 +88,15 @@ class Business::OffersController < Business::BaseController
       @offer_detail = OfferDetail.find(params[:id])
       SystemMailer.used_claimed_offer(@offer_detail.customer,current_user.email,@offer_detail.offer).deliver_now 
       @offer_detail.update_column(:is_claimed, "true") 
-      device_token = User.find(@offer_detail.user_id).device_id
+      user= User.find(@offer_detail.user_id)
       APNS.host  = Rails.application.secrets.APNS_HOST
       APNS.pem   = Rails.application.secrets.APNS_PEM
       APNS.port  = Rails.application.secrets.APNS_PORT
       message = "" + Offer.find(@offer_detail.offer_id).offer_name + " redeemed successfully."
       #puts(message)
       #puts(device_token)
-      if device_token.present?
-        APNS.send_notification(device_token, :alert => message, :badge => 1, :sound => 'default')
+      if user.device_id? && user.is_notification_enable?
+        APNS.send_notification(user.device_id, :alert => message, :badge => 1, :sound => 'default')
       end
       format.js{}
     end
