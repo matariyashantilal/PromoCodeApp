@@ -12,7 +12,7 @@ json.stores do
       json.latitude store.latitude
       json.longitude store.longitude
     	json.offers do
-		  @existing_user=OfferDetail.check_for_new(@current_user)
+		  @existing_user=OfferDetail.where("user_id = ? ", @current_user.id).first
       if @existing_user.present? 
         offers = store.offers.get_non_expired_offers.existing_user_offer
       else 
