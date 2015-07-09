@@ -12,13 +12,12 @@ json.stores do
       json.latitude store.latitude
       json.longitude store.longitude
     	json.offers do
-		  @check_user=VisitorDetail.check_for_new(@current_user.id,store.id)
-		 
-		  if @check_user == 0 
-    		offers = store.offers.get_non_expired_offers.new_user_offer
-			else
-				offers = store.offers.get_non_expired_offers.existing_user_offer
-			end
+		  @existing_user=OfferDetail.check_for_new(@current_user)
+		  if @existing_user.present? 
+    	  offers = store.offers.get_non_expired_offers.existing_user_offer
+      else 
+        offers = store.offers.get_non_expired_offers.new_user_offer	
+      end
 	    	json.array! offers.each do |offer|
 				json.id offer.id
 				    json.offer_name offer.offer_name

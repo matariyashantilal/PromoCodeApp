@@ -6,7 +6,8 @@ class OfferDetail < ActiveRecord::Base
 
   #scope
  	
- 
+  scope :check_for_new, -> (user_id){ where("user_id = ? ",user_id).first}
+
 
  
 end
