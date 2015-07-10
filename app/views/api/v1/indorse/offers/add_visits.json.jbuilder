@@ -56,7 +56,11 @@ json.stores do
       json.array! offers.each do |offer|
         status=offer.check_stutus_is_claimed(@current_user.id)
         if status.present?
-
+          json.store_id offer.store.try(:id)
+          json.store_name offer.store.try(:name)
+          json.store_address offer.store.try(:address)
+          json.store_latitude offer.store.try(:latitude)
+          json.store_longitude offer.store.try(:longitude)
           json.id offer.id
           json.offer_name offer.offer_name
           json.offer_for offer.offer_for
